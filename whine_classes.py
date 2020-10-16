@@ -25,6 +25,10 @@ class RedWhine(WhineBottle):
         for grape in self.grape_mix:
             print('--->', grape)
 
+    def list_grape_mix(self):
+        list = ' '.join([str(elem) for elem in self.grape_mix]) 
+        return list
+
 class WhiteWhine(WhineBottle):
     def __init__(self, name, main_grape, year, dry_or_sweet, grape_mix):
         super().__init__(name, main_grape, year)
@@ -37,6 +41,10 @@ class WhiteWhine(WhineBottle):
     def print_grapes(self):
         for grape in self.grape_mix:
             print('--->', grape)
+    
+    def list_grape_mix(self):
+        list = ' '.join([str(elem) for elem in self.grape_mix]) 
+        return list
 
 class RoseWhine(WhineBottle):
     def __init__(self, name, main_grape, year, dry_or_sweet, grape_mix):
@@ -50,3 +58,7 @@ class RoseWhine(WhineBottle):
     def print_grapes(self):
         for grape in self.grape_mix:
             print('--->', grape)
+
+    def list_grape_mix(self):
+        list = ' '.join([str(elem) for elem in self.grape_mix]) 
+        return list

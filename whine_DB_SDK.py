@@ -1,4 +1,9 @@
 import sqlite3
+from whine_classes import WhineBottle
+from whine_classes import RedWhine
+from whine_classes import WhiteWhine
+from whine_classes import RoseWhine
+
 
 def create_table():
     conn = sqlite3.connect('whine_inventory.db')
@@ -10,13 +15,13 @@ def add_whine(name, main_grape, year, grape_mix, date_in_fridge):
     c = conn.cursor()
     c.execute('INSERT INTO whine_bottles (name, main_grape, year, grape_mix, date_in_fridge) VALUES (?, ?, ?, ?, ?)', (name, main_grape, year, grape_mix, date_in_fridge))
     conn.commit()
-    message = print('Succesfully inserted score!')
+    message = print('Succesfully inserted!')
     return message
 
 def fetch_results():
     conn = sqlite3.connect('whine_inventory.db')
     c = conn.cursor()
-    c.execute('''SELECT user, game_date, succes, attempts FROM whine_bottles ORDER BY date_in_fridge DESC''')
+    c.execute('''SELECT name, main_grape, year, grape_mix, date_in_fridge FROM whine_bottles ORDER BY date_in_fridge DESC''')
     data = c.fetchall()
     return data
 
