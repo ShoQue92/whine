@@ -13,13 +13,13 @@ from whine_DB_SDK import clear_results
 
 import datetime
 
-fles_1 = WhineBottle('generieke wijn', 'merlot', 2014)
-fles_2 = RedWhine('Test rode wijn', 'Shiraz', 2015, ['Shiraz', 'Merlot'])
-fles_3 = WhiteWhine('Witte wijn','Chardonnay',2016,'D',['Chardonnay', 'Sauvignon Blanc'])
-fles_4 = RoseWhine('Rose wijn', 'Semillion', 2017, 'S',['Semillion','Chardonnay'])
+fles_1 = WhineBottle(1, 'generieke wijn', 'merlot', 2014)
+fles_2 = RedWhine(2, 'Test rode wijn', 'Shiraz', 2015, ['Shiraz', 'Merlot'])
+fles_3 = WhiteWhine(3, 'Witte wijn','Chardonnay',2016,'D',['Chardonnay', 'Sauvignon Blanc'])
+fles_4 = RoseWhine(4, 'Rose wijn', 'Semillion', 2017, 'S',['Semillion','Chardonnay'])
 
 create_table()
 
-add_whine(fles_2.name, fles_2.main_grape, fles_2.year, fles_2.list_grape_mix(), datetime.date.today())
+add_whine(fles_2.ID, fles_2.name, fles_2.main_grape, fles_2.year, fles_2.list_grape_mix(), datetime.date.today())
 
-print(fetch_results())
+print(delete_selected(2))
