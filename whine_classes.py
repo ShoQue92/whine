@@ -1,7 +1,7 @@
 class WhineBottle:
     #Instance methods are functions you can apply on an instance of the class. Always requires the self argument (passed automaticly)
-    def __init__(self, ID, name, main_grape, year):
-        self.ID = ID
+    def __init__(self, UID, name, main_grape, year):
+        self.UID = UID
         self.name = name
         self.main_grape = main_grape
         self.year = year
@@ -15,8 +15,8 @@ class WhineBottle:
         return '{} - {} - {}'.format(self.name, self.main_grape, self.year)
 
 class RedWhine(WhineBottle):
-    def __init__(self, ID, name, main_grape, year, grape_mix):
-        super().__init__(ID, name, main_grape, year)
+    def __init__(self, UID, name, main_grape, year, grape_mix):
+        super().__init__(UID, name, main_grape, year)
         self.grape_mix = grape_mix
     
     def __str__(self):
@@ -31,8 +31,8 @@ class RedWhine(WhineBottle):
         return list
 
 class WhiteWhine(WhineBottle):
-    def __init__(self, ID, name, main_grape, year, dry_or_sweet, grape_mix):
-        super().__init__(ID, name, main_grape, year)
+    def __init__(self, UID, name, main_grape, year, dry_or_sweet, grape_mix):
+        super().__init__(UID, name, main_grape, year)
         self.dry_or_sweet = dry_or_sweet
         self.grape_mix = grape_mix
 
@@ -48,8 +48,8 @@ class WhiteWhine(WhineBottle):
         return list
 
 class RoseWhine(WhineBottle):
-    def __init__(self, ID, name, main_grape, year, dry_or_sweet, grape_mix):
-        super().__init__(ID, name, main_grape, year)
+    def __init__(self, UID, name, main_grape, year, dry_or_sweet, grape_mix):
+        super().__init__(UID, name, main_grape, year)
         self.dry_or_sweet = dry_or_sweet
         self.grape_mix = grape_mix
 
