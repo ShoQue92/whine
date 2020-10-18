@@ -26,7 +26,7 @@ def add_whine(UID, name, main_grape, year, grape_mix, date_in_fridge):
 def fetch_all_results():
     conn = sqlite3.connect('whine_inventory.db')
     c = conn.cursor()
-    c.execute('''SELECT ID, name, main_grape, year, grape_mix, date_in_fridge FROM whine_bottles ORDER BY date_in_fridge DESC''')
+    c.execute('''SELECT UID, name, main_grape, year, grape_mix, date_in_fridge FROM whine_bottles ORDER BY date_in_fridge DESC''')
     data = c.fetchall()
     return data
 	
@@ -56,12 +56,12 @@ def fetch_bottle(UID):
     else:
         print("Bottle not found!")
 
-def delete_selected(ID):
+def delete_selected(UID):
     conn = sqlite3.connect('whine_inventory.db')
     c = conn.cursor()
-    c.execute('''DELETE FROM whine_bottles WHERE ID = 2 ''')
+    c.execute("DELETE FROM whine_bottles WHERE UID='"+UID+"'")
     conn.commit()
-    return print('Succes deleted bottle!') 
+    return print('Succes deleted bottle with UID' + UID) 
 
 def clear_results():
     conn = sqlite3.connect('whine_inventory.db')
