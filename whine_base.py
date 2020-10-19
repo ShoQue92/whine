@@ -1,8 +1,5 @@
 #Imports from whine_classes
 from whine_classes import WhineBottle
-from whine_classes import RedWhine
-from whine_classes import WhiteWhine
-from whine_classes import RoseWhine
 
 #Imports from whine_db_SDK
 from whine_DB_SDK import create_table
@@ -25,13 +22,13 @@ import datetime
 recreate_table() #-- voor aanmaken nieuwe tabel (bij lege db)
 
 #fles = RedWhine(		'vb1', 'Eerste test rode wijn', 	'Shiraz'		,2018, 	['Shiraz', 'Merlot'])
-fles = RedWhine(		'vb2', 'Nog een test rode wijn', 	'Shiraz'		,2018, 	['Shiraz', 'Merlot'])
-add_whine(fles.UID, fles.name, fles.main_grape, fles.year, fles.list_grape_mix(), datetime.date.today())
+fles = WhineBottle(		'vb2', 'Nog een test rode wijn', 	'Shiraz'		,2018, {'test_key': 'test_val'})
+add_whine(fles.UID, fles.name, fles.main_grape, fles.year, fles.properties, datetime.date.today())
 
 # fles scannen
-fetch_bottle("vb1")
-
-delete_selected("vb1")
-
 fetch_bottle("vb2")
 
+#delete_selected("vb2")
+#fetch_bottle("vb2")
+
+print(fles.list_properties())
