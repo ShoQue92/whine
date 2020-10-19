@@ -24,13 +24,14 @@ import datetime
 
 recreate_table() #-- voor aanmaken nieuwe tabel (bij lege db)
 
-fles = RedWhine(		'vb1', 'Eerste test rode wijn', 	'Shiraz'		,2018, 	['Shiraz', 'Merlot'])
-#fles = RedWhine(		'vb2', 'Nog een test rode wijn', 	'Shiraz'		,2018, 	['Shiraz', 'Merlot'])
+#fles = RedWhine(		'vb1', 'Eerste test rode wijn', 	'Shiraz'		,2018, 	['Shiraz', 'Merlot'])
+fles = RedWhine(		'vb2', 'Nog een test rode wijn', 	'Shiraz'		,2018, 	['Shiraz', 'Merlot'])
 add_whine(fles.UID, fles.name, fles.main_grape, fles.year, fles.list_grape_mix(), datetime.date.today())
 
 # fles scannen
-#fetch_bottle("vb1")
+fetch_bottle("vb1")
 
 delete_selected("vb1")
 
-fetch_bottle("vb1")
+fetch_bottle("vb2")
+
