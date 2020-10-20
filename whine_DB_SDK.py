@@ -12,6 +12,7 @@ def recreate_table():
     conn = sqlite3.connect('whine_inventory.db')
     c = conn.cursor()
     c.execute('DROP TABLE IF EXISTS whine_bottles')
+    c.execute('DROP TABLE IF EXISTS bottle_properties')
     create_table()
 
 def add_whine(UID, name, main_grape, year, properties, date_in_fridge):
