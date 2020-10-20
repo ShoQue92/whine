@@ -11,17 +11,31 @@ from whine_DB_SDK import fetch_bottle_properties
 from whine_DB_SDK import delete_selected
 from whine_DB_SDK import clear_results
 
+#Other imports
 import datetime
+import os
+import shutil
+import csv
+import sys
 
-#fles_1 = WhineBottle(	'vb1', 'generieke wijn', 	'merlot'		,2014)
+#global variables
+tgt_dir = r"G:\\Onedrive\\GIT\\Whine\\workdir"
+tgt_file = "nieuwefile.csv"
+os.chdir(tgt_dir)
 
 recreate_table() #-- voor aanmaken nieuwe tabel (bij lege db)
 
-#fles = RedWhine(	'vb1', 'Eerste test rode wijn', 'Shiraz',2018, 	['Shiraz', 'Merlot'])
-fles = WhineBottle(	'vb2', 'Nog een tesyt rode wijn', 'Shiraz',2018, {'test_key': 'test_val', 'test_key2' : 'test_val2'})
+#Twee test flessen toevoegen.
+fles = WhineBottle('vb1', '', '', '', '')
+fles2 = WhineBottle('vb2', '', '', '', '')
 add_whine(fles.UID, fles.name, fles.main_grape, fles.year, fles.properties, datetime.datetime.now())
-add_whine_property('vb2','nasmaak','vies')
-add_whine_property('vb2','smaak','goed')
+add_whine(fles2.UID, fles2.name, fles2.main_grape, fles2.year, fles2.properties, datetime.datetime.now())
+
+#Properties voor een fles toevoegen
+#add_whine_property('vb1','nasmaak','vies')
+#add_whine_property('vb1','smaak','goed')
+#add_whine_property('vb2','nasmaak','vies')
+#add_whine_property('vb2','smaak','goed')
 
 # fles scannen
 #fetch_bottle("vb2")
@@ -32,6 +46,12 @@ add_whine_property('vb2','smaak','goed')
 
 
 #print(fles.properties)
-uitvoer = fetch_bottle_properties('vb2')
+uitvoer = fetch_bottle('vb2')
 
-print(uitvoer)
+#fetch the header for the csv file based on the keys of the dict
+csv_header = uitvoer.keys()
+
+with open(tgt_file, 'w+', newline='') as csv_file:  
+    writer = csv.writer(csv_file)
+    writer.writerow(csv_header)
+    writer.writerow(uitvoer.values())

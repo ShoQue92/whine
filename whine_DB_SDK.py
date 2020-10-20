@@ -54,17 +54,19 @@ def add_whine_property(UID, property, value):
 
 def fetch_bottle(UID):
     print("Fetching bottle with UID="+UID)
-    c.execute("SELECT name, main_grape, year, date_in_fridge FROM whine_bottles WHERE UID='"+UID+"'")
+    c.execute("SELECT UID, name, main_grape, year, date_in_fridge FROM whine_bottles WHERE UID='"+UID+"'")
     data = c.fetchone()
     if data:
         bottle = {
-            "name": data[0],
-            "main_grape": data[1],
-            "year": data[2],
-            "date_in_fridge": data[3]
+            'UID': data[0],
+            "name": data[1],
+            "main_grape": data[2],
+            "year": data[3],
+            "date_in_fridge": data[4]
         }
         print("Bottle with UID '" + UID + "' found!")
         print("----------------------")
+        print("UID: "+bottle["UID"])
         print("Name: "+bottle["name"])
         print("Main Grape: "+bottle["main_grape"])
         print("Year: "+bottle["year"])
@@ -81,7 +83,6 @@ def fetch_bottle_properties(UID):
     data = c.fetchall()
     if data:
         print("Bottle properties for bottle UID '" + UID + "' found!")
-        print(headers)
         print("----------------------")
         datadict = []
         propertynum=1
