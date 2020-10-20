@@ -15,11 +15,13 @@ import datetime
 
 #fles_1 = WhineBottle(	'vb1', 'generieke wijn', 	'merlot'		,2014)
 
-#recreate_table() #-- voor aanmaken nieuwe tabel (bij lege db)
+recreate_table() #-- voor aanmaken nieuwe tabel (bij lege db)
 
 #fles = RedWhine(	'vb1', 'Eerste test rode wijn', 'Shiraz',2018, 	['Shiraz', 'Merlot'])
-#fles = WhineBottle(	'vb2', 'Nog een test rode wijn', 'Shiraz',2018, {'test_key': 'test_val', 'test_key2' : 'test_val2'})
-#add_whine(fles.UID, fles.name, fles.main_grape, fles.year, fles.properties, datetime.date.today())
+fles = WhineBottle(	'vb2', 'Nog een tesyt rode wijn', 'Shiraz',2018, {'test_key': 'test_val', 'test_key2' : 'test_val2'})
+add_whine(fles.UID, fles.name, fles.main_grape, fles.year, fles.properties, datetime.datetime.now())
+add_whine_property('vb2','nasmaak','vies')
+add_whine_property('vb2','smaak','goed')
 
 # fles scannen
 #fetch_bottle("vb2")
@@ -27,7 +29,7 @@ import datetime
 #delete_selected("vb2")
 #fetch_bottle("vb2")
 
-#add_whine_property('vb2','nasmaak','vies')
+
 
 #print(fles.properties)
 uitvoer = fetch_bottle_properties('vb2')
