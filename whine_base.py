@@ -24,10 +24,14 @@ tgt_file = "nieuwefile.csv"
 os.chdir(tgt_dir)
 
 def create_tgt_file(tgt_file,data):
-    with open(tgt_file, 'w+', newline='') as csv_file:  
-        writer = csv.writer(csv_file)
-        writer.writerow(csv_header)
-        writer.writerow(data.values())
+    try:
+        with open(tgt_file, 'w+', newline='') as csv_file:  
+            writer = csv.writer(csv_file)
+            writer.writerow(csv_header)
+            writer.writerow(data.values())
+        return print(tgt_file+ " succesvol aangemaakt op "+tgt_dir)
+    except IOError:
+        print("Kon bestand " +tgt_file+ "niet aanmaken...")
 
 recreate_table() #-- voor aanmaken nieuwe tabel (bij lege db)
 
