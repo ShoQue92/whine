@@ -66,6 +66,29 @@ def fetch_bottle(UID):
     else:
         print("Bottle not found!")
 
+def fetch_bottle_properties(UID):
+    print("Fetching bottle with UID="+UID)
+    conn = sqlite3.connect('whine_inventory.db')
+    c = conn.cursor()
+    c.execute("SELECT UID, property, value FROM bottle_properties WHERE UID='"+UID+"'")
+    data = c.fetchone()
+    if data:
+        bottle = {
+            "UID": data[0],
+            "property": data[1],
+            "value": data[2],
+        }
+        print("Bottle properties for bottle UID '" + UID + "' found!")
+        print("----------------------")
+        print("UID: "+bottle["UID"])
+        print("Property: "+bottle["property"])
+        print("Value: "+bottle["value"])
+        print("----------------------")
+        return bottle
+    else:
+        print("Bottle properties not found!")
+
+
 def delete_selected(UID):
     conn = sqlite3.connect('whine_inventory.db')
     c = conn.cursor()
