@@ -13,22 +13,19 @@ from whine_DB_SDK import clear_results
 import datetime
 
 #fles_1 = WhineBottle(	'vb1', 'generieke wijn', 	'merlot'		,2014)
-#fles_2 = RedWhine(		'vb2', 'Test rode wijn', 	'Shiraz'		,2015, 	['Shiraz', 'Merlot'])
-#fles_3 = WhiteWhine(	'vb3', 'Witte wijn',		'Chardonnay'	,2016,	'D'						,['Chardonnay', 'Sauvignon Blanc'])
-#fles_4 = RoseWhine(		'vb4', 'Rose wijn', 		'Semillion'		,2017, 	'S'						,['Semillion','Chardonnay'])
 
-#recreate_table() #-- voor testen aanmaken nieuwe db
+recreate_table() #-- voor testen aanmaken nieuwe db
 
 recreate_table() #-- voor aanmaken nieuwe tabel (bij lege db)
 
-#fles = RedWhine(		'vb1', 'Eerste test rode wijn', 	'Shiraz'		,2018, 	['Shiraz', 'Merlot'])
-fles = WhineBottle(		'vb2', 'Nog een test rode wijn', 	'Shiraz'		,2018, {'test_key': 'test_val'})
+#fles = RedWhine(	'vb1', 'Eerste test rode wijn', 'Shiraz',2018, 	['Shiraz', 'Merlot'])
+fles = WhineBottle(	'vb2', 'Nog een test rode wijn', 'Shiraz',2018, {'test_key': 'test_val', 'test_key2' : 'test_val2'})
 add_whine(fles.UID, fles.name, fles.main_grape, fles.year, fles.properties, datetime.date.today())
 
 # fles scannen
-fetch_bottle("vb2")
+#fetch_bottle("vb2")
 
 #delete_selected("vb2")
 #fetch_bottle("vb2")
 
-print(fles.list_properties())
+#print(fles.properties)

@@ -18,13 +18,21 @@ def add_whine(UID, name, main_grape, year, properties, date_in_fridge):
     conn = sqlite3.connect('whine_inventory.db')
     c = conn.cursor()
     c.execute('INSERT INTO whine_bottles (UID, name, main_grape, year, date_in_fridge) VALUES (?, ?, ?, ?, ?)', (UID, name, main_grape, year, date_in_fridge))
-    #c.execute('INSERT INTO bottle_properties (UID, name, property, value) VALUES (?, ?, ?, ?)', (UID, name, property, properties[0]))
-    for key, val in properties.items():
-       c.execute('INSERT INTO bottle_properties (UID, property, value) VALUES (?, ?, ?)', (UID, properties[key], properties[val]))
-       conn.commit()
     conn.commit()
-    message = print('Succesfully inserted!')
+    #Add bottle properties
+    add_whine_properties(UID, properties)
+    message = print('Succesfully inserted new bottle!')
     return message
+
+def add_whine_properties(UID, properties):
+    conn = sqlite3.connect('whine_inventory.db')
+    c = conn.cursor()
+    if properties:
+        for key, val in properties.items(): #<--- dit krijg ik nog niet werkend. Ik wil de value van de dict wil ik gabruiken in de query. Als ik properties[val] doe krijg ik een key error.
+            c.execute('INSERT INTO bottle_properties (UID, property, value) VALUES (?, ?, ?)', (UID, properties[key], properties[key]))
+            conn.commit()
+            message = print("Succesfully inserted bottle "+UID+"\'s properties")
+            return message
 
 def fetch_all_results():
     conn = sqlite3.connect('whine_inventory.db')
