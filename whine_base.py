@@ -23,6 +23,12 @@ tgt_dir = r"G:\\Onedrive\\GIT\\Whine\\workdir"
 tgt_file = "nieuwefile.csv"
 os.chdir(tgt_dir)
 
+def create_tgt_file(tgt_file,data):
+    with open(tgt_file, 'w+', newline='') as csv_file:  
+        writer = csv.writer(csv_file)
+        writer.writerow(csv_header)
+        writer.writerow(data.values())
+
 recreate_table() #-- voor aanmaken nieuwe tabel (bij lege db)
 
 #Twee test flessen toevoegen.
@@ -51,7 +57,4 @@ uitvoer = fetch_bottle('vb2')
 #fetch the header for the csv file based on the keys of the dict
 csv_header = uitvoer.keys()
 
-with open(tgt_file, 'w+', newline='') as csv_file:  
-    writer = csv.writer(csv_file)
-    writer.writerow(csv_header)
-    writer.writerow(uitvoer.values())
+create_tgt_file(tgt_file,uitvoer)
