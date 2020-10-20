@@ -25,7 +25,10 @@ os.chdir(tgt_dir)
 
 def create_tgt_file(tgt_file,data):
     try:
-        with open(tgt_file, 'w+', newline='') as csv_file:  
+        with open(tgt_file, 'w+', newline='') as csv_file:
+
+            #fetch the header for the csv file based on the keys of the dict
+            csv_header = data.keys()  
             writer = csv.writer(csv_file)
             writer.writerow(csv_header)
             writer.writerow(data.values())
@@ -58,7 +61,6 @@ add_whine(fles2.UID, fles2.name, fles2.main_grape, fles2.year, fles2.properties,
 #print(fles.properties)
 uitvoer = fetch_bottle('vb2')
 
-#fetch the header for the csv file based on the keys of the dict
-csv_header = uitvoer.keys()
 
+#aanmaken csv bestand
 create_tgt_file(tgt_file,uitvoer)
