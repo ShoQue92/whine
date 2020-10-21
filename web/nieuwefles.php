@@ -1,16 +1,10 @@
 <html>
 <head>
-<title>Wijnkoeler</title>
-<meta name="viewport" content="width=device-width, initial-scale=1"> 
-<link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
-<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
-<script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
-<link rel="stylesheet" href="style.css">
-<script type="text/javascript" src="code.js"></script>
+<?php require 'headers.php'; ?>
 </head>
 <body>
 
-<div data-role="page">
+<?php paginaheader("Wijnkoeler"); ?>
 
 <a href="index.php" class="ui-btn ui-shadow" data-transition="pop">Terug</a>
 
@@ -37,7 +31,7 @@ else {
 	echo "bestand " . $nieuweflescsvpad . " bestaat niet.";
 }
 ?>
-<h3 class="ui-bar ui-bar-a ui-corner-all">Toevoegen nieuwe wijnfles</h3>
+<h3 class="ui-bar ui-bar-a ui-corner-all" style="text-align:center">Toevoegen nieuwe wijnfles</h3>
 
 <div data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" data-icon="null" data-iconpos="null" data-theme="b" class="ui-btn ui-btn-up-b ui-shadow ui-btn-corner-all ui-submit" aria-disabled="false">
 <form name="wijnflestoevoegen" action="actie.php" method="post" autocomplete="off">
@@ -65,11 +59,13 @@ else {
 			?>
 		</div>	
 	</span>
-	<button type="submit" data-theme="b" name="submit" value="submit" class="ui-btn-hidden" aria-disabled="false">Submit</button>
+	<button type="submit" data-theme="b" name="submit" value="submit" class="ui-btn-hidden" aria-disabled="false">Opslaan</button>
 </form>	
 </div>
 
-</div><!-- /page -->
+<?php require 'paginaeind.php'; ?>
+
+<?php require 'menu.php'; ?>
 
 </body>
-<html>
+</html>
