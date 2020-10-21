@@ -11,6 +11,7 @@ from whine_DB_SDK import fetch_bottle_properties
 from whine_DB_SDK import delete_selected
 from whine_DB_SDK import clear_results
 from whine_DB_SDK import update_whine
+from whine_DB_SDK import export_bottles_csv
 
 #Other imports
 import datetime
@@ -43,8 +44,8 @@ def create_init_file(tgt_file,bottle):
     else:
         return print('Fles bestaat niet!')
 
-def process_return_file(file):
-    with open('filled_file.csv', 'r') as csv_file:
+def process_return_file(tgt_file):
+    with open(tgt_file, 'r') as csv_file:
         csv_reader = csv.reader(csv_file, delimiter=';')
         next(csv_reader)
         for line in csv_reader:
@@ -67,9 +68,9 @@ def process_return_file(file):
 #add_whine_property('vb1','smaak','goed')
 #add_whine_property('vb2','nasmaak','vies')
 #add_whine_property('vb2','smaak','goed')
-#fetch_bottle_properties('vb2')
+#fetch_bottle_properties('vb1')
 # fles scannen
-#fetch_bottle("vb2")
+#fetch_bottle("vb1")
 
 #delete_selected("vb2")
 #fetch_bottle("vb2")
@@ -78,3 +79,7 @@ def process_return_file(file):
 
 #aanmaken csv bestand
 #create_init_file(tgt_file,'vb1')
+#process_return_file(tgt_file)
+
+export_bottles_csv('export.csv',tgt_dir)
+

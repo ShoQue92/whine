@@ -1,4 +1,6 @@
 import sqlite3
+import csv
+import os
 from whine_classes import WhineBottle
 
 # gebruiken we overal dus global
@@ -62,6 +64,23 @@ def update_whine(UID, name, main_grape, year):
 ################# Einde anvullen  ###################
 
 ################# Ophalen database ###################
+
+def export_bottles_csv(tgt_file,tgt_dir):
+    print("Fetching all botles in database")
+    c.execute("SELECT UID, name, main_grape, year, date_in_fridge FROM whine_bottles")
+    data = c.fetchall()
+    try:
+        with open(tgt_file, 'w+', newline='') as csv_file:
+            #fetch the header for the csv file based on the keys of the dict
+            writer = csv.writer(csv_file, delimiter=';')
+            writer.writerow(data)
+            # #Remove last line, since it is blank
+            # csv_file.seek(0, os.SEEK_END)
+            # csv_file.seek(csv_file.tell()-2, os.SEEK_SET)
+            # csv_file.truncate()
+            return print(tgt_file+ " succesvol aangemaakt op "+tgt_dir)
+    except IOError:
+            print("Kon bestand " +tgt_file+ "niet aanmaken...")
 
 def fetch_bottle(UID):
     print("Fetching bottle with UID="+UID)
