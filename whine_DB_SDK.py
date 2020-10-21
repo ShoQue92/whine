@@ -50,12 +50,23 @@ def add_whine_property(UID, property, value):
 
 ################# Einde toevoegen  ###################
 
+################# Aanvullen  ###################
+
+def update_whine(UID, name, main_grape, year):
+    #c.execute("UPDATE whine_bottles SET name = 'test' WHERE UID = 'vb1'")
+    c.execute("UPDATE whine_bottles SET name = '"+name+"',main_grape = '"+main_grape+"',year = '"+year+"' WHERE UID='"+UID+"'")
+    conn.commit()
+    message = print('Succesfully updated bottle '+UID)
+    return message
+
+################# Einde anvullen  ###################
+
 ################# Ophalen database ###################
 
 def fetch_bottle(UID):
     print("Fetching bottle with UID="+UID)
     c.execute("SELECT UID, name, main_grape, year, date_in_fridge FROM whine_bottles WHERE UID='"+UID+"'")
-    data = c.fetchone()
+    data = c.fetchone() 
     if data:
         bottle = {
             'UID': data[0],

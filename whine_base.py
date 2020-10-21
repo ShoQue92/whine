@@ -10,57 +10,71 @@ from whine_DB_SDK import fetch_bottle
 from whine_DB_SDK import fetch_bottle_properties
 from whine_DB_SDK import delete_selected
 from whine_DB_SDK import clear_results
+from whine_DB_SDK import update_whine
 
 #Other imports
 import datetime
-import os
-import shutil
 import csv
-import sys
+import os
 
 #global variables
 tgt_dir = r"G:\\Onedrive\\GIT\\Whine\\workdir"
 tgt_file = "nieuwefile.csv"
 os.chdir(tgt_dir)
 
-def create_tgt_file(tgt_file,data):
-    try:
-        with open(tgt_file, 'w+', newline='') as csv_file:
+def create_init_file(tgt_file,bottle):
+    data=fetch_bottle(bottle)
+    data['status'] = 'init'
+    if data:
+        try:
+            with open(tgt_file, 'w+', newline='') as csv_file:
+                #fetch the header for the csv file based on the keys of the dict
+                csv_header = data.keys()  
+                writer = csv.writer(csv_file, delimiter=';')
+                writer.writerow(csv_header)
+                writer.writerow(data.values())
+                #Remove last line, since it is blank
+                csv_file.seek(0, os.SEEK_END)
+                csv_file.seek(csv_file.tell()-2, os.SEEK_SET)
+                csv_file.truncate()
+            return print(tgt_file+ " succesvol aangemaakt op "+tgt_dir)
+        except IOError:
+            print("Kon bestand " +tgt_file+ "niet aanmaken...")
+    else:
+        return print('Fles bestaat niet!')
 
-            #fetch the header for the csv file based on the keys of the dict
-            csv_header = data.keys()  
-            writer = csv.writer(csv_file)
-            writer.writerow(csv_header)
-            writer.writerow(data.values())
-        return print(tgt_file+ " succesvol aangemaakt op "+tgt_dir)
-    except IOError:
-        print("Kon bestand " +tgt_file+ "niet aanmaken...")
+def process_return_file(file):
+    with open('filled_file.csv', 'r') as csv_file:
+        csv_reader = csv.reader(csv_file, delimiter=';')
+        next(csv_reader)
+        for line in csv_reader:
+            UID = line[0]
+            name = line[1]
+            main_grape = line[2]
+            year = line[3]
+            update_whine(UID, name, main_grape, year)
 
-recreate_table() #-- voor aanmaken nieuwe tabel (bij lege db)
+#recreate_table() #-- voor aanmaken nieuwe tabel (bij lege db)
 
 #Twee test flessen toevoegen.
-fles = WhineBottle('vb1', '', '', '', '')
-fles2 = WhineBottle('vb2', '', '', '', '')
-add_whine(fles.UID, fles.name, fles.main_grape, fles.year, fles.properties, datetime.datetime.now())
-add_whine(fles2.UID, fles2.name, fles2.main_grape, fles2.year, fles2.properties, datetime.datetime.now())
+#fles = WhineBottle('vb1', '', '', '', '')
+#fles2 = WhineBottle('vb2', '', '', '', '')
+#add_whine(fles.UID, fles.name, fles.main_grape, fles.year, fles.properties, datetime.datetime.now())
+#add_whine(fles2.UID, fles2.name, fles2.main_grape, fles2.year, fles2.properties, datetime.datetime.now())
 
 #Properties voor een fles toevoegen
 #add_whine_property('vb1','nasmaak','vies')
 #add_whine_property('vb1','smaak','goed')
 #add_whine_property('vb2','nasmaak','vies')
 #add_whine_property('vb2','smaak','goed')
-
+#fetch_bottle_properties('vb2')
 # fles scannen
 #fetch_bottle("vb2")
 
 #delete_selected("vb2")
 #fetch_bottle("vb2")
 
-
-
 #print(fles.properties)
-uitvoer = fetch_bottle('vb2')
-
 
 #aanmaken csv bestand
-create_tgt_file(tgt_file,uitvoer)
+#create_init_file(tgt_file,'vb1')
