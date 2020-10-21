@@ -11,7 +11,7 @@ from whine_DB_SDK import fetch_bottle_properties
 from whine_DB_SDK import delete_selected
 from whine_DB_SDK import clear_results
 from whine_DB_SDK import update_whine
-from whine_DB_SDK import export_bottles_csv
+from whine_DB_SDK import export_bottle_properties_csv
 
 #Other imports
 import datetime
@@ -81,5 +81,5 @@ def process_return_file(tgt_file):
 #create_init_file(tgt_file,'vb1')
 #process_return_file(tgt_file)
 
-export_bottles_csv('export.csv',tgt_dir)
+export_bottle_properties_csv('export.csv',tgt_dir)
 
