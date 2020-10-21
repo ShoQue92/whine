@@ -51,7 +51,7 @@ else {
 					}
 					?>
 					<label for="<?php echo $header; ?>"><?php echo str_replace("_"," ",ucfirst($header)); ?></label>
-					<input <?php if(in_array($header,$disabledvelden)){echo "disabled=\"disabled\""; } ?> type="text" name="<?php echo $header; ?>" value="<?php echo $bestandinhoud[1][$kolomnr]; ?>" />
+					<input required <?php if(in_array($header,$disabledvelden)){echo "disabled=\"disabled\""; } ?> type="text" name="<?php echo $header; ?>" value="<?php echo $bestandinhoud[1][$kolomnr]; ?>" />
 					<?php
 					}
 			$kolomnr++;

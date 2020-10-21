@@ -23,7 +23,7 @@ if( file_exists($nieuweflescsvpad)){
 
 if($filevalid){
 ?>
-<h3 class="ui-bar ui-bar-a ui-corner-all" style="text-align:center;color:red">Nieuwe wijnfles gescand, klik hieronder om toe te voegen.</h3>
+<h3 class="ui-bar ui-bar-a ui-corner-all" style="text-align:center;color:red">Nieuwe wijnfles gescand!</h3>
 <a href="nieuwefles.php" class="ui-btn ui-shadow" data-transition="pop">Toevoegen Nieuwe Fles</a>
 <?php
 }
@@ -33,7 +33,9 @@ else{
 <?php
 }
 ?>
-
+<div style="width:100%">
+<img src="images/koelkast.png" style="width:100%" />
+</div>
 <?php require 'paginaeind.php'; ?>
 
 <?php require 'menu.php'; ?>
