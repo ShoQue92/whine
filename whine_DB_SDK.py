@@ -114,11 +114,11 @@ def fetch_bottle_properties(UID):
     if data:
         print("Bottle properties for bottle UID '" + UID + "' found!")
         print("----------------------")
-        datadict = []
+        datalist = []
         propertynum=1
         for row in data:
             rowdict = dict(zip(headers,row))
-            datadict.append(rowdict)
+            datalist.append(rowdict)
             if propertynum > 1:
                 print("----------------------")
             print("Property regel "+str(propertynum))
@@ -127,7 +127,7 @@ def fetch_bottle_properties(UID):
             print("Value: "+rowdict['value'])
             propertynum += 1
         print("----------------------")
-        return datadict
+        return datalist
     else:
         print("Bottle properties not found!")
 

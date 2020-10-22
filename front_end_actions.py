@@ -8,7 +8,7 @@ file = argv[2]
 tgt_dir = argv[3]
 
 if actie == 'process_bottle':
-   process_return_file(file)
+   process_return_file(file, tgt_dir)
 elif actie == 'export_bottle_properties':
    export_bottle_properties_csv(file,tgt_dir)
 else:

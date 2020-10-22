@@ -21,10 +21,10 @@ import os
 #global variables
 tgt_dir = r"G:\\Onedrive\\GIT\\Whine\\workdir"
 tgt_file = "nieuwefile.csv"
-os.chdir(tgt_dir)
 
-def create_init_file(tgt_file,bottle):
+def create_init_file(tgt_file,tgt_dir,bottle):
     data=fetch_bottle(bottle)
+    os.chdir(tgt_dir)
     data['status'] = 'init'
     if data:
         try:
@@ -44,7 +44,8 @@ def create_init_file(tgt_file,bottle):
     else:
         return print('Fles bestaat niet!')
 
-def process_return_file(tgt_file):
+def process_return_file(tgt_file, tgt_dir):
+    os.chdir(tgt_dir)
     with open(tgt_file, 'r') as csv_file:
         csv_reader = csv.reader(csv_file, delimiter=';')
         next(csv_reader)
@@ -78,7 +79,7 @@ def process_return_file(tgt_file):
 #print(fles.properties)
 
 #aanmaken csv bestand
-#create_init_file(tgt_file,'vb1')
+#create_init_file(tgt_file,tgt_dir,'vb1')
 #process_return_file(tgt_file)
 
-export_bottle_properties_csv('bottle_properties.csv', tgt_dir)
+#export_bottle_properties_csv('bottle_properties.csv', tgt_dir)
