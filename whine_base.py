@@ -81,5 +81,4 @@ def process_return_file(tgt_file):
 #create_init_file(tgt_file,'vb1')
 #process_return_file(tgt_file)
 
-export_bottle_properties_csv('export.csv',tgt_dir)
-
+export_bottle_properties_csv('bottle_properties.csv', tgt_dir)

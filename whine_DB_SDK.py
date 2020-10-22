@@ -71,9 +71,9 @@ def export_bottle_properties_csv(tgt_file,tgt_dir):
     data = c.fetchall()
     try:
         with open(tgt_file, 'w+', newline='') as csv_file:
-            #fetch the header for the csv file based on the keys of the dict
             writer = csv.writer(csv_file, delimiter=';')
-            writer.writerow(data)
+            for i in range(0, len(data)):
+                writer.writerow(data[i])
             #Remove last line, since it is blank
             csv_file.seek(0, os.SEEK_END)
             csv_file.seek(csv_file.tell()-2, os.SEEK_SET)
@@ -85,7 +85,7 @@ def export_bottle_properties_csv(tgt_file,tgt_dir):
 def fetch_bottle(UID):
     print("Fetching bottle with UID="+UID)
     c.execute("SELECT UID, name, main_grape, year, date_in_fridge FROM whine_bottles WHERE UID='"+UID+"'")
-    data = c.fetchone() 
+    data = c.fetchone()
     if data:
         bottle = {
             'UID': data[0],
