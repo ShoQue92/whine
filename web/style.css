@@ -2,3 +2,7 @@ body {
 	background-color: #333333
 }
 
+#koelkast{
+	border: none;
+	border-collapse: collapse;
+}

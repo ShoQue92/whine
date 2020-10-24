@@ -39,32 +39,26 @@ while ($row = $resultaat->fetchArray()) {
 			?>
 				<div style="text-align:center"><h2><?php echo $row['name']; ?></h2></div>
 				<div style="width:50%;margin:0 auto;text-align:center" class="wijnfoto"><img src="images/wijn_vb.png" style="max-height:100px;"></div>
-				<table data-role="table" class="ui-shadow table-stripe ui-responsive">
-					<thead>
-						<tr class="ui-bar-d">
-							<th>Eigenschap</th>
-							<th>Waarde</th>
-						</tr>
-					</thead>
-						<tbody>
-			<?php
+				<table id="koelkast" style="width:100%">
+								<?php
 		}
 		if($table['name'] != 'UID' and $table['name'] != 'name'){
 			?>
 							<tr>
-								<td><?php echo array_search($table['name'], $vertaling); ?></td>
-								<td><?php echo $row[$table['name']]; ?></td>
+								<td style="width:50%"><?php echo array_search($table['name'], $vertaling); ?></td>
+								<td style="text-align:right;width:50%"><?php echo $row[$table['name']]; ?></td>
 							</tr>
 			<?php
 			
 		}
 	}
-	?>
-						</tbody>
+	?>		
 				</table>
 	<div data-role="collapsible" data-content-theme="c">
 		<h3>Extra eigenschappen</h3>
-		<p>aanvullen..</p>
+		<a href="#popupLogin" data-rel="popup" class="ui-btn ui-shadow" data-transition="pop">Nieuwe toevoegen..</a>
+		
+		
 	</div>
 </div>
 
@@ -73,6 +67,19 @@ while ($row = $resultaat->fetchArray()) {
 </div>
 <div style="width:70%;float:right;height:70px;text-align:right">
 	<img src="images/wijn_wit_vb_zijkant.png" style="max-height:50px" />
+</div>
+
+<div data-role="popup" id="popupLogin" data-theme="a" class="ui-corner-all">
+    <form>
+        <div style="padding:10px 20px;">
+            <h3>Eigenschap toevoegen</h3>
+            <label for="eigenschap" class="ui-hidden-accessible">Eigenschap</label>
+            <input type="text" name="eigenschap" id="un" value="" placeholder="eigenschap" data-theme="a">
+            <label for="waarde" class="ui-hidden-accessible">Waarde</label>
+            <input type="text" name="waarde" id="pw" value="" placeholder="waarde" data-theme="a">
+            <button type="submit" class="ui-btn ui-corner-all ui-shadow ui-btn-b ui-btn-icon-left ui-icon-check">Opslaan</button>
+        </div>
+    </form>
 </div>
 
 
