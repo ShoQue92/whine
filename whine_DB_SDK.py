@@ -10,6 +10,7 @@ c = conn.cursor()
 ################# Database gedeelte ###################
 
 def create_table(drop):
+    print("Tabellen \'whine_bottles\', \'bottle_properties\', \'base_properties\' en \'grapes\' worden aangemaakt...")
     if drop == True:
         c.execute('DROP TABLE IF EXISTS whine_bottles')
         c.execute('DROP TABLE IF EXISTS bottle_properties')
@@ -20,7 +21,7 @@ def create_table(drop):
     c.execute('CREATE TABLE IF NOT EXISTS base_properties (id integer PRIMARY KEY AUTOINCREMENT, property TEXT)')
     c.execute('CREATE TABLE IF NOT EXISTS grapes (id integer PRIMARY KEY AUTOINCREMENT, grape TEXT)')
     insert_base_records()
-
+    print("Tabellen zijn opnieuw aangemaakt...")
 def recreate_table():
     create_table(True)
 
@@ -28,14 +29,17 @@ def insert_base_records():
     properties = ['Origin', 'Sweetness', 'Acidity', 'Tannin', 'Fruit', 'Body']
     for property in properties: 
         c.execute('INSERT INTO base_properties (property) VALUES (?)', (property,))
-
+    print("Verwerken basis wijneigenschappen...")
     grapes = ['Albarino', 'Barbera', 'Barolo' ,'Brunello di Montalcino' ,'Cabernet Franc' ,'Cabernet Sauvignon' ,'Chardonnay' ,'Chenin Blanc' ,'Cinsault' \
              ,'Corvina', 'Gewurztraminer' ,'Godello', 'Grenache' ,'Grüner Veltliner' , 'Malbec' ,'Mencia' ,'Merlot' ,'Molinara' , 'Mourvedre' ,'Muscat' \
              ,'Nero d\'Avola' ,'Nebbiolo' ,'Petit Verdot' ,'Pinot Blanc' ,'Pinot Grigio' ,'Pinot Noir' ,'Primitivo' ,'Riesling' ,'Rondinella' ,'Sancerre' \
              ,'Sangiovese' ,'Sauvignon Blanc' ,'Sémillon' ,'Syrah-Shiraz' ,'Tempranillo', 'Verdejo', 'Viognier', 'Zweigelt', 'Nerello', 'Mascalese']
+    print("Basis wijneigenschappen verwerkt...")
+    print("Verwerken basis druivenset...")
     for grape in grapes: 
         c.execute('INSERT INTO grapes (grape) VALUES (?)', (grape,))
         conn.commit()
+    print("Basis druivenset verwerkt...")
 
 ################# Einde Database gedeelte ###################
 
