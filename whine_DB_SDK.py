@@ -14,16 +14,28 @@ def create_table(drop):
         c.execute('DROP TABLE IF EXISTS whine_bottles')
         c.execute('DROP TABLE IF EXISTS bottle_properties')
         c.execute('DROP TABLE IF EXISTS base_properties')
+        c.execute('DROP TABLE IF EXISTS grapes')
     c.execute('CREATE TABLE IF NOT EXISTS whine_bottles (UID TEXT PRIMARY KEY, name TEXT, main_grape TEXT, year TEXT, date_in_fridge DATE)')
     c.execute('CREATE TABLE IF NOT EXISTS bottle_properties (property_id integer PRIMARY KEY AUTOINCREMENT, UID TEXT,  property TEXT, value TEXT)')
     c.execute('CREATE TABLE IF NOT EXISTS base_properties (id integer PRIMARY KEY AUTOINCREMENT, property TEXT)')
-    properties = ['Sweetness', 'Acidity', 'Tannin', 'Fruit', 'Body']
-    for property in properties: 
-        c.execute('INSERT INTO base_properties (property) VALUES (?)', (property,))
-        conn.commit()
+    c.execute('CREATE TABLE IF NOT EXISTS grapes (id integer PRIMARY KEY AUTOINCREMENT, grape TEXT)')
+    insert_base_records()
 
 def recreate_table():
     create_table(True)
+
+def insert_base_records():
+    properties = ['Origin', 'Sweetness', 'Acidity', 'Tannin', 'Fruit', 'Body']
+    for property in properties: 
+        c.execute('INSERT INTO base_properties (property) VALUES (?)', (property,))
+
+    grapes = ['Albarino', 'Barbera', 'Barolo' ,'Brunello di Montalcino' ,'Cabernet Franc' ,'Cabernet Sauvignon' ,'Chardonnay' ,'Chenin Blanc' ,'Cinsault' \
+             ,'Corvina', 'Gewurztraminer' ,'Godello', 'Grenache' ,'Grüner Veltliner' , 'Malbec' ,'Mencia' ,'Merlot' ,'Molinara' , 'Mourvedre' ,'Muscat' \
+             ,'Nero d\'Avola' ,'Nebbiolo' ,'Petit Verdot' ,'Pinot Blanc' ,'Pinot Grigio' ,'Pinot Noir' ,'Primitivo' ,'Riesling' ,'Rondinella' ,'Sancerre' \
+             ,'Sangiovese' ,'Sauvignon Blanc' ,'Sémillon' ,'Syrah-Shiraz' ,'Tempranillo', 'Verdejo', 'Viognier', 'Zweigelt', 'Nerello', 'Mascalese']
+    for grape in grapes: 
+        c.execute('INSERT INTO grapes (grape) VALUES (?)', (grape,))
+        conn.commit()
 
 ################# Einde Database gedeelte ###################
 
