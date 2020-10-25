@@ -14,6 +14,9 @@ class WhineBottle:
     def __str__(self):
         return '{} - {} - {}'.format(self.name, self.main_grape, self.year)
 
+    def display(self):
+        return 'Fles: {} Jaar: {} '.format(self.name, self.year)
+
     def list_properties(self):
         for key, value in self.properties:
             return print(key, value)

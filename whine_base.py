@@ -1,6 +1,5 @@
 #Imports from whine_classes
 from whine_classes import WhineBottle
-
 #Imports from whine_db_SDK
 from whine_DB_SDK import create_table
 from whine_DB_SDK import recreate_table
@@ -20,7 +19,7 @@ import os
 
 #global variables
 tgt_dir = r"G:\\Onedrive\\GIT\\Whine\\workdir"
-tgt_file = "nieuwefile.csv"
+tgt_file = "filled_file.csv"
 
 def create_init_file(tgt_file,tgt_dir,bottle):
     data=fetch_bottle(bottle)
@@ -55,11 +54,24 @@ def process_return_file(tgt_file, tgt_dir):
             main_grape = line[2]
             year = line[3]
             update_whine(UID, name, main_grape, year)
+            return print(UID, name, main_grape, year)
+
+def process_bottle_property_return_file(prop_file, tgt_dir):
+    os.chdir(tgt_dir)
+    with open(prop_file, 'r') as csv_file:
+        csv_reader = csv.reader(csv_file, delimiter=';')
+        next(csv_reader)
+        for line in csv_reader:
+            UID = line[0]
+            property = line[1]
+            value = line[2]
+            add_whine_property(UID, property, value)
+        return print("Fles eigenschappen toegevoegd!")
 
 #recreate_table() #-- voor aanmaken nieuwe tabel (bij lege db)
 
 #Twee test flessen toevoegen.
-#fles = WhineBottle('vb1', '', '', '', '')
+fles = WhineBottle('vb1', '', '', '', '')
 #fles2 = WhineBottle('vb2', '', '', '', '')
 #add_whine(fles.UID, fles.name, fles.main_grape, fles.year, fles.properties, datetime.datetime.now())
 #add_whine(fles2.UID, fles2.name, fles2.main_grape, fles2.year, fles2.properties, datetime.datetime.now())
@@ -80,6 +92,6 @@ def process_return_file(tgt_file, tgt_dir):
 
 #aanmaken csv bestand
 #create_init_file(tgt_file,tgt_dir,'vb1')
-#process_return_file(tgt_file)
+#process_return_file(tgt_file,tgt_dir)
 
 #export_bottle_properties_csv('bottle_properties.csv', tgt_dir)
