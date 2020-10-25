@@ -13,8 +13,14 @@ def create_table(drop):
     if drop == True:
         c.execute('DROP TABLE IF EXISTS whine_bottles')
         c.execute('DROP TABLE IF EXISTS bottle_properties')
+        c.execute('DROP TABLE IF EXISTS base_properties')
     c.execute('CREATE TABLE IF NOT EXISTS whine_bottles (UID TEXT PRIMARY KEY, name TEXT, main_grape TEXT, year TEXT, date_in_fridge DATE)')
     c.execute('CREATE TABLE IF NOT EXISTS bottle_properties (property_id integer PRIMARY KEY AUTOINCREMENT, UID TEXT,  property TEXT, value TEXT)')
+    c.execute('CREATE TABLE IF NOT EXISTS base_properties (id integer PRIMARY KEY AUTOINCREMENT, property TEXT)')
+    properties = ['Sweetness', 'Acidity', 'Tannin', 'Fruit', 'Body']
+    for property in properties: 
+        c.execute('INSERT INTO base_properties (property) VALUES (?)', (property,))
+        conn.commit()
 
 def recreate_table():
     create_table(True)

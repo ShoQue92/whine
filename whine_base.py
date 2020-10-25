@@ -68,10 +68,10 @@ def process_bottle_property_return_file(prop_file, tgt_dir):
             add_whine_property(UID, property, value)
         return print("Fles eigenschappen toegevoegd!")
 
-#recreate_table() #-- voor aanmaken nieuwe tabel (bij lege db)
+recreate_table() #-- voor aanmaken nieuwe tabel (bij lege db)
 
 #Twee test flessen toevoegen.
-fles = WhineBottle('vb1', '', '', '', '')
+#fles = WhineBottle('vb1', '', '', '', '')
 #fles2 = WhineBottle('vb2', '', '', '', '')
 #add_whine(fles.UID, fles.name, fles.main_grape, fles.year, fles.properties, datetime.datetime.now())
 #add_whine(fles2.UID, fles2.name, fles2.main_grape, fles2.year, fles2.properties, datetime.datetime.now())
