@@ -1,4 +1,6 @@
 import sqlite3
+import csv
+import os
 from whine_classes import WhineBottle
 
 # gebruiken we overal dus global
@@ -8,14 +10,36 @@ c = conn.cursor()
 ################# Database gedeelte ###################
 
 def create_table(drop):
+    print("Tabellen \'whine_bottles\', \'bottle_properties\', \'base_properties\' en \'grapes\' worden aangemaakt...")
     if drop == True:
         c.execute('DROP TABLE IF EXISTS whine_bottles')
         c.execute('DROP TABLE IF EXISTS bottle_properties')
+        c.execute('DROP TABLE IF EXISTS base_properties')
+        c.execute('DROP TABLE IF EXISTS grapes')
     c.execute('CREATE TABLE IF NOT EXISTS whine_bottles (UID TEXT PRIMARY KEY, name TEXT, main_grape TEXT, year TEXT, date_in_fridge DATE)')
     c.execute('CREATE TABLE IF NOT EXISTS bottle_properties (property_id integer PRIMARY KEY AUTOINCREMENT, UID TEXT,  property TEXT, value TEXT)')
-
+    c.execute('CREATE TABLE IF NOT EXISTS base_properties (id integer PRIMARY KEY AUTOINCREMENT, property TEXT)')
+    c.execute('CREATE TABLE IF NOT EXISTS grapes (id integer PRIMARY KEY AUTOINCREMENT, grape TEXT)')
+    insert_base_records()
+    print("Tabellen zijn opnieuw aangemaakt...")
 def recreate_table():
     create_table(True)
+
+def insert_base_records():
+    properties = ['Origin', 'Sweetness', 'Acidity', 'Tannin', 'Fruit', 'Body']
+    for property in properties: 
+        c.execute('INSERT INTO base_properties (property) VALUES (?)', (property,))
+    print("Verwerken basis wijneigenschappen...")
+    grapes = ['Albarino', 'Barbera', 'Barolo' ,'Brunello di Montalcino' ,'Cabernet Franc' ,'Cabernet Sauvignon' ,'Chardonnay' ,'Chenin Blanc' ,'Cinsault' \
+             ,'Corvina', 'Gewurztraminer' ,'Godello', 'Grenache' ,'Grüner Veltliner' , 'Malbec' ,'Mencia' ,'Merlot' ,'Molinara' , 'Mourvedre' ,'Muscat' \
+             ,'Nero d\'Avola' ,'Nebbiolo' ,'Petit Verdot' ,'Pinot Blanc' ,'Pinot Grigio' ,'Pinot Noir' ,'Primitivo' ,'Riesling' ,'Rondinella' ,'Sancerre' \
+             ,'Sangiovese' ,'Sauvignon Blanc' ,'Sémillon' ,'Syrah-Shiraz' ,'Tempranillo', 'Verdejo', 'Viognier', 'Zweigelt', 'Nerello', 'Mascalese']
+    print("Basis wijneigenschappen verwerkt...")
+    print("Verwerken basis druivenset...")
+    for grape in grapes: 
+        c.execute('INSERT INTO grapes (grape) VALUES (?)', (grape,))
+        conn.commit()
+    print("Basis druivenset verwerkt...")
 
 ################# Einde Database gedeelte ###################
 
@@ -45,26 +69,56 @@ def add_whine_property(UID, property, value):
         else:
             c.execute('INSERT INTO bottle_properties (UID, property, value) VALUES (?, ?, ?)', (UID, property, value))
             conn.commit()
-            message = print("Succesfully inserted bottle "+UID+"\'s property "+property)
+            message = print("Verwerking fles "+UID+"\'s eigenschap "+property+" succesfol!")
             return message
 
 ################# Einde toevoegen  ###################
 
+################# Aanvullen  ###################
+
+def update_whine(UID, name, main_grape, year):
+    #c.execute("UPDATE whine_bottles SET name = 'test' WHERE UID = 'vb1'")
+    c.execute("UPDATE whine_bottles SET name = '"+name+"',main_grape = '"+main_grape+"',year = '"+year+"' WHERE UID='"+UID+"'")
+    conn.commit()
+    message = print('Succesfully updated bottle '+UID)
+    return message
+
+################# Einde anvullen  ###################
+
 ################# Ophalen database ###################
+
+def export_bottle_properties_csv(tgt_file,tgt_dir):
+    print("Fetching all botles in database")
+    c.execute("SELECT UID, property, value FROM bottle_properties")
+    data = c.fetchall()
+    try:
+        with open(tgt_file, 'w+', newline='') as csv_file:
+            writer = csv.writer(csv_file, delimiter=';')
+            for i in range(0, len(data)):
+                writer.writerow(data[i])
+            #Remove last line, since it is blank
+            csv_file.seek(0, os.SEEK_END)
+            csv_file.seek(csv_file.tell()-2, os.SEEK_SET)
+            csv_file.truncate()
+            return print(tgt_file+ " succesvol aangemaakt op "+tgt_dir)
+    except IOError:
+            print("Kon bestand " +tgt_file+ "niet aanmaken...")
 
 def fetch_bottle(UID):
     print("Fetching bottle with UID="+UID)
-    c.execute("SELECT name, main_grape, year, date_in_fridge FROM whine_bottles WHERE UID='"+UID+"'")
+    c.execute("SELECT UID, name, main_grape, year, date_in_fridge FROM whine_bottles WHERE UID='"+UID+"'")
     data = c.fetchone()
     if data:
         bottle = {
-            "name": data[0],
-            "main_grape": data[1],
-            "year": data[2],
-            "date_in_fridge": data[3]
+            'UID': data[0],
+            "name": data[1],
+            "main_grape": data[2],
+            "year": data[3],
+            "date_in_fridge": data[4]
         }
         print("Bottle with UID '" + UID + "' found!")
         print("----------------------")
+        print("UID: "+bottle["UID"])
         print("Name: "+bottle["name"])
         print("Main Grape: "+bottle["main_grape"])
         print("Year: "+bottle["year"])
@@ -81,13 +135,12 @@ def fetch_bottle_properties(UID):
     data = c.fetchall()
     if data:
         print("Bottle properties for bottle UID '" + UID + "' found!")
-        print(headers)
         print("----------------------")
-        datadict = []
+        datalist = []
         propertynum=1
         for row in data:
             rowdict = dict(zip(headers,row))
-            datadict.append(rowdict)
+            datalist.append(rowdict)
             if propertynum > 1:
                 print("----------------------")
             print("Property regel "+str(propertynum))
@@ -96,7 +149,7 @@ def fetch_bottle_properties(UID):
             print("Value: "+rowdict['value'])
             propertynum += 1
         print("----------------------")
-        return datadict
+        return datalist
     else:
         print("Bottle properties not found!")
 
