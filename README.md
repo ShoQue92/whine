@@ -31,7 +31,7 @@
 <br />
 <p align="center">
   <a href="https://github.com/ShoQue92/whine">
-    <img src="web/images/koelkast.png" alt="Logo" width="80" height="80">
+    <img src="web/images/koelkast.png" alt="Logo" width="640" height="480">
   </a>
 
   <h3 align="center">Whine inventory management</h3>
