@@ -46,7 +46,7 @@ def insert_base_records():
 ################# Toevoegen ###################
 
 def add_whine(UID, name, main_grape, year, properties, date_in_fridge):
-    c.execute("SELECT UID from bottle_properties where UID = '" + UID + "'")
+    c.execute("SELECT UID from whine_bottles where UID = '" + UID + "'")
     data = c.fetchone()
     if data:
         # regel is al gevonden, dus niet opnieuw inserten
