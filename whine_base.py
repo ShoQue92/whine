@@ -71,9 +71,9 @@ def process_bottle_property_return_file(prop_file, tgt_dir):
 #recreate_table() #-- voor aanmaken nieuwe tabel (bij lege db)
 
 #Twee test flessen toevoegen.
-fles = WhineBottle('vb1', '', '', '', '')
+#fles = WhineBottle('vb1', '', '', '', '')
 #fles2 = WhineBottle('vb2', '', '', '', '')
-add_whine(fles.UID, fles.name, fles.main_grape, fles.year, fles.properties, datetime.datetime.now())
+#add_whine(fles.UID, fles.name, fles.main_grape, fles.year, fles.properties, datetime.datetime.now())
 #add_whine(fles2.UID, fles2.name, fles2.main_grape, fles2.year, fles2.properties, datetime.datetime.now())
 
 #Properties voor een fles toevoegen
@@ -86,7 +86,7 @@ add_whine(fles.UID, fles.name, fles.main_grape, fles.year, fles.properties, date
 #fetch_bottle("vb1")
 
 #delete_selected("vb2")
-#fetch_bottle("vb1")
+fetch_bottle("vb4")
 
 #print(fles.properties)
 
