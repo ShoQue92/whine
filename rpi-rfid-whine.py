@@ -27,6 +27,7 @@ time.sleep(1)
 try:
         id, text = reader.read()
         fles = WhineBottle(str(id), '', '', '', '')
+        #Als de gescande tag reeds bestaat, laat de data zien, anders een nieuwe toevoegen.
         if check_bottle_existance(fles.UID):
                 fetch_bottle(fles.UID)
                 print('EINDE data opgehaald.'.center(100,'='))
