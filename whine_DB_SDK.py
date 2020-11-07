@@ -137,15 +137,15 @@ def fetch_bottle(UID):
         print("----------------------")
         return bottle
     else:
-        print("Bottle not found!")
+        print("Fles niet gevonden!")
 
 def fetch_bottle_properties(UID):
-    print("Fetching bottle with UID="+UID)
+    print("De eigenschappen van fles {} worden opgehaald".format(UID))
     c.execute("SELECT UID, property, value FROM bottle_properties WHERE UID='"+UID+"' order by property")
     headers = list(map(lambda x: x[0], c.description))
     data = c.fetchall()
     if data:
-        print("Bottle properties for bottle UID '" + UID + "' found!")
+        print("Eigenschappen voor fles {} gevonden!".format(UID))
         print("----------------------")
         datalist = []
         propertynum=1
@@ -162,7 +162,7 @@ def fetch_bottle_properties(UID):
         print("----------------------")
         return datalist
     else:
-        print("Bottle properties not found!")
+        print("Fles eigenschappen niet gevonden!")
 
 ################# Einde Ophalen database ###################
 
@@ -171,7 +171,7 @@ def fetch_bottle_properties(UID):
 def delete_selected(UID):
     c.execute("DELETE FROM whine_bottles WHERE UID='"+UID+"'")
     conn.commit()
-    return print('Succes deleted bottle with UID' + UID) 
+    return print('Fles {} is succesvol verwijderd'.format(UID))
 
 def clear_results():
     c.execute('''DELETE FROM whine_bottles ''')
