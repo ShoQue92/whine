@@ -1,6 +1,7 @@
 import sqlite3
 import csv
 import os
+import time
 from whine_classes import WhineBottle
 
 # gebruiken we overal dus global
@@ -112,10 +113,12 @@ def check_bottle_existance(UID):
         return False
 
 def fetch_bottle(UID):
-    message = "Fetching bottle with UID="+UID 
+    time.sleep(1)
+    message = "Er wordt gekeken of fles {} reeds bestaat".format(UID)
     print(message)
     c.execute("SELECT UID, name, main_grape, year, date_in_fridge FROM whine_bottles WHERE UID='"+UID+"'")
     data = c.fetchone()
+    time.sleep(1)
     if data:
         bottle = {
             'UID': data[0],
@@ -124,7 +127,7 @@ def fetch_bottle(UID):
             "year": data[3],
             "date_in_fridge": data[4]
         }
-        print("Bottle with UID '" + UID + "' found!")
+        print("Fles met UID {} is gevonden!".format(UID))
         print("----------------------")
         print("UID: "+bottle["UID"])
         print("Name: "+bottle["name"])
