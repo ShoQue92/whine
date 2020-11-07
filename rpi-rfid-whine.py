@@ -21,7 +21,7 @@ from whine_DB_SDK import check_bottle_existance
 import datetime
 
 reader = SimpleMFRC522()
-print('RFID lezer actief, plaats een tag voor de lezer...')
+print('RFID lezer actief, plaats een tag voor de lezer...'.center(100,'='))
 try:
         id, text = reader.read()
         print(id)

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!--
 *** Thanks for checking out this README Template. If you have a suggestion that would
 *** make this better, please fork the repo and create a pull request or simply open
@@ -27,11 +28,17 @@
 
 
 
+=======
+>>>>>>> 19e9afbef7717185e7b25d18406c9afa8289c685
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
   <a href="https://github.com/ShoQue92/whine">
+<<<<<<< HEAD
     <img src="web/images/koelkast.png" alt="Logo" width="80" height="80">
+=======
+    <img src="web/images/koelkast.png" alt="Logo" width="640" height="680">
+>>>>>>> 19e9afbef7717185e7b25d18406c9afa8289c685
   </a>
 
   <h3 align="center">Whine inventory management</h3>
@@ -60,10 +67,13 @@
 * [Getting Started](#getting-started)
   * [Prerequisites](#prerequisites)
   * [Installation](#installation)
+<<<<<<< HEAD
 * [Usage](#usage)
 * [Roadmap](#roadmap)
 * [Contributing](#contributing)
 * [License](#license)
+=======
+>>>>>>> 19e9afbef7717185e7b25d18406c9afa8289c685
 * [Contact](#contact)
 * [Acknowledgements](#acknowledgements)
 
@@ -72,6 +82,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
+<<<<<<< HEAD
 [![Product Name Screen Shot][product-screenshot]](https://example.com)
 
 Here's a blank template to get started:
@@ -79,6 +90,8 @@ Here's a blank template to get started:
 `ShoQue92`, `whine`, `twitter_handle`, `joerie@brugts.nl`
 
 
+=======
+>>>>>>> 19e9afbef7717185e7b25d18406c9afa8289c685
 ### Built With
 
 * [Python]()
@@ -94,7 +107,10 @@ Here's a blank template to get started:
 
 ### Prerequisites
 
+<<<<<<< HEAD
 ```
+=======
+>>>>>>> 19e9afbef7717185e7b25d18406c9afa8289c685
 
 ### Installation
 
@@ -107,7 +123,10 @@ Here's a blank template to get started:
 ## Contact
 
 Joerie Brugts- joerie@brugts.nl
+<<<<<<< HEAD
 
+=======
+>>>>>>> 19e9afbef7717185e7b25d18406c9afa8289c685
 Project Link: [https://github.com/ShoQue92/whine](https://github.com/ShoQue92/whine)
 
 
