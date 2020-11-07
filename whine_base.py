@@ -11,6 +11,7 @@ from whine_DB_SDK import delete_selected
 from whine_DB_SDK import clear_results
 from whine_DB_SDK import update_whine
 from whine_DB_SDK import export_bottle_properties_csv
+from whine_DB_SDK import check_bottle_existance
 
 #Other imports
 import datetime
@@ -68,7 +69,7 @@ def process_bottle_property_return_file(prop_file, tgt_dir):
             add_whine_property(UID, property, value)
         return print("Fles eigenschappen toegevoegd!")
 
-#recreate_table() #-- voor aanmaken nieuwe tabel (bij lege db)
+recreate_table() #-- voor aanmaken nieuwe tabel (bij lege db)
 
 #Twee test flessen toevoegen.
 #fles = WhineBottle('vb1', '', '', '', '')
@@ -86,7 +87,8 @@ def process_bottle_property_return_file(prop_file, tgt_dir):
 #fetch_bottle("vb1")
 
 #delete_selected("vb2")
-fetch_bottle("vb4")
+#fetch_bottle("vb4")
+
 
 #print(fles.properties)
 

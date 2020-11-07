@@ -103,11 +103,18 @@ def export_bottle_properties_csv(tgt_file,tgt_dir):
     except IOError:
             print("Kon bestand " +tgt_file+ "niet aanmaken...")
 
+def check_bottle_existance(UID):
+    c.execute("SELECT UID, name, main_grape, year, date_in_fridge FROM whine_bottles WHERE UID='"+UID+"'")
+    data = c.fetchone()
+    if data:
+        return True
+    else:
+        return False
+
 def fetch_bottle(UID):
     print("Fetching bottle with UID="+UID)
     c.execute("SELECT UID, name, main_grape, year, date_in_fridge FROM whine_bottles WHERE UID='"+UID+"'")
     data = c.fetchone()
-    no_bottle = None
     if data:
         bottle = {
             'UID': data[0],
@@ -127,7 +134,6 @@ def fetch_bottle(UID):
         return bottle
     else:
         print("Bottle not found!")
-        return no_bottle
 
 def fetch_bottle_properties(UID):
     print("Fetching bottle with UID="+UID)

@@ -15,17 +15,22 @@ from whine_DB_SDK import delete_selected
 from whine_DB_SDK import clear_results
 from whine_DB_SDK import update_whine
 from whine_DB_SDK import export_bottle_properties_csv
+from whine_DB_SDK import check_bottle_existance
 
 #Other imports
 import datetime
 
 reader = SimpleMFRC522()
+print('RFID lezer actief, plaats een tag voor de lezer...')
 try:
         id, text = reader.read()
         print(id)
         print(text)
         fles = WhineBottle(str(id), '', '', '', '')
-        add_whine(fles.UID, fles.name, fles.main_grape, fles.year, fles.properties, datetime.datetime.now())
+        if check_bottle_existance(fles.UID):
+                fetch_bottle(fles.UID)
+        else:
+                add_whine(fles.UID, fles.name, fles.main_grape, fles.year, fles.properties, datetime.datetime.now())
 finally:
         GPIO.cleanup()
 
