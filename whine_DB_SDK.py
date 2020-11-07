@@ -57,7 +57,7 @@ def add_whine(UID, name, main_grape, year, properties, date_in_fridge):
         conn.commit()
         #Add bottle properties
         #add_whine_properties(UID, properties)
-        message = print('Succesfully inserted new bottle!')
+        message = print('Fles {} succesvol toegevoegd op {}'.format(UID,date_in_fridge))
         return message
 
 def add_whine_property(UID, property, value):
