@@ -88,7 +88,7 @@ def update_whine(UID, name, main_grape, year):
 ################# Ophalen database ###################
 
 def export_bottle_properties_csv(tgt_file,tgt_dir):
-    print("Fetching all botles in database")
+    print("Alle flessen worden opgehaald!")
     c.execute("SELECT UID, property, value FROM bottle_properties")
     data = c.fetchall()
     try:
@@ -105,6 +105,9 @@ def export_bottle_properties_csv(tgt_file,tgt_dir):
             print("Kon bestand " +tgt_file+ "niet aanmaken...")
 
 def check_bottle_existance(UID):
+    message = "Er wordt gekeken of fles {} reeds bestaat".format(UID)
+    print(message)
+    time.sleep(1)
     c.execute("SELECT UID, name, main_grape, year, date_in_fridge FROM whine_bottles WHERE UID='"+UID+"'")
     data = c.fetchone()
     if data:
