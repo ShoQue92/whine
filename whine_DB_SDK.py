@@ -176,6 +176,6 @@ def delete_selected(UID):
 def clear_results():
     c.execute('''DELETE FROM whine_bottles ''')
     conn.commit()
-    return print('Succes truncated table \'whine_bottles\'!')
+    return print('Tabel \'whine_bottles\' succesvol geleegd!')
 
 ################# Einde Verwijderen uit database ##############

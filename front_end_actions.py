@@ -9,10 +9,10 @@ file = argv[2]
 tgt_dir = argv[3]
 
 if actie == 'process_bottle':
-   process_return_file(file, tgt_dir)
+       process_return_file(file, tgt_dir)
 elif actie == 'export_bottle_properties':
-   export_bottle_properties_csv(file,tgt_dir)
+       export_bottle_properties_csv(file,tgt_dir)
 elif actie == 'process_bottle_properties':
        process_bottle_property_return_file(file, tgt_dir)
 else:
-       print('Geen juiste actie opgegeven')
+      print('Geen juiste actie opgegeven')
