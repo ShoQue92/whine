@@ -16,10 +16,14 @@ from whine_DB_SDK import clear_results
 from whine_DB_SDK import update_whine
 from whine_DB_SDK import export_bottle_properties_csv
 from whine_DB_SDK import check_bottle_existance
+from whine_base import create_init_file
 
 #Other imports
 import datetime
 import time
+
+tgt_file = "new_bottle.csv"
+tgt_dir = r"\\var\\www\\html\\interface_files"
 
 reader = SimpleMFRC522()
 print('RFID lezer actief, plaats een tag voor de lezer...'.center(100,'='))
@@ -33,6 +37,8 @@ try:
                 print('EINDE data opgehaald.'.center(100,'='))
         else:
                 add_whine(fles.UID, fles.name, fles.main_grape, fles.year, fles.properties, datetime.datetime.now())
+                print("Interface bestand {} wordt aangemaakt op locatie {}".format(tgt_file, tgt_dir))
+                create_init_file(tgt_file, tgt_dir, fles.UID)
                 print('EINDE fles toegevoegd.'.center(100,'='))
 finally:
         GPIO.cleanup()
