@@ -23,7 +23,7 @@ import datetime
 import time
 
 tgt_file = "new_bottle.csv"
-tgt_dir = "/interface_files"
+tgt_dir = "/var/www/html/interface_files"
 
 reader = SimpleMFRC522()
 print('RFID lezer actief, plaats een tag voor de lezer...'.center(100,'='))
