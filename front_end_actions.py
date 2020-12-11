@@ -5,10 +5,6 @@ from whine_base import process_return_file
 from whine_base import process_bottle_property_return_file
 from sys import argv
 
-actie = argv[1]
-file = argv[2]
-tgt_dir = argv[3]
-
 if argv[1] == "clear_db":
        clear_results()
 elif argv[1] == 'process_bottle':
