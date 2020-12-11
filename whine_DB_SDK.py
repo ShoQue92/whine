@@ -2,6 +2,8 @@ import sqlite3
 import csv
 import os
 import time
+import traceback
+import sys
 from whine_classes import WhineBottle
 
 # gebruiken we overal dus global
@@ -79,10 +81,17 @@ def add_whine_property(UID, property, value):
 ################# Aanvullen  ###################
 
 def update_whine(UID, name, main_grape, year):
-    c.execute("UPDATE whine_bottles SET name = '"+name+"',main_grape = '"+main_grape+"',year = '"+year+"' WHERE UID='"+UID+"'")
-    conn.commit()
-    message = print('Succesfully updated bottle '+UID)
-    return message
+    try:
+        c.execute("UPDATE whine_bottles SET name = '"+name+"',main_grape = '"+main_grape+"',year = '"+year+"' WHERE UID='"+UID+"'")
+        conn.commit()
+        message = print('Succesfully updated bottle '+UID)
+        return message
+    except sqlite3.Error as er:
+        print('SQLite error: %s' % (' '.join(er.args)))
+        print("Exception class is: ", er.__class__)
+        print('SQLite traceback: ')
+        exc_type, exc_value, exc_tb = sys.exc_info()
+        print(traceback.format_exception(exc_type, exc_value, exc_tb))
 
 ################# Einde anvullen  ###################
 
