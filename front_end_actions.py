@@ -5,6 +5,16 @@ from whine_base import process_return_file
 from whine_base import process_bottle_property_return_file
 from sys import argv
 
+'''
+Interface scriptje tussen web front-end en de back-end.
+Dit scriptje kan gebruikt worden door php om bepaalde acties uit te voeren tegen de back-end.
+
+Toepassing is;
+front_end_actions.py <actie*> <file> <dir>
+
+Input argument <actie> is veprlicht, file & dir zijn optioneel, maar wel verplicht voor een aantal acties.
+'''
+
 if argv[1] == "clear_db":
        clear_results()
 elif argv[1] == 'process_bottle':
