@@ -29,7 +29,7 @@ Wanneer het een nieuwe fles betreft, wordt deze aangemaakt en wordt een interfac
 Een aangevuld bestand kan worden 'verwekrt' door frond_end_actions.py aan te roepen met als actie 'process_bottle'.
 """
 def read_rfid():
-        tgt_file = "new_bottle.csv"
+        tgt_file = "intf_init_bottle_"
         tgt_dir = "/var/www/html/interface_files"
 
         reader = SimpleMFRC522()
@@ -48,7 +48,7 @@ def read_rfid():
                         add_whine(fles.UID, fles.name, fles.main_grape, fles.year, fles.properties, datetime.datetime.now())
                         #Maak een interface bestand aan voor het front-end systeem.
                         print("Interface bestand {} wordt aangemaakt op locatie {}".format(tgt_file, tgt_dir))
-                        create_init_file(tgt_file, tgt_dir, fles.UID)
+                        create_init_file(tgt_file+fles.UID+'.csv', tgt_dir, fles.UID)
                         print('EINDE fles toegevoegd.'.center(100,'='))
                         #Roep de functie weer opnieuw aan om het lezen van een nieuwe tag weer mogelijk te maken.
                         read_rfid()
