@@ -25,7 +25,7 @@ tgt_file = "filled_file.csv"
 def create_init_file(tgt_file,tgt_dir,bottle):
     data=fetch_bottle(bottle)
     os.chdir(tgt_dir)
-    data['status'] = 'init'
+    data['status'] = 'registered'
     if data:
         try:
             with open(tgt_file, 'w+', newline='') as csv_file:
