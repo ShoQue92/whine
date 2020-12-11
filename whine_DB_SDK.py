@@ -84,7 +84,7 @@ def update_whine(UID, name, main_grape, year):
     try:
         c.execute("UPDATE whine_bottles SET name = '"+name+"',main_grape = '"+main_grape+"',year = '"+year+"' WHERE UID='"+UID+"'")
         conn.commit()
-        message = print('Succesfully updated bottle '+UID)
+        message = print('Succesfully updated bottle; '+UID)
         return message
     except sqlite3.Error as er:
         print('SQLite error: %s' % (' '.join(er.args)))
