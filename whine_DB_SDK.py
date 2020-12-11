@@ -51,13 +51,13 @@ def add_whine(UID, name, main_grape, year, properties, date_in_fridge):
     data = c.fetchone()
     if data:
         # regel is al gevonden, dus niet opnieuw inserten
-        message = print("Fles met tag \'" + UID + "\' bestaat al, dus inserten gaat niet door.")
+        message = print("Fles met tag " + UID + " bestaat al, dus inserten gaat niet door.")
     else:
         c.execute('INSERT INTO whine_bottles (UID, name, main_grape, year, date_in_fridge) VALUES (?, ?, ?, ?, ?)', (UID, name, main_grape, year, date_in_fridge))
         conn.commit()
         #Add bottle properties
         #add_whine_properties(UID, properties)
-        message = print('Fles \'{}\' succesvol toegevoegd op {}'.format(UID,date_in_fridge))
+        message = print('Fles {} succesvol toegevoegd op {}'.format(UID,date_in_fridge))
         return message
 
 def add_whine_property(UID, property, value):
@@ -66,7 +66,7 @@ def add_whine_property(UID, property, value):
         data = c.fetchone()
         if data:
             # regel is al gevonden, dus niet opnieuw inserten
-            message = print("Eigenschap \'" + property + "\' bestaat al voor deze fles, dus inserten gaat niet door.")
+            message = print("Eigenschap " + property + " bestaat al voor deze fles, dus inserten gaat niet door.")
         else:
             c.execute('INSERT INTO bottle_properties (UID, property, value) VALUES (?, ?, ?)', (UID, property, value))
             conn.commit()
