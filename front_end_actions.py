@@ -9,13 +9,13 @@ actie = argv[1]
 file = argv[2]
 tgt_dir = argv[3]
 
-if actie == 'process_bottle':
-       process_return_file(file, tgt_dir)
-elif actie == 'export_bottle_properties':
-       export_bottle_properties_csv(file,tgt_dir)
-elif actie == 'process_bottle_properties':
-       process_bottle_property_return_file(file, tgt_dir)
-elif actie == "clear_db":
+if argv[1] == "clear_db":
        clear_results()
+elif argv[1] == 'process_bottle':
+      process_return_file(argv[2], argv[3]) 
+elif argv[1] == "export_bottle_properties":
+       export_bottle_properties_csv(argv[2], argv[3]) 
+elif argv[1] == "process_bottle_properties":
+       process_bottle_property_return_file(argv[2], argv[3])
 else:
-      print('Geen juiste actie opgegeven')
+      print('Geen juiste actie opgegeven!')
