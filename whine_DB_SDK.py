@@ -20,7 +20,7 @@ def create_table(drop):
         c.execute('DROP TABLE IF EXISTS bottle_properties')
         c.execute('DROP TABLE IF EXISTS base_properties')
         c.execute('DROP TABLE IF EXISTS grapes')
-    c.execute('CREATE TABLE IF NOT EXISTS whine_bottles (UID TEXT PRIMARY KEY, name TEXT, main_grape TEXT, year TEXT, date_in_fridge DATE)')
+    c.execute('CREATE TABLE IF NOT EXISTS whine_bottles (UID TEXT PRIMARY KEY, name TEXT, main_grape TEXT, year TEXT, type TEXT, date_in_fridge DATE)')
     c.execute('CREATE TABLE IF NOT EXISTS bottle_properties (property_id integer PRIMARY KEY AUTOINCREMENT, UID TEXT,  property TEXT, value TEXT)')
     c.execute('CREATE TABLE IF NOT EXISTS base_properties (id integer PRIMARY KEY AUTOINCREMENT, property TEXT)')
     c.execute('CREATE TABLE IF NOT EXISTS grapes (id integer PRIMARY KEY AUTOINCREMENT, grape TEXT)')
@@ -56,7 +56,7 @@ def add_whine(UID, name, main_grape, year, properties, date_in_fridge):
         # regel is al gevonden, dus niet opnieuw inserten
         message = print("Fles met tag " + UID + " bestaat al, dus inserten gaat niet door.")
     else:
-        c.execute('INSERT INTO whine_bottles (UID, name, main_grape, year, date_in_fridge) VALUES (?, ?, ?, ?, ?)', (UID, name, main_grape, year, date_in_fridge))
+        c.execute('INSERT INTO whine_bottles (UID, name, main_grape, year, type, date_in_fridge) VALUES (?, ?, ?, ?, ?, ?)', (UID, name, main_grape, year, type, date_in_fridge))
         conn.commit()
         #Add bottle properties
         #add_whine_properties(UID, properties)
@@ -82,7 +82,7 @@ def add_whine_property(UID, property, value):
 
 def update_whine(UID, name, main_grape, year):
     try:
-        c.execute("UPDATE whine_bottles SET name = '"+name+"',main_grape = '"+main_grape+"',year = '"+year+"' WHERE UID='"+UID+"'")
+        c.execute("UPDATE whine_bottles SET name = '"+name+"',main_grape = '"+main_grape+"',year = '"+year+"',type = '"+type+"' WHERE UID='"+UID+"'")
         conn.commit()
         message = print('Succesfully updated bottle; '+UID)
         return message
@@ -118,7 +118,7 @@ def check_bottle_existance(UID):
     time.sleep(0.5)
     message = "Er wordt gekeken of fles {} reeds bestaat".format(UID)
     print(message)
-    c.execute("SELECT UID, name, main_grape, year, date_in_fridge FROM whine_bottles WHERE UID='"+UID+"'")
+    c.execute("SELECT UID, name, main_grape, year, type, date_in_fridge FROM whine_bottles WHERE UID='"+UID+"'")
     data = c.fetchone()
     if data:
         return True
@@ -126,7 +126,7 @@ def check_bottle_existance(UID):
         return False
 
 def fetch_bottle(UID):
-    c.execute("SELECT UID, name, main_grape, year, date_in_fridge FROM whine_bottles WHERE UID='"+UID+"'")
+    c.execute("SELECT UID, name, main_grape, year, type, date_in_fridge FROM whine_bottles WHERE UID='"+UID+"'")
     data = c.fetchone()
     time.sleep(1)
     if data:
