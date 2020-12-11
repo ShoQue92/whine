@@ -37,7 +37,7 @@ def read_rfid():
         time.sleep(1)
 
         try:
-                id = reader.read()
+                id, text = reader.read()
                 fles = WhineBottle(str(id), '', '', '', '')
                 #Als de gescande tag reeds bestaat, laat de data zien, anders een nieuwe toevoegen.
                 if check_bottle_existance(fles.UID):
