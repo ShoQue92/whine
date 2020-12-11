@@ -33,7 +33,7 @@ def read_rfid():
         tgt_dir = "/var/www/html/interface_files"
 
         reader = SimpleMFRC522()
-        print('RFID lezer actief, plaats een tag voor de lezer...'.center(100,'='))
+        print('...RFID lezer actief, plaats een tag voor de lezer...'.center(100,'='))
         time.sleep(1)
 
         try:
