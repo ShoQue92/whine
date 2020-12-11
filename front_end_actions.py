@@ -12,7 +12,7 @@ Dit scriptje kan gebruikt worden door php om bepaalde acties uit te voeren tegen
 Toepassing is;
 front_end_actions.py <actie*> <file> <dir>
 
-Input argument <actie> is veprlicht, file & dir zijn optioneel, maar wel verplicht voor een aantal acties.
+Input argument <actie> is veprlicht en altijd als eerste, de rest is optioneel, maar wel verplicht voor een aantal acties en verschillend per functie.
 '''
 
 if argv[1] == "clear_db":
@@ -23,5 +23,7 @@ elif argv[1] == "export_bottle_properties":
        export_bottle_properties_csv(argv[2], argv[3]) 
 elif argv[1] == "process_bottle_properties":
        process_bottle_property_return_file(argv[2], argv[3])
+elif argv[1] == "update_whine":
+       update_whine(argv[2], argv[3], argv[4], argv[5])
 else:
       print('Geen juiste actie opgegeven!')
