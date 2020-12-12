@@ -10,7 +10,7 @@
 
 <?php
 
-$nieuweflescsvpad = "workdir/nieuwefles.csv";
+$nieuweflescsvpad = "interface_files/intf_init_bottle.csv";
 $filecorrect = false;
 
 if( file_exists($nieuweflescsvpad)){
@@ -43,17 +43,34 @@ else {
 			
 			$kolomnr=0;
 			foreach($bestandinhoud[0] as $header){
-				if($header != "status"){
+				if($header != "status" && $header != "type"){
 					if(in_array($header,$disabledvelden)){
 					?>
 					<input type="hidden" name="<?php echo $header; ?>" value="<?php echo $bestandinhoud[1][$kolomnr]; ?>" />
 					<?php
 					}
+					
 					?>
 					<label for="<?php echo $header; ?>"><?php echo str_replace("_"," ",ucfirst($header)); ?></label>
 					<input required <?php if(in_array($header,$disabledvelden)){echo "disabled=\"disabled\""; } ?> type="text" name="<?php echo $header; ?>" value="<?php echo $bestandinhoud[1][$kolomnr]; ?>" />
 					<?php
+				}
+					elseif($header == "type"){
+					?>
+					
+					
+					    <label for="select-custom-1">Fles type:</label>
+					    <select name="type" id="select-custom-1" data-native-menu="false" data-mini="true">
+							<option value="Kies" data-placeholder="true">Kies...</option>
+					        <option value="Rood">Rood</option>
+					        <option value="Wit">Wit</option>
+					        <option value="Rosé">Rosé</option>
+					    </select>
+					
+					<?php
 					}
+				
+				
 			$kolomnr++;
 			}
 			?>
