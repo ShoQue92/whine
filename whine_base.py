@@ -54,8 +54,9 @@ def process_return_file(tgt_file, tgt_dir):
             name = line[1]
             main_grape = line[2]
             year = line[3]
-            update_whine(UID, name, main_grape, year)
-            return print(UID, name, main_grape, year)
+            type = line[4]
+            update_whine(UID, name, main_grape, year, type)
+            return print(UID, name, main_grape, year, type)
 
 def process_bottle_property_return_file(prop_file, tgt_dir):
     os.chdir(tgt_dir)

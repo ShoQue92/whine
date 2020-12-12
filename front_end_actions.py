@@ -25,7 +25,7 @@ elif argv[1] == "export_bottle_properties":
 elif argv[1] == "process_bottle_properties":
        process_bottle_property_return_file(argv[2], argv[3])
 elif argv[1] == "update_whine":
-       update_whine(argv[2], argv[3], argv[4], argv[5])
+       update_whine(argv[2], argv[3], argv[4], argv[5], argv[6])
 elif argv[1] == "recreate_db":
        recreate_table()
 else:
