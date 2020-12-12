@@ -49,7 +49,7 @@ def insert_base_records():
 
 ################# Toevoegen ###################
 
-def add_whine(UID, name, main_grape, year, properties, date_in_fridge):
+def add_whine(UID, name, main_grape, year, type, properties, date_in_fridge):
     c.execute("SELECT UID from whine_bottles where UID = '" + UID + "'")
     data = c.fetchone()
     if data:
