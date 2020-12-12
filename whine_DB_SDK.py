@@ -135,7 +135,8 @@ def fetch_bottle(UID):
             "name": data[1],
             "main_grape": data[2],
             "year": data[3],
-            "date_in_fridge": data[4]
+            "type": data[4],
+            "date_in_fridge": data[5]
         }
         print("Fles met UID {} is gevonden!".format(UID))
         print("----------------------")
@@ -143,6 +144,7 @@ def fetch_bottle(UID):
         print("Name: "+bottle["name"])
         print("Main Grape: "+bottle["main_grape"])
         print("Year: "+bottle["year"])
+        print("Type wijn: "+bottle["type"])
         print("Fridge Date: "+bottle["date_in_fridge"])
         print("----------------------")
         return bottle
