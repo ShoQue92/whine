@@ -80,7 +80,7 @@ def add_whine_property(UID, property, value):
  
 ################# Aanvullen  ###################
 
-def update_whine(UID, name, main_grape, year):
+def update_whine(UID, name, main_grape, year, type):
     try:
         c.execute("UPDATE whine_bottles SET name = '"+name+"',main_grape = '"+main_grape+"',year = '"+year+"',type = '"+type+"' WHERE UID='"+UID+"'")
         conn.commit()
