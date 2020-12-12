@@ -63,7 +63,5 @@ else {
 
 <?php require 'paginaeind.php'; ?>
 
-<?php require 'menu.php'; ?>
-
 </body>
 </html>

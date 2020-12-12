@@ -5,4 +5,4 @@ $wijnflessen = $db->query('SELECT * FROM whine_bottles order by date_in_fridge')
 
 ?>
 
-<div role="main" class="ui-content jqm-content jqm-fullwidth">
+<div role="main" class="ui-content jqm-content jqm-fullwidth" class="ui-disabled">
