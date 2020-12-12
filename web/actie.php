@@ -3,10 +3,10 @@
 if('POST' === $_SERVER['REQUEST_METHOD']){
 	if(isset($_POST["submit"])){
 	# fles gegevens opslaan in csv
-	$nieuweflescsvpad = "workdir/nieuwefles.csv";
+	$nieuweflescsvpad = "interface_files/intf_init_bottle.csv";
 	
-	$headerregel=array("status","UID","name","main_grape","year","date_in_fridge");
-	$inhoudregel=array("enriched",$_POST["UID"],$_POST["name"],$_POST["main_grape"],$_POST["year"],$_POST["date_in_fridge"]);
+	$headerregel=array("UID","name","main_grape","year","type","date_in_fridge","status");
+	$inhoudregel=array($_POST["UID"],$_POST["name"],$_POST["main_grape"],$_POST["year"],$_POST["type"],$_POST["date_in_fridge"],"enriched");
 	$completecsv=array($headerregel,$inhoudregel);
 	
 	$fp = fopen($nieuweflescsvpad, "w");
@@ -21,6 +21,9 @@ if('POST' === $_SERVER['REQUEST_METHOD']){
 	
 	# hier nog python script aanroepen.
 	
+	$command = escapeshellcmd("/usr/bin/python3 /var/lib/jenkins/workspace/Whine/front_end_actions.py 'process_bottle' 'intf_init_bottle.csv' '/var/www/html/interface_files' 2>&1");
+	$command_output = shell_exec($command);
+
 	}
 	else {
 			$foutmelding = "nee2";
@@ -47,11 +50,12 @@ else {
 	}
 	else{
 		echo "Succesvol aangepast..";
+		
 		?>
 		<script type="text/javascript">
 			setTimeout(function(){
 				window.location.href = 'index.php';
-			}, 5000);
+			}, 1000);
 		</script>
 		<?php
 	}

@@ -6,7 +6,7 @@
 
 <?php paginaheader("Wijnkoeler"); 
 
-$nieuweflescsvpad = "workdir/nieuwefles.csv";
+$nieuweflescsvpad = "interface_files/intf_init_bottle.csv";
 
 $filevalid=false;
 if( file_exists($nieuweflescsvpad)){
@@ -15,7 +15,7 @@ if( file_exists($nieuweflescsvpad)){
 		$bestand = file($nieuweflescsvpad,FILE_SKIP_EMPTY_LINES); 
 		$bestandinhoud = array_map("str_getcsv",$bestand, array_fill(0, count($bestand), ';'));
 		
-		if($bestandinhoud[1][0] == "registered"){	
+		if($bestandinhoud[1][6] == "registered"){	
 			$filevalid=true;
 		}
 	}
@@ -27,11 +27,13 @@ if($filevalid){
 <a href="nieuwefles.php" class="ui-btn ui-shadow" data-transition="pop">Toevoegen Nieuwe Fles</a>
 <?php
 }
+/*
 else{
 ?>
 <div>Bestand '<?php echo $nieuweflescsvpad; ?>' niet gevonden, invalid of al verwerkt..</div>
 <?php
 }
+*/
 ?>
 <div style="width:100%">
 <img src="images/koelkast.png" style="width:100%" />
