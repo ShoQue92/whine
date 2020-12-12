@@ -2,7 +2,7 @@
 <head>
 <?php require 'headers.php'; ?>
 </head>
-<body>
+<body> 
 
 <?php paginaheader("Wijnkoeler"); 
 
