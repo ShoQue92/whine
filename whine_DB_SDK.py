@@ -73,7 +73,7 @@ def add_whine_property(UID, property, value):
         else:
             c.execute('INSERT INTO bottle_properties (UID, property, value) VALUES (?, ?, ?)', (UID, property, value))
             conn.commit()
-            message = print("Verwerking fles "+UID+"\'s eigenschap "+property+" succesfol!")
+            message = print("Verwerking fles "+UID+"\'s eigenschap "+property+" met succes!")
             return message
 
 ################# Einde toevoegen  ###################
