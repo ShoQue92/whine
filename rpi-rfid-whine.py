@@ -45,7 +45,7 @@ def read_rfid():
                         print('EINDE data opgehaald.'.center(100,'='))
                         read_rfid()
                 else:
-                        add_whine(fles.UID, fles.name, fles.main_grape, fles.year, fles.properties, datetime.datetime.now())
+                        add_whine(fles.UID, fles.name, fles.main_grape, fles.year, fles.type, fles.properties, datetime.datetime.now())
                         #Maak een interface bestand aan voor het front-end systeem.
                         print("Interface bestand {} wordt aangemaakt op locatie {}".format(tgt_file, tgt_dir))
                         create_init_file(tgt_file, tgt_dir, fles.UID)
