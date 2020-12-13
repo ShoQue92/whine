@@ -31,7 +31,7 @@ received_command = argv.pop(1)
 # match command naar functie met de dictionary, bestaat deze niet dan krijgen we None terug
 matched_command = commands.get(received_command)
 
-# check of command bestaat, als dat het geval is roep deze aan met de rest van de argumenten
+#check of command bestaat, als dat het geval is roep deze aan met de rest van de argumenten
 if matched_command:
        matched_command(*argv[1:])
 else:
