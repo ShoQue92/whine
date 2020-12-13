@@ -16,17 +16,23 @@ front_end_actions.py <actie*> <file> <dir>
 Input argument <actie> is veprlicht en altijd als eerste, de rest is optioneel, maar wel verplicht voor een aantal acties en verschillend per functie.
 '''
 
-if argv[1] == "clear_db":
-       clear_results()
-elif argv[1] == 'process_bottle':
-      process_return_file(argv[2], argv[3]) 
-elif argv[1] == "export_bottle_properties":
-       export_bottle_properties_csv(argv[2], argv[3]) 
-elif argv[1] == "process_bottle_properties":
-       process_bottle_property_return_file(argv[2], argv[3])
-elif argv[1] == "update_whine":
-       update_whine(argv[2], argv[3], argv[4], argv[5], argv[6])
-elif argv[1] == "recreate_db":
-       recreate_table()
+# defineer alle commando's in deze dictionary
+commands = {
+       "clear_db": clear_results,
+       "process_bottle": process_return_file,
+       "export_bottle_properties": export_bottle_properties_csv,
+       "process_bottle_properties": process_bottle_property_return_file,
+       "update_whine": update_whine,
+       "recreate_db": recreate_table
+}
+
+# eerste cmd argument is altijd de command
+received_command = argv.pop(1)
+# match command naar functie met de dictionary, bestaat deze niet dan krijgen we None terug
+matched_command = commands.get(received_command)
+
+# check of command bestaat, als dat het geval is roep deze aan met de rest van de argumenten
+if matched_command:
+       matched_command(*argv[1:])
 else:
       print('Geen juiste actie opgegeven!')
