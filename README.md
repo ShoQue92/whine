@@ -56,7 +56,12 @@
 
 
 ### Installation
+Om de benodige packages te downloaden voor de volgende commando uit:
+```bash
+pip install -r requirements.txt
+```
 
+Zorg daarnaast dat je lokale `.env` file de juiste configuratie heeft, een voorbeeld hiervan is te vinden in `example.env`.
 
 <!-- USAGE EXAMPLES -->
 ## Usage
