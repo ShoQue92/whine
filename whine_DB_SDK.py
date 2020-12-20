@@ -7,7 +7,7 @@ import sys
 from whine_classes import WhineBottle
 
 # gebruiken we overal dus global
-db_pad = '/var/lib/jenkins/workspace/Whine/'
+db_pad = '/home/jenkins/workspace/Whine_main/db'
 conn = sqlite3.connect(db_pad + 'whine_inventory.db')
 c = conn.cursor()
 
