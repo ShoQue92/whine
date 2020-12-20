@@ -9,7 +9,7 @@ if(isset($_GET["actie"])){
 	switch ($_GET["actie"]) {
 		case "clear_db":
 			// aanroepen functie met echo = ja
-			$command = escapeshellcmd("/usr/bin/python3 /var/lib/jenkins/workspace/Whine/front_end_actions.py 'clear_db' 2>&1");
+			$command = escapeshellcmd("/usr/bin/python3 /home/jenkins/workspace/Whine_main/front_end_actions.py 'clear_db' 2>&1");
 			$command_output = shell_exec($command);
 			$fp = fopen($nieuweflescsvpad, "w");
 			fputcsv($fp, $headerregel, ";", '"');
@@ -17,7 +17,7 @@ if(isset($_GET["actie"])){
 			fclose($fp);
 			break;
 		case "recreate_db":
-			$command = escapeshellcmd("/usr/bin/python3 /var/lib/jenkins/workspace/Whine/front_end_actions.py 'recreate_db' 2>&1");
+			$command = escapeshellcmd("/usr/bin/python3 /home/jenkins/workspace/Whine_main/front_end_actions.py 'recreate_db' 2>&1");
 			$command_output = shell_exec($command);
 			$redirecthome = true;
 			$fp = fopen($nieuweflescsvpad, "w");
