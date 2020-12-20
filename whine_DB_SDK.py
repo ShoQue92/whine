@@ -39,7 +39,7 @@ def insert_base_records():
              ,'Nero d\'Avola' ,'Nebbiolo' ,'Petit Verdot' ,'Pinot Blanc' ,'Pinot Grigio' ,'Pinot Noir' ,'Primitivo' ,'Riesling' ,'Rondinella' ,'Sancerre' \
              ,'Sangiovese' ,'Sauvignon Blanc' ,'Sémillon' ,'Syrah-Shiraz' ,'Tempranillo', 'Verdejo', 'Viognier', 'Zweigelt', 'Nerello', 'Mascalese']
     print("Basis wijneigenschappen verwerkt...")
-    print("Verwerken basis druivenset...")git a
+    print("Verwerken basis druivenset...")
     for grape in grapes: 
         c.execute('INSERT INTO grapes (grape) VALUES (?)', (grape,))
         conn.commit()
