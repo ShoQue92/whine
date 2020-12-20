@@ -14,7 +14,7 @@ Toepassing is;
 front_end_actions.py <actie*> <file> <dir>
 
 Input argument <actie> is veprlicht en altijd als eerste, de rest is optioneel, maar wel verplicht voor een aantal acties en verschillend per functie.
-
+ 
 '''
 
 if argv[1] == "clear_db":
