@@ -58,7 +58,7 @@ def process_return_file(tgt_file, tgt_dir):
             update_whine(UID, name, main_grape, year, type)
             return print(UID, name, main_grape, year, type)
 
-def process_bottle_property_return_file(prop_file):
+def process_bottle_property_return_file(prop_file, tgt_dir):
     os.chdir(tgt_dir)
     with open(prop_file, 'r') as csv_file:
         csv_reader = csv.reader(csv_file, delimiter=';')
