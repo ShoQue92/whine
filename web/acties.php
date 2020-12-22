@@ -7,7 +7,7 @@ if('GET' === $_SERVER['REQUEST_METHOD']){
 				
 			$uid = $_GET["uid"];
 			
-			if(is_numeric($uid)){
+			if(is_int($uid)){
 			
 				$command = escapeshellcmd("/usr/bin/python3 /home/jenkins/workspace/Whine_main/front_end_actions.py 'delete_bottle' '" . $uid . "' 2>&1");
 				$command_output = shell_exec($command);
@@ -42,11 +42,15 @@ if('GET' === $_SERVER['REQUEST_METHOD']){
 	else{
 		echo "Succesvol aangepast..";
 		
+		echo "<br>";
+		
+		echo $command_output;
+		
 		?>
 		<script type="text/javascript">
 			setTimeout(function(){
 				window.location.href = 'index.php';
-			}, 1000);
+			}, 5000);
 		</script>
 		<?php
 	}
