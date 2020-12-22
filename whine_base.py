@@ -19,8 +19,8 @@ import csv
 import os
 
 #global variables
-tgt_dir = os.environ["TGT_DIR"]
-tgt_file = os.environ["TGT_FILE"]
+tgt_dir = r"G:\\Onedrive\\GIT\\Whine\\workdir"
+tgt_file = "filled_file.csv"
 
 def create_init_file(bottle):
     data=fetch_bottle(bottle)
