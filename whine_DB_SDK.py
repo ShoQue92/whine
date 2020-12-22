@@ -95,23 +95,6 @@ def update_whine(UID, name, main_grape, year, type):
 
 ################# Einde anvullen  ###################
 
-################# Start verwijderen  ###################
-
-def delete_whine(UID):
-    try:
-        c.execute("DELETE FROM whine_bottles WHERE UID = '"+UID+"'")
-        conn.commit()
-        message = print('Succesfully deleted bottle; '+UID)
-        return message
-    except sqlite3.Error as er:
-        print('SQLite error: %s' % (' '.join(er.args)))
-        print("Exception class is: ", er.__class__)
-        print('SQLite traceback: ')
-        exc_type, exc_value, exc_tb = sys.exc_info()
-        print(traceback.format_exception(exc_type, exc_value, exc_tb))
-
-################# Einde verwijderen  ###################
-
 ################# Ophalen database ###################
 
 def export_bottle_properties_csv(tgt_file,tgt_dir):
