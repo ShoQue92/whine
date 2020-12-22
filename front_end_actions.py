@@ -2,6 +2,7 @@ from whine_DB_SDK import update_whine
 from whine_DB_SDK import export_bottle_properties_csv
 from whine_DB_SDK import clear_results
 from whine_DB_SDK import recreate_table
+from whine_DB_SDK import delete_selected
 from whine_base import process_return_file
 from whine_base import process_bottle_property_return_file
 from sys import argv
@@ -21,7 +22,8 @@ commands = {
        "export_bottle_properties": export_bottle_properties_csv,
        "process_bottle_properties": process_bottle_property_return_file,
        "update_whine": update_whine,
-       "recreate_db": recreate_table
+       "recreate_db": recreate_table,
+       "delete_bottle": delete_selected
 }
 
 # eerste cmd argument is altijd de command
