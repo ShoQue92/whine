@@ -42,11 +42,15 @@ if('GET' === $_SERVER['REQUEST_METHOD']){
 	else{
 		echo "Succesvol aangepast..";
 		
+		echo "<br>";
+		
+		echo $command_output;
+		
 		?>
 		<script type="text/javascript">
 			setTimeout(function(){
 				window.location.href = 'index.php';
-			}, 1000);
+			}, 5000);
 		</script>
 		<?php
 	}
