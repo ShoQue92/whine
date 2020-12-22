@@ -94,7 +94,7 @@ function getwijnsoort($wijnsoort, $resultaat){
 			</div>
 			<div class="ui-corner-all custom-corners">
 				<div class="ui-body ui-body-a">
-				<a href="#popupLogin" data-rel="popup" class="ui-btn ui-shadow" data-transition="pop">Verwijderen</a>
+				<a href="acties.php?actie=flesverwijderen&uid=<?php echo $row['uid']; ?>" class="ui-btn ui-icon-delete ui-btn-icon-left">Verwijderen</a>
 				</div>
 				
 			</div>
