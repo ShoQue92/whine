@@ -92,6 +92,12 @@ function getwijnsoort($wijnsoort, $resultaat){
 				</div>
 				
 			</div>
+			<div class="ui-corner-all custom-corners">
+				<div class="ui-body ui-body-a">
+				<a href="#popupLogin" data-rel="popup" class="ui-btn ui-shadow" data-transition="pop">Verwijderen</a>
+				</div>
+				
+			</div>
 			</div>
 		
 		
