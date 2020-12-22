@@ -4,7 +4,7 @@ import os
 import time
 import traceback
 import sys
-from .whine_classes import WhineBottle
+from whine_classes import WhineBottle
 
 
 # gebruiken we overal dus global
