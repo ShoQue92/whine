@@ -9,7 +9,7 @@ if('GET' === $_SERVER['REQUEST_METHOD']){
 			
 			if(is_numeric($uid)){
 			
-				$command = escapeshellcmd("/usr/bin/python3 /home/jenkins/workspace/Whine_main/front_end_actions.py 'delete_bottle' '" . $uid . "' 2>&1");
+				$command = escapeshellcmd("/usr/bin/python3 /home/jenkins/workspace/Whine_main/front_end_actions.py 'delete_bottle' '" . $uid . "'");
 				$command_output = shell_exec($command);
 				
 				$redirecthome = true;
