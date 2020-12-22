@@ -8,9 +8,9 @@ from .whine_classes import WhineBottle
 
 
 # gebruiken we overal dus global
-conn = sqlite3.connect(os.environ["DB_PATH"])
+db_pad = '/home/jenkins/workspace/Whine_main/db/'
+conn = sqlite3.connect(db_pad + 'whine_inventory.db')
 c = conn.cursor()
-
 ################# Database gedeelte ###################
 
 def create_table(drop):
