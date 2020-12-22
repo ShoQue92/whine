@@ -2,6 +2,7 @@ from whine_DB_SDK import update_whine
 from whine_DB_SDK import export_bottle_properties_csv
 from whine_DB_SDK import clear_results
 from whine_DB_SDK import recreate_table
+from whine_DB_SDK import delete_whine
 from whine_base import process_return_file
 from whine_base import process_bottle_property_return_file
 from sys import argv
@@ -28,5 +29,7 @@ elif argv[1] == "update_whine":
        update_whine(argv[2], argv[3], argv[4], argv[5], argv[6])
 elif argv[1] == "recreate_db":
        recreate_table()
+elif argv[1] == "delete_bottle":
+       delete_whine(argv[2]) 
 else:
       print('Geen juiste actie opgegeven!')

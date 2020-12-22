@@ -1,6 +1,6 @@
 class WhineBottle:
     #Instance methods are functions you can apply on an instance of the class. Always requires the self argument (passed automaticly)
-    def __init__(self, UID, name, main_grape, year, type, properties):
+    def __init__(self, UID, name = None, main_grape = None, year = None, type = None, properties = None):
         self.UID = UID
         self.name = name
         self.main_grape = main_grape

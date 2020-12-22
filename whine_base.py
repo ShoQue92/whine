@@ -19,10 +19,10 @@ import csv
 import os
 
 #global variables
-tgt_dir = r"G:\\Onedrive\\GIT\\Whine\\workdir"
-tgt_file = "filled_file.csv"
+tgt_dir = os.environ["TGT_DIR"]
+tgt_file = os.environ["TGT_FILE"]
 
-def create_init_file(tgt_file,tgt_dir,bottle):
+def create_init_file(bottle):
     data=fetch_bottle(bottle)
     os.chdir(tgt_dir)
     data['status'] = 'registered'
@@ -44,7 +44,7 @@ def create_init_file(tgt_file,tgt_dir,bottle):
     else:
         return print('Fles bestaat niet!')
 
-def process_return_file(tgt_file, tgt_dir):
+def process_return_file():
     os.chdir(tgt_dir)
     with open(tgt_file, 'r') as csv_file:
         csv_reader = csv.reader(csv_file, delimiter=';')
@@ -58,7 +58,7 @@ def process_return_file(tgt_file, tgt_dir):
             update_whine(UID, name, main_grape, year, type)
             return print(UID, name, main_grape, year, type)
 
-def process_bottle_property_return_file(prop_file, tgt_dir):
+def process_bottle_property_return_file(prop_file):
     os.chdir(tgt_dir)
     with open(prop_file, 'r') as csv_file:
         csv_reader = csv.reader(csv_file, delimiter=';')

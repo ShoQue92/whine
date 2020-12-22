@@ -1,0 +1,49 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Run front end action",
+            "type": "python",
+            "request": "launch",
+            "envFile": "${workspaceFolder}/.env",
+            "program": "${workspaceFolder}/.vscode/input_parser.py",
+            "args": [
+                "${workspaceFolder}/front_end_actions.py",
+                "${input:commando}",
+                "${input:arguments}"
+            ],
+        },
+        {
+            "name": "Python: Current File",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal"
+        }
+    ],
+    "inputs": [
+        {
+            "type": "pickString",
+            "id": "commando",
+            "description": "What command do you want to run?",
+            "options": [
+                "clear_db",
+                "process_bottle",
+                "export_bottle_properties",
+                "process_bottle_properties",
+                "update_whine",
+                "recreate_db"
+            ],
+            "default": "clear_db"
+        },
+        {
+            "type": "promptString",
+            "id": "arguments",
+            "description": "Arguments",
+            "default": ""
+          }
+    ]
+}

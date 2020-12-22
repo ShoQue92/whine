@@ -4,11 +4,16 @@ import os
 import time
 import traceback
 import sys
-from whine_classes import WhineBottle
+from .whine_classes import WhineBottle
+
 
 # gebruiken we overal dus global
+<<<<<<< HEAD
 db_pad = '/home/jenkins/workspace/Whine_main/db/'
 conn = sqlite3.connect(db_pad + 'whine_inventory.db')
+=======
+conn = sqlite3.connect(os.environ["DB_PATH"])
+>>>>>>> deleten_bottle_functie
 c = conn.cursor()
 
 ################# Database gedeelte ###################
@@ -94,6 +99,23 @@ def update_whine(UID, name, main_grape, year, type):
         print(traceback.format_exception(exc_type, exc_value, exc_tb))
 
 ################# Einde anvullen  ###################
+
+################# Start verwijderen  ###################
+
+def delete_whine(UID):
+    try:
+        c.execute("DELETE FROM whine_bottles WHERE UID = '"+UID+"'")
+        conn.commit()
+        message = print('Succesfully deleted bottle; '+UID)
+        return message
+    except sqlite3.Error as er:
+        print('SQLite error: %s' % (' '.join(er.args)))
+        print("Exception class is: ", er.__class__)
+        print('SQLite traceback: ')
+        exc_type, exc_value, exc_tb = sys.exc_info()
+        print(traceback.format_exception(exc_type, exc_value, exc_tb))
+
+################# Einde verwijderen  ###################
 
 ################# Ophalen database ###################
 
