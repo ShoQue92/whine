@@ -8,12 +8,7 @@ from .whine_classes import WhineBottle
 
 
 # gebruiken we overal dus global
-<<<<<<< HEAD
-db_pad = '/home/jenkins/workspace/Whine_main/db/'
-conn = sqlite3.connect(db_pad + 'whine_inventory.db')
-=======
 conn = sqlite3.connect(os.environ["DB_PATH"])
->>>>>>> deleten_bottle_functie
 c = conn.cursor()
 
 ################# Database gedeelte ###################
