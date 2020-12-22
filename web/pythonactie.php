@@ -13,13 +13,13 @@ if(isset($_GET["actie"])){
 			$command_output = shell_exec($command);
 			$fp = fopen($nieuweflescsvpad, "w");
 			fputcsv($fp, $headerregel, ";", '"');
-			$redirecthome = false;
+			$redirecthome = true;
 			fclose($fp);
 			break;
 		case "recreate_db":
 			$command = escapeshellcmd("/usr/bin/python3 /home/jenkins/workspace/Whine_main/front_end_actions.py 'recreate_db'");
 			$command_output = shell_exec($command);
-			$redirecthome = false;
+			$redirecthome = true;
 			$fp = fopen($nieuweflescsvpad, "w");
 			fputcsv($fp, $headerregel, ";", '"');
 			fclose($fp);
@@ -38,6 +38,9 @@ if(isset($_GET["actie"])){
 <?php paginaheader("Wijnkoeler"); 
 
 if($redirecthome){
+	echo $command_output;
+	
+	
 ?>
 <script type="text/javascript">
 	setTimeout(function(){
@@ -46,9 +49,6 @@ if($redirecthome){
 </script>
 
 <?php 
-}
-else{
-	echo $command_output;
 }
 
 require 'paginaeind.php'; ?>
