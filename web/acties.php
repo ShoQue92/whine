@@ -7,8 +7,12 @@ if('GET' === $_SERVER['REQUEST_METHOD']){
 				
 			$uid = $_GET["uid"];
 			
-			$command = escapeshellcmd("/usr/bin/python3 /home/jenkins/workspace/Whine_main/front_end_actions.py 'delete_bottle' '" . $uid . "' 2>&1");
-			$command_output = shell_exec($command);
+			if(is_int($uid)){
+			
+				$command = escapeshellcmd("/usr/bin/python3 /home/jenkins/workspace/Whine_main/front_end_actions.py 'delete_bottle' '" . $uid . "' 2>&1");
+				$command_output = shell_exec($command);
+			
+			}
 			
 		}
 	}
