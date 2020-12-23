@@ -27,13 +27,22 @@ commands = {
        "delete_bottle": delete_selected
 }
 
+# bestandsnaam negeren
+argv.pop(0)
+
+if not argv:
+       print("Geen commando meegegeven!")
+       exit(1)
+
 # eerste cmd argument is altijd de command
-received_command = argv.pop(1)
+received_command = argv.pop(0)
 # match command naar functie met de dictionary, bestaat deze niet dan krijgen we None terug
 matched_command = commands.get(received_command)
 
 #check of command bestaat, als dat het geval is roep deze aan met de rest van de argumenten
-if matched_command:
-       matched_command(*argv[1:])
-else:
-      print('Geen juiste actie opgegeven!')
+if not matched_command:
+       print("Geen geldig commando gevonden.")
+       exit(1)
+
+matched_command(*argv)
+exit(0)
