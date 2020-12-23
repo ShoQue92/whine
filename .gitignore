@@ -2,5 +2,9 @@ whine_inventory.db
 __pycache__
 workdir
 .idea
+<<<<<<< HEAD
 .env
 .vscode
+=======
+.env
+>>>>>>> main

@@ -1,0 +1,9 @@
+{
+<<<<<<< HEAD
+=======
+    "files.exclude": {
+        "**/__pycache__": true
+    },
+>>>>>>> deleten_bottle_functie
+    "python.pythonPath": "C:\\Users\\joeri\\AppData\\Local\\Programs\\Python\\Python39\\python.exe"
+}

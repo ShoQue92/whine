@@ -1,4 +1,6 @@
 <?php
 
 ?>
-</div><!-- /content -->
+</div><!-- /main -->
+
+<?php require 'menu.php'; ?>

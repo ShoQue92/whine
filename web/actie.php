@@ -21,7 +21,7 @@ if('POST' === $_SERVER['REQUEST_METHOD']){
 	
 	# hier nog python script aanroepen.
 	
-	$command = escapeshellcmd("/usr/bin/python3 /var/lib/jenkins/workspace/Whine/front_end_actions.py 'process_bottle' 'intf_init_bottle.csv' '/var/www/html/interface_files' 2>&1");
+	$command = escapeshellcmd("/usr/bin/python3 /home/jenkins/workspace/Whine_main/front_end_actions.py 'process_bottle' 'intf_init_bottle.csv' '/var/www/html/interface_files'");
 	$command_output = shell_exec($command);
 
 	}
@@ -62,8 +62,6 @@ else {
 ?>
 
 <?php require 'paginaeind.php'; ?>
-
-<?php require 'menu.php'; ?>
 
 </body>
 </html>
