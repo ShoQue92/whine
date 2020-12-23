@@ -1,3 +1,4 @@
 python-dotenv
 RPi.GPIO
 mfrc522
+dotenv

@@ -21,6 +21,10 @@ from whine_base import create_init_file
 #Other imports
 import datetime
 import time
+import os
+from os.path import join, dirname
+from dotenv import load_dotenv
+
 """
 Functie voor het lezen van RFID tags.
 Wanneer een tag gescand wordt, wordt gekeken of deze reeds bestaat.
@@ -28,9 +32,14 @@ Als dit het geval is, wordt de UID van de fles getoond.
 Wanneer het een nieuwe fles betreft, wordt deze aangemaakt en wordt een interface bestand gemaakt (CSV) die gebruikt kan worden door het front-end systeem om uit te lezen en te updaten met aangevulde data.
 Een aangevuld bestand kan worden 'verwekrt' door frond_end_actions.py aan te roepen met als actie 'process_bottle'.
 """
+
+dotenv_path = join(dirname(__file__), '.env')
+load_dotenv(dotenv_path)
+interface_path_env =  os.environ.get("INTF_ENV")
+
 def read_rfid():
         tgt_file = "intf_init_bottle.csv"
-        tgt_dir = "/var/www/html/interface_files"
+        tgt_dir = interface_path_env
 
         reader = SimpleMFRC522()
         print('...RFID lezer actief, plaats een tag voor de lezer...'.center(100,'='))
