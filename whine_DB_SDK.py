@@ -187,7 +187,8 @@ def delete_selected(UID):
 
 def clear_results():
     c.execute('''DELETE FROM whine_bottles ''')
+    c.execute('''DELETE FROM bottle_properties ''')
     conn.commit()
-    return print('Tabel \'whine_bottles\' succesvol geleegd!')
+    return print('Tabel \'whine_bottles\' & \'bottle_properties\' succesvol geleegd!')
 
 ################# Einde Verwijderen uit database ##############
