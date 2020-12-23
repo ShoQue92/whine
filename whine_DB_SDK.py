@@ -182,6 +182,7 @@ def fetch_bottle_properties(UID):
 
 def delete_selected(UID):
     c.execute("DELETE FROM whine_bottles WHERE UID='"+UID+"'")
+    c.execute("DELETE FROM bottle_properties WHERE UID='"+UID+"'")
     conn.commit()
     return print('Fles {} is succesvol verwijderd'.format(UID))
 
