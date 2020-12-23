@@ -6,11 +6,20 @@ import traceback
 import sys
 from whine_classes import WhineBottle
 
-# gebruiken we overal dus global
-db_pad = '/home/jenkins/workspace/Whine_main/db/'
-conn = sqlite3.connect(db_pad + 'whine_inventory.db')
-c = conn.cursor()
+from os.path import join, dirname
+from dotenv import load_dotenv
 
+dotenv_path = join(dirname(__file__), '.env')
+load_dotenv(dotenv_path)
+
+
+
+# gebruiken we overal dus global
+db_path =  os.environ.get("DB_PATH")
+db_name =  os.environ.get("DB_NAME")
+
+conn = sqlite3.connect(db_path + db_name)
+c = conn.cursor()
 ################# Database gedeelte ###################
 
 def create_table(drop):
