@@ -204,18 +204,6 @@ def fetch_latest_temp_measures(c_or_f = "c", raw=True):
         }
         
         return temps
-        if c_or_f == "c":
-            if raw == True:
-                print('Huidige temperatuur: ',temps["celsius"], "gemeten op", temps["timestamp"])
-            else:
-                print(temps["timestamp"], ': ',temps["celsius"])
-        elif c_or_f == "f":
-            if raw == True:
-                print(temps["timestamp"], ': ',temps["fahrenheit"])
-            else:
-                print('Huidige temperatuur: ',temps["fahrenheit"], "gemeten op", temps["timestamp"])
-        else:
-            print('Ongeldig temperatuurformat opgegeven, maar de huidige temperatuur in Celcius: ',temps["celsius"],'en in Fahrenheit: ', temps["fahrenheit"], 'gemeten op: ',  temps["timestamp"])
         print('...De temperatuur meting is opgehaald...'.center(100,'='))
     else:
         print('...Geen temperatuur meting beschikbaar...'.center(100,'='))
