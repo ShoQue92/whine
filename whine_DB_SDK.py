@@ -202,9 +202,9 @@ def fetch_latest_temp_measures(c_or_f = "c", raw=True):
             "fahrenheit": data[1],
             "celsius": data[2]
         }
-        
-        return temps
+
         print('...De temperatuur meting is opgehaald...'.center(100,'='))
+        return print(temps)    
     else:
         print('...Geen temperatuur meting beschikbaar...'.center(100,'='))
 
