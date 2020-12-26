@@ -192,7 +192,7 @@ def fetch_bottle_properties(UID):
     else:
         print("Fles eigenschappen niet gevonden!")
 
-def fetch_latest_temp_measures(c_or_f = "c"):
+def fetch_latest_temp_measures(c_or_f = "c", raw=True):
     print('...De temperatuur meting wordt opgehaald...'.center(100,'='))
     c.execute("SELECT timestamp, temperature_f, temperature_c FROM temp_measures WHERE timestamp >= (SELECT MAX(timestamp) FROM temp_measures)")
     data = c.fetchone()
@@ -202,8 +202,23 @@ def fetch_latest_temp_measures(c_or_f = "c"):
             "fahrenheit": data[1],
             "celsius": data[2]
         }
-        return print('Huidige temperatuur: ',temps["celsius"], "gemeten op", temps["timestamp"])
-    print('...De temperatuur meting is opgehaald...'.center(100,'='))
+        
+        return temps
+        if c_or_f == "c":
+            if raw == True:
+                print('Huidige temperatuur: ',temps["celsius"], "gemeten op", temps["timestamp"])
+            else:
+                print(temps["timestamp"], ': ',temps["celsius"])
+        elif c_or_f == "f":
+            if raw == True:
+                print(temps["timestamp"], ': ',temps["fahrenheit"])
+            else:
+                print('Huidige temperatuur: ',temps["fahrenheit"], "gemeten op", temps["timestamp"])
+        else:
+            print('Ongeldig temperatuurformat opgegeven, maar de huidige temperatuur in Celcius: ',temps["celsius"],'en in Fahrenheit: ', temps["fahrenheit"], 'gemeten op: ',  temps["timestamp"]))
+        print('...De temperatuur meting is opgehaald...'.center(100,'='))
+    else:
+        print('...Geen temperatuur meting beschikbaar...'.center(100,'='))
 
 ################# Einde Ophalen database ###################
 
