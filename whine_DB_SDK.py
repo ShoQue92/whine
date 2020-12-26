@@ -23,7 +23,7 @@ c = conn.cursor()
 ################# Database gedeelte ###################
 
 def create_table(drop):
-    print("Tabellen \'whine_bottles\', \'bottle_properties\', \'base_properties\' en \'grapes\' worden aangemaakt...")
+    print("Tabellen \'whine_bottles\', \'bottle_properties\', \'base_properties\', \'base_rating\', \'temp_measures\' en \'grapes\' worden aangemaakt...")
     if drop == True:
         c.execute('DROP TABLE IF EXISTS whine_bottles')
         c.execute('DROP TABLE IF EXISTS whine_rating')
