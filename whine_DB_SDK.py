@@ -23,16 +23,19 @@ c = conn.cursor()
 ################# Database gedeelte ###################
 
 def create_table(drop):
-    print("Tabellen \'whine_bottles\', \'bottle_properties\', \'base_properties\' en \'grapes\' worden aangemaakt...")
+    print("Tabellen \'whine_bottles\', \'bottle_properties\', \'base_properties\', \'base_rating\', \'temp_measures\' en \'grapes\' worden aangemaakt...")
     if drop == True:
         c.execute('DROP TABLE IF EXISTS whine_bottles')
+        c.execute('DROP TABLE IF EXISTS whine_rating')
         c.execute('DROP TABLE IF EXISTS bottle_properties')
         c.execute('DROP TABLE IF EXISTS base_properties')
         c.execute('DROP TABLE IF EXISTS grapes')
     c.execute('CREATE TABLE IF NOT EXISTS whine_bottles (UID TEXT PRIMARY KEY, name TEXT, main_grape TEXT, year TEXT, type TEXT, date_in_fridge DATE)')
-    c.execute('CREATE TABLE IF NOT EXISTS bottle_properties (property_id integer PRIMARY KEY AUTOINCREMENT, UID TEXT,  property TEXT, value TEXT)')
-    c.execute('CREATE TABLE IF NOT EXISTS base_properties (id integer PRIMARY KEY AUTOINCREMENT, property TEXT)')
-    c.execute('CREATE TABLE IF NOT EXISTS grapes (id integer PRIMARY KEY AUTOINCREMENT, grape TEXT)')
+    c.execute('CREATE TABLE IF NOT EXISTS whine_rating (id INTEGER PRIMARY KEY AUTOINCREMENT, UID TEXT , name TEXT, rating INTEGER,  date_rating DATE)')
+    c.execute('CREATE TABLE IF NOT EXISTS bottle_properties (property_id INTEGER PRIMARY KEY AUTOINCREMENT, UID TEXT,  property TEXT, value TEXT)')
+    c.execute('CREATE TABLE IF NOT EXISTS base_properties (id INTEGER PRIMARY KEY AUTOINCREMENT, property TEXT)')
+    c.execute('CREATE TABLE IF NOT EXISTS grapes (id INTEGER PRIMARY KEY AUTOINCREMENT, grape TEXT)')
+    c.execute('CREATE TABLE IF NOT EXISTS temp_measures (id INTEGER PRIMARY KEY AUTOINCREMENT, timestamp DATETIME, temperature_c INTEGER, temperature_f INTEGER)')
     insert_base_records()
     print("Tabellen zijn opnieuw aangemaakt...")
 def recreate_table():
@@ -184,6 +187,15 @@ def fetch_bottle_properties(UID):
         return datalist
     else:
         print("Fles eigenschappen niet gevonden!")
+
+def fetch_latest_temp_measures(c_or_f):
+    print('...De temperatuur meting wordt opgehaald...'.center(100,'='))
+    if c_or_f == "f":
+        query = "SELECT timestamp, temperature_f FROM temp_measures WHERE timestamp = (SELECT MAX(timestamp) FROM temp_measures)"
+    else:
+        query = "SELECT timestamp, temperature_c FROM temp_measures WHERE timestamp = (SELECT MAX(timestamp) FROM temp_measures)"
+    latest_temp = c.execute(query)
+    return latest_temp
 
 ################# Einde Ophalen database ###################
 
