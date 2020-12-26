@@ -193,7 +193,6 @@ def fetch_bottle_properties(UID):
         print("Fles eigenschappen niet gevonden!")
 
 def fetch_latest_temp_measures(c_or_f = "c", raw=True):
-    print('...De temperatuur meting wordt opgehaald...'.center(100,'='))
     c.execute("SELECT timestamp, temperature_f, temperature_c FROM temp_measures WHERE timestamp >= (SELECT MAX(timestamp) FROM temp_measures)")
     data = c.fetchone()
     if data:
@@ -202,8 +201,6 @@ def fetch_latest_temp_measures(c_or_f = "c", raw=True):
             "fahrenheit": data[1],
             "celsius": data[2]
         }
-
-        print('...De temperatuur meting is opgehaald...'.center(100,'='))
         return print(temps)    
     else:
         print('...Geen temperatuur meting beschikbaar...'.center(100,'='))
