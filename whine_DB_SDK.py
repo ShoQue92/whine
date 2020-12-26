@@ -142,7 +142,7 @@ def check_bottle_existance(UID):
     else:
         return False
 
-def fetch_bottle(UID):
+def fetch_bottle(UID, init = False):
     c.execute("SELECT UID, name, main_grape, year, type, date_in_fridge FROM whine_bottles WHERE UID='"+UID+"'")
     data = c.fetchone()
     time.sleep(1)
@@ -164,7 +164,8 @@ def fetch_bottle(UID):
         print("Type wijn: "+bottle["type"])
         print("Fridge Date: "+bottle["date_in_fridge"])
         print("----------------------")
-        return bottle
+        if init == False:
+            return bottle
     else:
         print("Fles niet gevonden!")
 
