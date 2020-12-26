@@ -30,6 +30,7 @@ def create_table(drop):
         c.execute('DROP TABLE IF EXISTS bottle_properties')
         c.execute('DROP TABLE IF EXISTS base_properties')
         c.execute('DROP TABLE IF EXISTS grapes')
+        c.execute('DROP TABLE IF EXISTS temp_measures')
     c.execute('CREATE TABLE IF NOT EXISTS whine_bottles (UID TEXT PRIMARY KEY, name TEXT, main_grape TEXT, year TEXT, type TEXT, date_in_fridge DATE)')
     c.execute('CREATE TABLE IF NOT EXISTS whine_rating (id INTEGER PRIMARY KEY AUTOINCREMENT, UID TEXT , name TEXT, rating INTEGER,  date_rating DATE)')
     c.execute('CREATE TABLE IF NOT EXISTS bottle_properties (property_id INTEGER PRIMARY KEY AUTOINCREMENT, UID TEXT,  property TEXT, value TEXT)')

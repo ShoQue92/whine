@@ -3,6 +3,8 @@ from whine_DB_SDK import export_bottle_properties_csv
 from whine_DB_SDK import clear_results
 from whine_DB_SDK import recreate_table
 from whine_DB_SDK import delete_selected
+from whine_DB_SDK import fetch_latest_temp_measures
+from whine_DB_SDK import fetch_avg_temp
 from whine_base import process_return_file
 from whine_base import process_bottle_property_return_file
 from sys import argv
@@ -24,7 +26,9 @@ commands = {
        "process_bottle_properties": process_bottle_property_return_file,
        "update_whine": update_whine,
        "recreate_db": recreate_table,
-       "delete_bottle": delete_selected
+       "delete_bottle": delete_selected,
+       "fetch_cur_temp":fetch_latest_temp_measures,
+       "fetch_avg_temp": fetch_avg_temp
 }
 
 # bestandsnaam negeren
