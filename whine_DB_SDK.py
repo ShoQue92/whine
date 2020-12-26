@@ -193,6 +193,30 @@ def fetch_bottle_properties(UID):
     else:
         print("Fles eigenschappen niet gevonden!")
 
+def fetch_latest_temp_measures(c_or_f = "c", raw=True):
+    c.execute("SELECT timestamp, temperature_f, temperature_c FROM temp_measures WHERE timestamp >= (SELECT MAX(timestamp) FROM temp_measures)")
+    data = c.fetchone()
+    if data:
+        temps = {
+            "timestamp": data[0],
+            "fahrenheit": data[1],
+            "celsius": data[2]
+        }
+        return print(temps)    
+    else:
+        print('..Geen temperatuur meting beschikbaar..'.center(100,'='))
+
+def fetch_avg_temp(UID):
+    c.execute("SELECT avg(temperature_f), avg(temperature_c) FROM temp_measures WHERE timestamp >= (SELECT date_in_fridge FROM whine_bottles WHERE UID = '"+UID+"')")
+    data = c.fetchone()
+    if data:
+        avg_temp = {
+            "Fles": UID,
+            "Average temp celcius": data[0],
+            "Average temp fahrenheit": data[1]
+        }
+        return print(avg_temp)
+
 ################# Einde Ophalen database ###################
 
 ################# Verwijderen uit database ###################
