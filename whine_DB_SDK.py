@@ -216,8 +216,6 @@ def fetch_avg_temp(UID):
             "Average temp fahrenheit": data[1]
         }
         return print(avg_temp)
-    else:
-        return print('Geen temperatuurmeting beschikbaar na inleg moment van fles {}'.format(UID))
 
 ################# Einde Ophalen database ###################
 
