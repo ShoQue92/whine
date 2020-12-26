@@ -28,7 +28,7 @@ commands = {
        "recreate_db": recreate_table,
        "delete_bottle": delete_selected,
        "fetch_cur_temp":fetch_latest_temp_measures,
-       "fetch_avg_temo": fetch_avg_temp
+       "fetch_avg_temp": fetch_avg_temp
 }
 
 # bestandsnaam negeren
