@@ -56,10 +56,6 @@ def insert_base_records():
         c.execute('INSERT INTO grapes (grape) VALUES (?)', (grape,))
         conn.commit()
     print("Basis druivenset verwerkt...")
-    print("Inserten dummy temp_measure record")
-    c.execute("INSERT into temp_measures (timestamp, temperature_c, temperature_f) VALUES (CURRENT_TIMESTAMP, 8.5, 47.3)")
-    conn.commit()
-
 
 ################# Einde Database gedeelte ###################
 
@@ -191,15 +187,6 @@ def fetch_bottle_properties(UID):
         return datalist
     else:
         print("Fles eigenschappen niet gevonden!")
-
-def fetch_latest_temp_measures(c_or_f):
-    print('...De temperatuur meting wordt opgehaald...'.center(100,'='))
-    if c_or_f == "f":
-        query = "SELECT timestamp, temperature_f FROM temp_measures WHERE timestamp = (SELECT MAX(timestamp) FROM temp_measures)"
-    else:
-        query = "SELECT timestamp, temperature_c FROM temp_measures WHERE timestamp = (SELECT MAX(timestamp) FROM temp_measures)"
-    latest_temp = c.execute(query)
-    return latest_temp
 
 ################# Einde Ophalen database ###################
 
