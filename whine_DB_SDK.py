@@ -188,6 +188,15 @@ def fetch_bottle_properties(UID):
     else:
         print("Fles eigenschappen niet gevonden!")
 
+def fetch_latest_temp_measures(c_or_f):
+    print('...De temperatuur meting wordt opgehaald...'.center(100,'='))
+    if c_or_f == "f":
+        query = "SELECT timestamp, temperature_f FROM temp_measures WHERE timestamp = (SELECT MAX(timestamp) FROM temp_measures)"
+    else:
+        query = "SELECT timestamp, temperature_c FROM temp_measures WHERE timestamp = (SELECT MAX(timestamp) FROM temp_measures)"
+    latest_temp = c.execute(query)
+    return latest_temp
+
 ################# Einde Ophalen database ###################
 
 ################# Verwijderen uit database ###################
