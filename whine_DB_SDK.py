@@ -206,6 +206,18 @@ def fetch_latest_temp_measures(c_or_f = "c", raw=True):
     else:
         print('...Geen temperatuur meting beschikbaar...'.center(100,'='))
 
+def fetch_avg_temp(UID):
+    c.execute("SELECT avg(temperature_f), avg(temperature_c) FROM temp_measures WHERE timestamp >= (SELECT date_in_fridge FROM whine_bottles WHERE UID = '"+UID+"')")
+    data = c.fetchone()
+    if data:
+        avg_temp = {
+            "Fles": UID,
+            "Average temp celcius": data[0],
+            "Average temp fahrenheit": data[1]
+        }
+    else:
+        print(f'Geen temperatuurmeting beschikbaar na inleg moment van fles {}'.format(UID))
+
 ################# Einde Ophalen database ###################
 
 ################# Verwijderen uit database ###################

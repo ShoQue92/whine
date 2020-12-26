@@ -4,6 +4,7 @@ from whine_DB_SDK import clear_results
 from whine_DB_SDK import recreate_table
 from whine_DB_SDK import delete_selected
 from whine_DB_SDK import fetch_latest_temp_measures
+from whine_DB_SDK import fetch_avg_temp
 from whine_base import process_return_file
 from whine_base import process_bottle_property_return_file
 from sys import argv
@@ -26,7 +27,8 @@ commands = {
        "update_whine": update_whine,
        "recreate_db": recreate_table,
        "delete_bottle": delete_selected,
-       "fetch_cur_temp":fetch_latest_temp_measures
+       "fetch_cur_temp":fetch_latest_temp_measures,
+       "fetch_avg_temo": fetch_avg_temp
 }
 
 # bestandsnaam negeren
