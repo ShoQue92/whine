@@ -204,7 +204,7 @@ def fetch_latest_temp_measures(c_or_f = "c", raw=True):
         }
         return print(temps)    
     else:
-        print('...Geen temperatuur meting beschikbaar...'.center(100,'='))
+        print('..Geen temperatuur meting beschikbaar..'.center(100,'='))
 
 def fetch_avg_temp(UID):
     c.execute("SELECT avg(temperature_f), avg(temperature_c) FROM temp_measures WHERE timestamp >= (SELECT date_in_fridge FROM whine_bottles WHERE UID = '"+UID+"')")
