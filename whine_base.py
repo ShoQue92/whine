@@ -99,3 +99,4 @@ def process_bottle_property_return_file(prop_file, tgt_dir):
 #process_return_file(tgt_file,tgt_dir)
 
 #export_bottle_properties_csv('bottle_properties.csv', tgt_dir)
+recreate_table()
