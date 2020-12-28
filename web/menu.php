@@ -20,28 +20,31 @@
 <div data-role="panel" data-position="right" data-display="reveal" data-theme="a" id="add-form">
 		<form class="userform">
 			<h2>Acties</h2>
-				<a href="#popupDialog_clear" data-rel="popup" data-position-to="window" data-transition="pop" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-icon-delete ui-btn-icon-left ui-btn-b">DB Schonen</a>
-				<div data-role="popup" id="popupDialog_clear" data-overlay-theme="b" data-theme="b" data-dismissible="false" style="max-width:400px;">
+				<?php
+					$randomnummer = rand(0, 5000);
+				?>
+				<a href="#popupDialog_clear_<?php echo $randomnummer; ?>" data-rel="popup" data-position-to="window" data-transition="pop" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-icon-delete ui-btn-icon-left ui-btn-b">DB Schonen</a>
+				<div data-role="popup" id="popupDialog_clear_<?php echo $randomnummer; ?>" data-overlay-theme="b" data-theme="b" data-dismissible="false" style="max-width:400px;">
 				    <div role="main" class="ui-content">
 				        <h3 class="ui-title">Weet je zeker dat je de DB wilt schonen (wine bottles legen?)</h3>
 				    	<p>Dit kan niet terugedraait worden.</p>
 				        <a href="#" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b" data-rel="back">Terug</a>
-				        <a href="pythonactie.php?actie=clear_db" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b">Schonen</a>
+				        <a href="acties_get.php?actie=clear_db" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b">Schonen</a>
 				    </div>
 				</div>
-				<a href="#popupDialog_recreate" data-rel="popup" data-position-to="window" data-transition="pop" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-icon-delete ui-btn-icon-left ui-btn-b">DB Recreaten</a>
-				<div data-role="popup" id="popupDialog_recreate" data-overlay-theme="b" data-theme="b" data-dismissible="false" style="max-width:400px;">
+				<a href="#popupDialog_recreate_<?php echo $randomnummer; ?>" data-rel="popup" data-position-to="window" data-transition="pop" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-icon-delete ui-btn-icon-left ui-btn-b">DB Recreaten</a>
+				<div data-role="popup" id="popupDialog_recreate_<?php echo $randomnummer; ?>" data-overlay-theme="b" data-theme="b" data-dismissible="false" style="max-width:400px;">
 				    <div role="main" class="ui-content">
 				        <h3 class="ui-title">Weet je zeker dat je de DB wilt recreaten?</h3>
 				    	<p>Dit kan niet terugedraait worden.</p>
 				        <a href="#" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b" data-rel="back">Terug</a>
-				        <a href="pythonactie.php?actie=recreate_db" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b">Schonen</a>
+				        <a href="acties_get.php?actie=recreate_db" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b">Schonen</a>
 				    </div>
 				</div>
 		</form>
 
 </div><!-- /rechterscherm -->
 <div data-role="footer" data-position="fixed"> 
-	<h4>Footer content</h4> 
+	<h4>Build number (Test): <?php echo $buildnumber; ?></h4> 
 </div> 
 </div><!-- /page -->

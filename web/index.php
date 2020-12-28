@@ -1,7 +1,9 @@
+<?php
+require 'functies.php'; 
+?>
 <html>
 <head>
 <?php require 'headers.php'; ?>
-
 </head>
 <body> 
 
@@ -17,7 +19,6 @@
 
 <div style="width:100%">
 <a href="koelkast.php"><img src="images/koelkast.png" style="width:100%" /></a>
-
 </div>
 <?php require 'paginaeind.php'; ?>
 

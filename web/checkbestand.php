@@ -9,9 +9,15 @@ require 'functies.php';
 		read_intf_init_bottle_content(true);
 		
         break;
-    case 1:
-        echo "i equals 1";
-        break;
+    case "fetch_latest_temp":
+        $command = escapeshellcmd("/usr/bin/python3 " . getenv('WORKSPACE_PATH') . "front_end_actions.py 'fetch_cur_temp'");
+		$command_output = shell_exec($command);
+		$temp_json = json_decode($command_output);
+		
+		print_r($temp_json);
+		
+		
+		break;
     case 2:
         echo "i equals 2";
         break;
