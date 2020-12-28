@@ -76,8 +76,6 @@ function read_intf_init_bottle_content($echo){
 	
 }
 
-namespace DevCoder;
-
 class DotEnv
 {
     /**
@@ -121,8 +119,6 @@ class DotEnv
         }
     }
 }
-
-use DevCoder\DotEnv;
 
 (new DotEnv(__DIR__ . '/.env'))->load();
 
