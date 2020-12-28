@@ -35,7 +35,7 @@ window.setInterval(function(){
 	$.get(intf_current_temp, function (data) {
 		intf_current_temp_output=data;
 		
-		$("#temp").text(intf_current_temp_output + "&#176;C");
+		$("#temp").html(intf_current_temp_output + "&#176;C");
 		
 	});
 }, 2000);
