@@ -57,7 +57,7 @@ def insert_base_records():
         conn.commit()
     print("Basis druivenset verwerkt...")
     print("Inserten dummy temp_measure record")
-    c.execute("INSERT into temp_measures (timestamp, temperature_c, temperature_f) VALUES (CURRENT_TIMESTAMP, 8.5, 47.3)")
+    c.execute("INSERT into temp_measures (timestamp, temperature_c, temperature_f) VALUES (CURRENT_TIMESTAMP, 10, 47.3)")
     conn.commit()
 
 
