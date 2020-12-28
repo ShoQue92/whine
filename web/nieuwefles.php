@@ -23,7 +23,7 @@ $resultaatgrapesoorten = $querygrapesoorten->execute();
 <h3 class="ui-bar ui-bar-a ui-corner-all" style="text-align:center">Toevoegen nieuwe wijnfles</h3>
 
 <div data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" data-icon="null" data-iconpos="null" data-theme="b" class="ui-btn ui-btn-up-b ui-shadow ui-btn-corner-all ui-submit" aria-disabled="false">
-<form name="wijnflestoevoegen" action="actie.php" method="post" autocomplete="off">
+<form name="wijnflestoevoegen" action="acties_post.php" method="post" autocomplete="off">
 	<input type="hidden" name="actie" value="toevoegenfles" />
 	<span class="ui-btn-inner ui-btn-corner-all">
 		<div data-role="fieldcontain">
@@ -99,7 +99,7 @@ $resultaatgrapesoorten = $querygrapesoorten->execute();
 			?>
 		</div>	
 	</span>
-	<button type="submit" data-theme="b" name="submit" value="submit" class="ui-btn-hidden" aria-disabled="false">Opslaan</button>
+	<button type="submit" data-theme="b" name="nieuwefles" value="nieuwefles" class="ui-btn-hidden" aria-disabled="false">Opslaan</button>
 </form>	
 </div>
 

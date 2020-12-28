@@ -3,7 +3,7 @@
 require 'functies.php'; 
 
 if('POST' === $_SERVER['REQUEST_METHOD']){
-	if(isset($_POST["submit"])){
+	if(isset($_POST["nieuwefles"])){
 	# fles gegevens opslaan in csv
 	$nieuweflescsvpad = "interface_files/intf_init_bottle.csv";
 	
