@@ -19,6 +19,12 @@ require 'functies.php';
 		echo "uitvoeren command " . $command . " en uitvoer parsen";
 		
 		$command_output = shell_exec($command);
+		
+		
+		echo "command output:";
+		echo "<br>";
+		echo $command_output;
+		
 		$temp_json = json_decode($command_output);
 		
 		print_r($temp_json);
