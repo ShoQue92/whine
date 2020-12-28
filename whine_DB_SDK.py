@@ -5,14 +5,13 @@ import time
 import traceback
 import sys
 from whine_classes import WhineBottle
+import json
 
 from os.path import join, dirname
 from dotenv import load_dotenv
 
 dotenv_path = join(dirname(__file__), '.env')
 load_dotenv(dotenv_path)
-
-
 
 # gebruiken we overal dus global
 db_path =  os.environ.get("DB_PATH")
@@ -142,7 +141,7 @@ def check_bottle_existance(UID):
     else:
         return False
 
-def fetch_bottle(UID, init = False):
+def fetch_bottle(UID):
     c.execute("SELECT UID, name, main_grape, year, type, date_in_fridge FROM whine_bottles WHERE UID='"+UID+"'")
     data = c.fetchone()
     time.sleep(1)
@@ -155,16 +154,15 @@ def fetch_bottle(UID, init = False):
             "type": data[4],
             "date_in_fridge": data[5]
         }
-        if init == False:
-            print("Fles met UID {} is gevonden!".format(UID))
-            print("----------------------")
-            print("UID: "+bottle["UID"])
-            print("Name: "+bottle["name"])
-            print("Main Grape: "+bottle["main_grape"])
-            print("Year: "+bottle["year"])
-            print("Type wijn: "+bottle["type"])
-            print("Fridge Date: "+bottle["date_in_fridge"])
-            print("----------------------")
+        print("Fles met UID {} is gevonden!".format(UID))
+        print("----------------------")
+        print("UID: "+bottle["UID"])
+        print("Name: "+bottle["name"])
+        print("Main Grape: "+bottle["main_grape"])
+        print("Year: "+bottle["year"])
+        print("Type wijn: "+bottle["type"])
+        print("Fridge Date: "+bottle["date_in_fridge"])
+        print("----------------------")
         return bottle
     else:
         print("Fles niet gevonden!")
@@ -203,7 +201,8 @@ def fetch_latest_temp_measures(c_or_f = "c", raw=True):
             "fahrenheit": data[1],
             "celsius": data[2]
         }
-        return print(temps)    
+        return print(json.dumps(temps))
+        
     else:
         print('..Geen temperatuur meting beschikbaar..'.center(100,'='))
 
