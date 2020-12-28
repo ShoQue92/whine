@@ -1,3 +1,8 @@
+@font-face {
+  font-family: 'DigitalFont';
+  src: url('fonts/ditigalfont.ttf')  format('truetype');
+}
+
 body {
 	background-color: #333333
 }
@@ -5,4 +10,7 @@ body {
 #koelkast{
 	border: none;
 	border-collapse: collapse;
+}
+#temp{
+	font-family: 'DigitalFont', Fallback, sans-serif
 }
