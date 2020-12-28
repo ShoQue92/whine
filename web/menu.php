@@ -21,7 +21,7 @@
 		<form class="userform">
 			<h2>Acties</h2>
 				<a href="#popupDialog_clear" data-rel="popup" data-position-to="window" data-transition="pop" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-icon-delete ui-btn-icon-left ui-btn-b">DB Schonen</a>
-				<div data-role="popup" id="popupDialog_clear" data-overlay-theme="b" data-theme="b" data-dismissible="false" style="max-width:400px;">
+				<div data-role="popup" class="popupDialog_clear" data-overlay-theme="b" data-theme="b" data-dismissible="false" style="max-width:400px;">
 				    <div role="main" class="ui-content">
 				        <h3 class="ui-title">Weet je zeker dat je de DB wilt schonen (wine bottles legen?)</h3>
 				    	<p>Dit kan niet terugedraait worden.</p>
@@ -30,7 +30,7 @@
 				    </div>
 				</div>
 				<a href="#popupDialog_recreate" data-rel="popup" data-position-to="window" data-transition="pop" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-icon-delete ui-btn-icon-left ui-btn-b">DB Recreaten</a>
-				<div data-role="popup" id="popupDialog_recreate" data-overlay-theme="b" data-theme="b" data-dismissible="false" style="max-width:400px;">
+				<div data-role="popup" class="popupDialog_recreate" data-overlay-theme="b" data-theme="b" data-dismissible="false" style="max-width:400px;">
 				    <div role="main" class="ui-content">
 				        <h3 class="ui-title">Weet je zeker dat je de DB wilt recreaten?</h3>
 				    	<p>Dit kan niet terugedraait worden.</p>
