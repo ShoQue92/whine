@@ -44,7 +44,7 @@ if('GET' === $_SERVER['REQUEST_METHOD']){
 			fclose($fp);
 			break;		
 			
-		
+		}
 	}
 
 }
