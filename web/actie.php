@@ -1,5 +1,7 @@
 <?php
 
+require 'functies.php'; 
+
 if('POST' === $_SERVER['REQUEST_METHOD']){
 	if(isset($_POST["submit"])){
 	# fles gegevens opslaan in csv
@@ -21,7 +23,7 @@ if('POST' === $_SERVER['REQUEST_METHOD']){
 	
 	# hier nog python script aanroepen.
 	
-	$command = escapeshellcmd("/usr/bin/python3 /home/jenkins/workspace/Whine_main/front_end_actions.py 'process_bottle' 'intf_init_bottle.csv' '/var/www/html/interface_files'");
+	$command = escapeshellcmd("/usr/bin/python3 " . getenv('WORKSPACE_PATH') . "front_end_actions.py 'process_bottle' 'intf_init_bottle.csv' '" . getenv('INTF_ENV') . "'");
 	$command_output = shell_exec($command);
 
 	}

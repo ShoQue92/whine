@@ -1,3 +1,6 @@
+<?php
+require 'functies.php'; 
+?>
 <html>
 <head>
 <?php require 'headers.php'; ?>
