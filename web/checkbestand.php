@@ -29,6 +29,9 @@ require 'functies.php';
 		
 		print_r($temp_json);
 		
+		echo "<br>";
+		echo "Celsius: " . $temp_json['celsius'];
+		
 		
 		break;
     case 2:
