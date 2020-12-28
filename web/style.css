@@ -12,5 +12,5 @@ body {
 	border-collapse: collapse;
 }
 #temp{
-	font-family: 'DigitalFont', Fallback, sans-serif
+	font-family: 'DigitalFont', Fallback, sans-serif; text-align:center;width:100%
 }
