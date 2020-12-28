@@ -38,7 +38,7 @@ window.setInterval(function(){
 		$("#temp").text(intf_current_temp_output);
 		
 	});
-}, 1000);
+}, 2000);
 
 </script>
 <?php
