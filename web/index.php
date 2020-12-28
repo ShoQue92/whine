@@ -17,7 +17,7 @@
 
 <div style="width:100%">
 <a href="koelkast.php"><img src="images/koelkast.png" style="width:100%" /></a>
-
+testenv:
 <?php
 echo getenv('INTF_ENV');
 // dev
