@@ -74,7 +74,7 @@ if('GET' === $_SERVER['REQUEST_METHOD']){
 		<script type="text/javascript">
 			setTimeout(function(){
 				window.location.href = 'index.php';
-			}, 5000);
+			}, 1000);
 		</script>
 		<?php
 	}
