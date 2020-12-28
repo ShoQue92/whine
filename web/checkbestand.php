@@ -12,8 +12,6 @@ require 'functies.php';
     case "fetch_latest_temp":
 		$command = escapeshellcmd("/usr/bin/python3 " . getenv('WORKSPACE_PATH') . "front_end_actions.py 'fetch_cur_temp'");
 		$command_output = shell_exec($command);
-
-		echo $command_output;
 		
 		$temp_json = json_decode($command_output,true);
 		
