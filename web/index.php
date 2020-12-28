@@ -16,7 +16,7 @@ require 'functies.php';
 <a href="nieuwefles.php" class="ui-btn ui-shadow" data-transition="pop">Toevoegen Nieuwe Fles</a>
 </div>
 
-<div id="temp"></div>
+<div id="temp"> </div>
 <div style="width:100%">
 <a href="koelkast.php"><img src="images/koelkast.png" style="width:100%" /></a>
 </div>
