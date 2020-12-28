@@ -10,7 +10,14 @@ require 'functies.php';
 		
         break;
     case "fetch_latest_temp":
-        $command = escapeshellcmd("/usr/bin/python3 " . getenv('WORKSPACE_PATH') . "front_end_actions.py 'fetch_cur_temp'");
+		echo "actie = fetch latest temp";
+		
+		echo "<br>";
+        
+		
+		$command = escapeshellcmd("/usr/bin/python3 " . getenv('WORKSPACE_PATH') . "front_end_actions.py 'fetch_cur_temp'");
+		echo "uitvoeren command " . $command . " en uitvoer parsen";
+		
 		$command_output = shell_exec($command);
 		$temp_json = json_decode($command_output);
 		
