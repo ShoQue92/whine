@@ -24,9 +24,8 @@ if('POST' === $_SERVER['REQUEST_METHOD']){
 	# hier nog python script aanroepen.
 	
 	$command = escapeshellcmd("/usr/bin/python3 " . getenv('WORKSPACE_PATH') . "front_end_actions.py 'process_bottle' 'intf_init_bottle.csv' '" . getenv('INTF_ENV') . "'");
-	#$command_output = shell_exec($command);
+	$command_output = shell_exec($command);
 	
-
 	}
 	else {
 			$foutmelding = "nee2";
@@ -53,13 +52,12 @@ else {
 	}
 	else{
 		echo "Succesvol aangepast..";
-		echo $command;
 		?>
-		<!--<script type="text/javascript">
+		<script type="text/javascript">
 			setTimeout(function(){
 				window.location.href = 'index.php';
 			}, 1000);
-		</script>-->
+		</script>
 		<?php
 	}
 ?>
