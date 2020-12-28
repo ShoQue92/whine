@@ -28,6 +28,18 @@ window.setInterval(function(){
 	});
 }, 1000);
 
+var intf_current_temp = 'checkbestand.php?actie=fetch_latest_temp';
+var intf_current_temp_output;
+
+window.setInterval(function(){
+	$.get(intf_current_temp, function (data) {
+		intf_current_temp_output=data;
+		
+		$("#temp").text(intf_current_temp_output);
+		
+	});
+}, 5000);
+
 </script>
 <?php
 }

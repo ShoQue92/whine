@@ -20,6 +20,9 @@ require 'functies.php';
 <div style="width:100%">
 <a href="koelkast.php"><img src="images/koelkast.png" style="width:100%" /></a>
 </div>
+<div id="temp"></div>
+
+
 <?php require 'paginaeind.php'; ?>
 
 </body>
