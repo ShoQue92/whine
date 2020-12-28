@@ -25,7 +25,7 @@ require 'functies.php';
 		echo "<br>";
 		echo $command_output;
 		
-		$temp_json = json_decode($command_output);
+		$temp_json = json_decode($command_output,true);
 		
 		print_r($temp_json);
 		
