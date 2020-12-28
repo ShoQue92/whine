@@ -21,7 +21,7 @@
 		<form class="userform">
 			<h2>Acties</h2>
 				<?php
-					$randomnummer = rand(0, 300);
+					$randomnummer = rand(0, 5000);
 				?>
 				<a href="#popupDialog_clear_<?php echo $randomnummer; ?>" data-rel="popup" data-position-to="window" data-transition="pop" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-icon-delete ui-btn-icon-left ui-btn-b">DB Schonen</a>
 				<div data-role="popup" id="popupDialog_clear_<?php echo $randomnummer; ?>" data-overlay-theme="b" data-theme="b" data-dismissible="false" style="max-width:400px;">
@@ -45,6 +45,6 @@
 
 </div><!-- /rechterscherm -->
 <div data-role="footer" data-position="fixed"> 
-	<h4>Footer content</h4> 
+	<h4>Build number (Test): <?php echo $buildnumber; ?></h4> 
 </div> 
 </div><!-- /page -->

@@ -122,4 +122,5 @@ class DotEnv
 
 (new DotEnv(__DIR__ . '/.env'))->load();
 
+$buildnumber = file_get_contents('jenkins_build_dts.txt');
 ?>
