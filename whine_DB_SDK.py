@@ -56,10 +56,6 @@ def insert_base_records():
         c.execute('INSERT INTO grapes (grape) VALUES (?)', (grape,))
         conn.commit()
     print("Basis druivenset verwerkt...")
-    print("Inserten dummy temp_measure record")
-    c.execute("INSERT into temp_measures (timestamp, temperature_c, temperature_f) VALUES (CURRENT_TIMESTAMP, 10, 47.3)")
-    conn.commit()
-
 
 ################# Einde Database gedeelte ###################
 
