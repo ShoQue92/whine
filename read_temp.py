@@ -25,7 +25,7 @@ base_dir = '/sys/bus/w1/devices/'
 device_folder = glob.glob(base_dir + '28*')[0]
 device_file = device_folder + '/w1_slave'
 
-sleep = int(input('Selecteer optie voor temperatuurmeting in seconden'))
+sleep = int(input('Geef de interval in seconden:'))
 
 sleep_min = sleep / 60
 
