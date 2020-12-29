@@ -93,11 +93,10 @@ def add_whine_property(UID, property, value):
             return message
 
 def log_temp(temp_c, temp_f, now):
-    if temp_c is not None and temp_f is not None:
-        c.execute("INSERT into temp_measures (timestamp, temperature_c, temperature_f) VALUES (CURRENT_TIMESTAMP, ?, ?)", (temp_c, temp_f))
-        conn.commit()
-        message = print("Temperatuurmeting op:", now, 'Celsius:', temp_c, 'Fahrenheit:', temp_f)
-        return message
+    c.execute("INSERT into temp_measures (timestamp, temperature_c, temperature_f) VALUES (CURRENT_TIMESTAMP, ?, ?)", (temp_c, temp_f))
+    conn.commit()
+    message = print("Temperatuurmeting op:", now, 'Celsius:', temp_c, 'Fahrenheit:', temp_f)
+    return message
 
 ################# Einde toevoegen  ###################
  
