@@ -44,7 +44,11 @@
 		</form>
 
 </div><!-- /rechterscherm -->
+<?php
+// checken welke omgeving we zitten
+$omgeving = substr(dirname(__FILE__),-5,5);
+?>
 <div data-role="footer" data-position="fixed"> 
-	<h4>Build number (Test): <?php echo $buildnumber; ?></h4> 
+	<h4>Build number (<?php echo $omgeving; ?>): <?php echo $buildnumber; ?></h4> 
 </div> 
 </div><!-- /page -->
