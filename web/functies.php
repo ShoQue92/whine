@@ -37,8 +37,15 @@ var intf_current_temp_output;
 window.setInterval(function(){
 	$.get(intf_current_temp, function (data) {
 		intf_current_temp_output=data;
+		if(intf_current_temp_output.length < 1){
+			// leeg, melding
+			$(".temp").html("Geen temperatuur beschikbaar");
+		}
+		else{
+			// temp tonen
+			$(".temp").html(intf_current_temp_output + "&#176;C");
+		}
 		
-		$(".temp").html(intf_current_temp_output + "&#176;C");
 		
 	});
 }, 2000);
