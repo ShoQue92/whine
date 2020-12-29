@@ -7,6 +7,7 @@ from whine_DB_SDK import fetch_latest_temp_measures
 from whine_DB_SDK import fetch_avg_temp
 from whine_DB_SDK import fetch_avg_temp_bottle
 from whine_DB_SDK import clear_temps
+from whine_DB_SDK import add_rating
 from whine_base import process_return_file
 from whine_base import process_bottle_property_return_file
 from sys import argv
@@ -32,7 +33,8 @@ commands = {
        "fetch_cur_temp":fetch_latest_temp_measures,
        "fetch_avg_temp_bottle": fetch_avg_temp_bottle,
        "fetch_avg_temp": fetch_avg_temp,
-       "clear_temps": clear_temps
+       "clear_temps": clear_temps,
+       "add_rating": add_rating
 }
 
 # bestandsnaam negeren
