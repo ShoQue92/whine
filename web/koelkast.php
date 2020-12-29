@@ -105,7 +105,7 @@ function getwijnsoort($wijnsoort, $resultaat){
 							<tr>
 								<td style="width:50%"><?php echo $eigenschaprij['property']; ?></td>
 								<td style="text-align:right;width:40%"><?php echo $eigenschaprij['value']; ?></td>
-								<td style="text-align:right;width:10%"><span class="ui-icon-delete"></span></td>
+								<td style="text-align:right;width:10%"><a href="index.html" class="ui-btn ui-shadow ui-corner-all ui-icon-delete ui-btn-icon-notext">Delete</a></span></td>
 							</tr>
 						
 						<?php
