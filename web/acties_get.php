@@ -26,6 +26,24 @@ if('GET' === $_SERVER['REQUEST_METHOD']){
 			}
 			break;
 		
+		case "fleseigenschapverwijderen":
+		
+			$id = $_GET["id"];
+			
+			if(is_numeric($id)){
+			
+				$command = escapeshellcmd("/usr/bin/python3 " . getenv('WORKSPACE_PATH') . "front_end_actions.py 'delete_bottle_property' '" . $id . "'");
+				$command_output = shell_exec($command);
+				
+				$redirecthome = true;
+			
+			}
+			else{
+				$redirecthome = false;
+				$foutmelding = "id geen int";
+			}
+			break;
+		
 		case "clear_db":
 			// aanroepen functie met echo = ja
 			$command = escapeshellcmd("/usr/bin/python3 " . getenv('WORKSPACE_PATH') . "front_end_actions.py 'clear_db'");
