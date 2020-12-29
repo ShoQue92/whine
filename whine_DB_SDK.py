@@ -239,4 +239,9 @@ def clear_results():
     conn.commit()
     return print('Tabel \'whine_bottles\' & \'bottle_properties\' succesvol geleegd!')
 
+def clear_temps():
+    c.execute('''DELETE FROM temp_measures ''')
+    conn.commit()
+    return print('Tabel \'temp_measures\' succesvol geleegd!')
+
 ################# Einde Verwijderen uit database ##############
