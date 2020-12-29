@@ -48,7 +48,6 @@ if('POST' === $_SERVER['REQUEST_METHOD']){
 			$command = escapeshellcmd("/usr/bin/python3 " . getenv('WORKSPACE_PATH') . "front_end_actions.py 'process_bottle_properties' 'intf_prop_bottle.csv' '" . getenv('INTF_ENV') . "'");
 			$command_output = shell_exec($command);
 			
-		}
 
 	}
 	else {
