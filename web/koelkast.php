@@ -51,6 +51,7 @@ $vertaling = array('Druifsoort' => 'main_grape', 'Jaar' => 'year', 'Datum in koe
 function getwijnsoort($wijnsoort, $resultaat){
 	global $tablesquery;
 	global $vertaling;
+	global $resultaatqueryfleseigenschappen;
 	
 	// geeft de inhoud vd wijnkoeler weer, kan aangeroepen worden met wijnsoort (rood, wit, rose) als input.
 		?>
