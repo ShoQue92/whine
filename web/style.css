@@ -25,3 +25,6 @@ body {
 	display:inline;
 	overflow:hidden
 }
+td.eigenschapverwijderen a:after{
+	background-color:#ff0000
+}
