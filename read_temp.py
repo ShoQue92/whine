@@ -35,7 +35,7 @@ elif sleep_raw == 2:
 elif sleep_raw == 3:
     sleep = 3600
 else:
-    print("Ongeldige optie opgegeven (", sleep_raw, ')! Default wordt toegepast')
+    print("Ongeldige optie opgegeven ([", sleep_raw, '])! Default (10 minuten) wordt toegepast')
     sleep = 600
 
 sleep_min = sleep / 60
