@@ -108,9 +108,9 @@ function getwijnsoort($wijnsoort, $resultaat){
 					<div style="padding:10px 20px;">
 						<h3>Eigenschap toevoegen</h3>
 						<label for="eigenschap" class="ui-hidden-accessible">Eigenschap</label>
-						<input type="text" name="eigenschap" value="" placeholder="eigenschap" data-theme="a">
+						<input type="text" name="eigenschap" placeholder="eigenschap" data-theme="a">
 						<label for="waarde" class="ui-hidden-accessible">Waarde</label>
-						<input type="text" name="waarde" value="" placeholder="waarde" data-theme="a">
+						<input type="text" name="waarde" placeholder="waarde" data-theme="a">
 						<input type="hidden" name="uid" value="<?php echo $row['UID']; ?>">
 						<button type="submit" class="ui-btn ui-corner-all ui-shadow ui-btn-b ui-btn-icon-left ui-icon-check" name="nieuwefleseigenschap" value="nieuwefleseigenschap">Opslaan</button>
 					</div>
