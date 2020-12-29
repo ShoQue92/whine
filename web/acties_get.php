@@ -43,7 +43,7 @@ if('GET' === $_SERVER['REQUEST_METHOD']){
 			fputcsv($fp, $headerregel, ";", '"');
 			fclose($fp);
 			break;		
-		case "recreate_db":
+		case "cleantemptable":
 			$command = escapeshellcmd("/usr/bin/python3 " . getenv('WORKSPACE_PATH') . "front_end_actions.py 'clear_temps'");
 			$command_output = shell_exec($command);
 			$redirecthome = true;
