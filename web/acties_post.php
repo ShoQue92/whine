@@ -53,9 +53,9 @@ if('POST' === $_SERVER['REQUEST_METHOD']){
 		else{
 			$foutmelding = "nee3";
 			echo "<br>";
-			echo $eigenschap;
+			echo $_POST["eigenschap"];
 			echo "<br>";
-			echo $waarde;
+			echo $_POST["waarde"];
 			echo "<br>";
 			echo $_POST["uid"];
 			$redirecthome = false;
