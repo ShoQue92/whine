@@ -52,6 +52,12 @@ if('POST' === $_SERVER['REQUEST_METHOD']){
 		}
 		else{
 			$foutmelding = "nee3";
+			echo "<br>";
+			echo $eigenschap;
+			echo "<br>";
+			echo $waarde;
+			echo "<br>";
+			echo $_POST["uid"];
 			$redirecthome = false;
 		}
 
