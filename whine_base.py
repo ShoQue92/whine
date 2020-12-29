@@ -69,34 +69,3 @@ def process_bottle_property_return_file(prop_file, tgt_dir):
             value = line[2]
             add_whine_property(UID, property, value)
         return print("Fles eigenschappen toegevoegd!")
-
-#recreate_table() #-- voor aanmaken nieuwe tabel (bij lege db)
-
-#Twee test flessen toevoegen.
-#fles = WhineBottle('vb1', 'test', 'test', '', '')
-#print(fles)
-#fles2 = WhineBottle('vb2', '', '', '', '')
-#add_whine(fles.UID, fles.name, fles.main_grape, fles.year, fles.properties, datetime.datetime.now())
-#add_whine(fles2.UID, fles2.name, fles2.main_grape, fles2.year, fles2.properties, datetime.datetime.now())
-
-#Properties voor een fles toevoegen
-#add_whine_property('vb1','Body','Full')
-#add_whine_property('vb1','Sweetness','Aanwezig')
-#add_whine_property('vb2','nasmaak','vies')
-#add_whine_property('vb2','smaak','goed')
-#fetch_bottle_properties('vb1')
-# fles scannen
-#fetch_bottle("vb1")
-
-#delete_selected("vb2")
-#fetch_bottle("vb4")
-
-
-#print(fles.properties)
-
-#aanmaken csv bestand
-#create_init_file(tgt_file,tgt_dir,'vb1')
-#process_return_file(tgt_file,tgt_dir)
-
-#export_bottle_properties_csv('bottle_properties.csv', tgt_dir)
-#recreate_table()
