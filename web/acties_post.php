@@ -26,7 +26,6 @@ if('POST' === $_SERVER['REQUEST_METHOD']){
 	
 	}
 	elseif(isset($_POST["nieuwefleseigenschap"])){
-		if(isset($_POST["eigenschap"]) && strlen($_POST["eigenschap"]>0) && isset($_POST["waarde"]) && strlen($_POST["waarde"]>0) && isset($_POST["uid"])){
 			$eigenschap = $_POST["eigenschap"];
 			$waarde = $_POST["waarde"];
 			
@@ -49,16 +48,6 @@ if('POST' === $_SERVER['REQUEST_METHOD']){
 			$command = escapeshellcmd("/usr/bin/python3 " . getenv('WORKSPACE_PATH') . "front_end_actions.py 'process_bottle_properties' 'intf_prop_bottle.csv' '" . getenv('INTF_ENV') . "'");
 			$command_output = shell_exec($command);
 			
-		}
-		else{
-			$foutmelding = "nee3";
-			$foutmelding = $foutmelding . "<br>";
-			$foutmelding = $foutmelding . $_POST["eigenschap"];
-			$foutmelding = $foutmelding . "<br>";
-			$foutmelding = $foutmelding . $_POST["waarde"];
-			$foutmelding = $foutmelding . "<br>";
-			$foutmelding = $foutmelding . $_POST["uid"];
-			$redirecthome = false;
 		}
 
 	}
