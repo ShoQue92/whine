@@ -56,13 +56,13 @@ window.setInterval(function(){
 		intf_current_buildnum_output=data;
 		if($(".buildnum").text() < intf_current_buildnum_output){
 			$(".buildnum").animate({color:red},500,function(){
-				$(".buildnum").animate({width:0px},1000,function(){
+				/*$(".buildnum").animate({width:0px},1000,function(){
 					$(".buildnum").text(intf_current_buildnum_output);
 					$(".buildnum").css({"color":"green"});
 					$(".buildnum").animate({width:auto},1000,function(){
 						$(".buildnum").css({"color":"black"});
 					});
-				});
+				});*/
 			});
 			
 			
