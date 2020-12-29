@@ -72,12 +72,19 @@ def add_whine(UID, name, main_grape, year, type, properties, date_in_fridge):
         # regel is al gevonden, dus niet opnieuw inserten
         message = print("Fles met tag " + UID + " bestaat al, dus inserten gaat niet door.")
     else:
-        c.execute('INSERT INTO whine_bottles (UID, name, main_grape, year, type, date_in_fridge) VALUES (?, ?, ?, ?, ?, ?)', (UID, name, main_grape, year, type, date_in_fridge))
-        conn.commit()
-        #Add bottle properties
-        #add_whine_properties(UID, properties)
-        message = print('Fles {} succesvol toegevoegd op {}'.format(UID,date_in_fridge))
-        return message
+        try:
+            c.execute('INSERT INTO whine_bottles (UID, name, main_grape, year, type, date_in_fridge) VALUES (?, ?, ?, ?, ?, ?)', (UID, name, main_grape, year, type, date_in_fridge))
+            conn.commit()
+            #Add bottle properties
+            #add_whine_properties(UID, properties)
+            message = print('Fles {} succesvol toegevoegd op {}'.format(UID,date_in_fridge))
+            return message
+        except sqlite3.Error as er:
+            print('SQLite error: %s' % (' '.join(er.args)))
+            print("Exception class is: ", er.__class__)
+            print('SQLite traceback: ')
+            exc_type, exc_value, exc_tb = sys.exc_info()
+            print(traceback.format_exception(exc_type, exc_value, exc_tb))
 
 def add_whine_property(UID, property, value):
     if property is not None and value is not None:
@@ -87,22 +94,43 @@ def add_whine_property(UID, property, value):
             # regel is al gevonden, dus niet opnieuw inserten
             message = print("Eigenschap " + property + " bestaat al voor deze fles, dus inserten gaat niet door.")
         else:
-            c.execute('INSERT INTO bottle_properties (UID, property, value) VALUES (?, ?, ?)', (UID, property, value))
-            conn.commit()
-            message = print("Verwerking fles "+UID+"\'s eigenschap "+property+" met succes!")
-            return message
+            try:
+                c.execute('INSERT INTO bottle_properties (UID, property, value) VALUES (?, ?, ?)', (UID, property, value))
+                conn.commit()
+                message = print("Verwerking fles "+UID+"\'s eigenschap "+property+" met succes!")
+                return message
+            except sqlite3.Error as er:
+                print('SQLite error: %s' % (' '.join(er.args)))
+                print("Exception class is: ", er.__class__)
+                print('SQLite traceback: ')
+                exc_type, exc_value, exc_tb = sys.exc_info()
+                print(traceback.format_exception(exc_type, exc_value, exc_tb))
 
 def log_temp(temp_c, temp_f, now):
-    c.execute("INSERT into temp_measures (timestamp, temperature_c, temperature_f) VALUES (CURRENT_TIMESTAMP, ?, ?)", (temp_c, temp_f))
-    conn.commit()
-    message = print("Temperatuurmeting op:", now, 'Celsius:', temp_c, 'Fahrenheit:', temp_f)
-    return message
+    try:
+        c.execute("INSERT into temp_measures (timestamp, temperature_c, temperature_f) VALUES (CURRENT_TIMESTAMP, ?, ?)", (temp_c, temp_f))
+        conn.commit()
+        message = print("Temperatuurmeting op:", now, 'Celsius:', temp_c, 'Fahrenheit:', temp_f)
+        return message
+    except sqlite3.Error as er:
+        print('SQLite error: %s' % (' '.join(er.args)))
+        print("Exception class is: ", er.__class__)
+        print('SQLite traceback: ')
+        exc_type, exc_value, exc_tb = sys.exc_info()
+        print(traceback.format_exception(exc_type, exc_value, exc_tb))
 
 def add_rating(UID, name, rating):
-    c.execute("INSERT into whine_rating (UID, name, ratring, date_rating) VALUES (?, ?, ?, CURRENT_TIMESTAMP)", (UID, name, rating ))
-    conn.commit()
-    message = print("Beoordeling ({}) van {} voor fles {} succesvol opgeslagen".format(rating, name, UID))
-    return message
+    try:
+        c.execute("INSERT into whine_rating (UID, name, ratring, date_rating) VALUES (?, ?, ?, CURRENT_TIMESTAMP)", (UID, name, rating ))
+        conn.commit()
+        message = print("Beoordeling ({}) van {} voor fles {} succesvol opgeslagen".format(rating, name, UID))
+        return message
+    except sqlite3.Error as er:
+        print('SQLite error: %s' % (' '.join(er.args)))
+        print("Exception class is: ", er.__class__)
+        print('SQLite traceback: ')
+        exc_type, exc_value, exc_tb = sys.exc_info()
+        print(traceback.format_exception(exc_type, exc_value, exc_tb))
 
 ################# Einde toevoegen  ###################
  
@@ -126,137 +154,218 @@ def update_whine(UID, name, main_grape, year, type):
 ################# Ophalen database ###################
 
 def export_bottle_properties_csv(tgt_file,tgt_dir):
-    print("Alle flessen worden opgehaald!")
-    c.execute("SELECT UID, property, value FROM bottle_properties")
-    data = c.fetchall()
     try:
-        with open(tgt_file, 'w+', newline='') as csv_file:
-            writer = csv.writer(csv_file, delimiter=';')
-            for i in range(0, len(data)):
-                writer.writerow(data[i])
-            #Remove last line, since it is blank
-            csv_file.seek(0, os.SEEK_END)
-            csv_file.seek(csv_file.tell()-2, os.SEEK_SET)
-            csv_file.truncate()
-            return print(tgt_file+ " succesvol aangemaakt op "+tgt_dir)
-    except IOError:
-            print("Kon bestand " +tgt_file+ "niet aanmaken...")
+        print("Alle flessen worden opgehaald!")
+        c.execute("SELECT UID, property, value FROM bottle_properties")
+        data = c.fetchall()
+        try:
+            with open(tgt_file, 'w+', newline='') as csv_file:
+                writer = csv.writer(csv_file, delimiter=';')
+                for i in range(0, len(data)):
+                    writer.writerow(data[i])
+                #Remove last line, since it is blank
+                csv_file.seek(0, os.SEEK_END)
+                csv_file.seek(csv_file.tell()-2, os.SEEK_SET)
+                csv_file.truncate()
+                return print(tgt_file+ " succesvol aangemaakt op "+tgt_dir)
+        except IOError:
+                print("Kon bestand " +tgt_file+ "niet aanmaken...")
+                
+    except sqlite3.Error as er:
+        print('SQLite error: %s' % (' '.join(er.args)))
+        print("Exception class is: ", er.__class__)
+        print('SQLite traceback: ')
+        exc_type, exc_value, exc_tb = sys.exc_info()
+        print(traceback.format_exception(exc_type, exc_value, exc_tb))
 
 def check_bottle_existance(UID):
-    time.sleep(0.5)
-    message = "Er wordt gekeken of fles {} reeds bestaat".format(UID)
-    print(message)
-    c.execute("SELECT UID, name, main_grape, year, type, date_in_fridge FROM whine_bottles WHERE UID='"+UID+"'")
-    data = c.fetchone()
-    if data:
-        return True
-    else:
-        return False
+    try:
+        time.sleep(0.5)
+        message = "Er wordt gekeken of fles {} reeds bestaat".format(UID)
+        print(message)
+        c.execute("SELECT UID, name, main_grape, year, type, date_in_fridge FROM whine_bottles WHERE UID='"+UID+"'")
+        data = c.fetchone()
+        if data:
+            return True
+        else:
+            return False
+
+    except sqlite3.Error as er:
+        print('SQLite error: %s' % (' '.join(er.args)))
+        print("Exception class is: ", er.__class__)
+        print('SQLite traceback: ')
+        exc_type, exc_value, exc_tb = sys.exc_info()
+        print(traceback.format_exception(exc_type, exc_value, exc_tb))
 
 def fetch_bottle(UID):
-    c.execute("SELECT UID, name, main_grape, year, type, date_in_fridge FROM whine_bottles WHERE UID='"+UID+"'")
-    data = c.fetchone()
-    time.sleep(1)
-    if data:
-        bottle = {
-            'UID': data[0],
-            "name": data[1],
-            "main_grape": data[2],
-            "year": data[3],
-            "type": data[4],
-            "date_in_fridge": data[5]
-        }
-        print("Fles met UID {} is gevonden!".format(UID))
-        print("----------------------")
-        print("UID: "+bottle["UID"])
-        print("Name: "+bottle["name"])
-        print("Main Grape: "+bottle["main_grape"])
-        print("Year: "+bottle["year"])
-        print("Type wijn: "+bottle["type"])
-        print("Fridge Date: "+bottle["date_in_fridge"])
-        print("----------------------")
-        return bottle
-    else:
-        print("Fles niet gevonden!")
+    try:
+        c.execute("SELECT UID, name, main_grape, year, type, date_in_fridge FROM whine_bottles WHERE UID='"+UID+"'")
+        data = c.fetchone()
+        time.sleep(1)
+        if data:
+            bottle = {
+                'UID': data[0],
+                "name": data[1],
+                "main_grape": data[2],
+                "year": data[3],
+                "type": data[4],
+                "date_in_fridge": data[5]
+            }
+            print("Fles met UID {} is gevonden!".format(UID))
+            print("----------------------")
+            print("UID: "+bottle["UID"])
+            print("Name: "+bottle["name"])
+            print("Main Grape: "+bottle["main_grape"])
+            print("Year: "+bottle["year"])
+            print("Type wijn: "+bottle["type"])
+            print("Fridge Date: "+bottle["date_in_fridge"])
+            print("----------------------")
+            return bottle
+        else:
+            print("Fles niet gevonden!")
+
+    except sqlite3.Error as er:
+        print('SQLite error: %s' % (' '.join(er.args)))
+        print("Exception class is: ", er.__class__)
+        print('SQLite traceback: ')
+        exc_type, exc_value, exc_tb = sys.exc_info()
+        print(traceback.format_exception(exc_type, exc_value, exc_tb))
 
 def fetch_bottle_properties(UID):
-    print("De eigenschappen van fles {} worden opgehaald".format(UID))
-    c.execute("SELECT UID, property, value FROM bottle_properties WHERE UID='"+UID+"' order by property")
-    headers = list(map(lambda x: x[0], c.description))
-    data = c.fetchall()
-    if data:
-        print("Eigenschappen voor fles {} gevonden!".format(UID))
-        print("----------------------")
-        datalist = []
-        propertynum=1
-        for row in data:
-            rowdict = dict(zip(headers,row))
-            datalist.append(rowdict)
-            if propertynum > 1:
-                print("----------------------")
-            print("Property regel "+str(propertynum))
-            print("UID: "+rowdict['UID'])
-            print("Property: "+rowdict['property'])
-            print("Value: "+rowdict['value'])
-            propertynum += 1
-        print("----------------------")
-        return datalist
-    else:
-        print("Fles eigenschappen niet gevonden!")
+    try:
+        print("De eigenschappen van fles {} worden opgehaald".format(UID))
+        c.execute("SELECT UID, property, value FROM bottle_properties WHERE UID='"+UID+"' order by property")
+        headers = list(map(lambda x: x[0], c.description))
+        data = c.fetchall()
+        if data:
+            print("Eigenschappen voor fles {} gevonden!".format(UID))
+            print("----------------------")
+            datalist = []
+            propertynum=1
+            for row in data:
+                rowdict = dict(zip(headers,row))
+                datalist.append(rowdict)
+                if propertynum > 1:
+                    print("----------------------")
+                print("Property regel "+str(propertynum))
+                print("UID: "+rowdict['UID'])
+                print("Property: "+rowdict['property'])
+                print("Value: "+rowdict['value'])
+                propertynum += 1
+            print("----------------------")
+            return datalist
+        else:
+            print("Fles eigenschappen niet gevonden!")
+
+    except sqlite3.Error as er:
+        print('SQLite error: %s' % (' '.join(er.args)))
+        print("Exception class is: ", er.__class__)
+        print('SQLite traceback: ')
+        exc_type, exc_value, exc_tb = sys.exc_info()
+        print(traceback.format_exception(exc_type, exc_value, exc_tb))
 
 def fetch_latest_temp_measures(c_or_f = "c", raw=True):
-    c.execute("SELECT timestamp, temperature_f, temperature_c FROM temp_measures WHERE timestamp >= (SELECT MAX(timestamp) FROM temp_measures)")
-    data = c.fetchone()
-    if data:
-        temps = {
-            "timestamp": data[0],
-            "fahrenheit": data[1],
-            "celsius": data[2]
-        }
-        return print(json.dumps(temps))
-        
-    else:
-        print('..Geen temperatuur meting beschikbaar..'.center(100,'='))
+    try:
+        c.execute("SELECT timestamp, temperature_f, temperature_c FROM temp_measures WHERE timestamp >= (SELECT MAX(timestamp) FROM temp_measures)")
+        data = c.fetchone()
+        if data:
+            temps = {
+                "timestamp": data[0],
+                "fahrenheit": data[1],
+                "celsius": data[2]
+            }
+            return print(json.dumps(temps))
+            
+        else:
+            print('..Geen temperatuur meting beschikbaar..'.center(100,'='))
+
+    except sqlite3.Error as er:
+        print('SQLite error: %s' % (' '.join(er.args)))
+        print("Exception class is: ", er.__class__)
+        print('SQLite traceback: ')
+        exc_type, exc_value, exc_tb = sys.exc_info()
+        print(traceback.format_exception(exc_type, exc_value, exc_tb))
 
 def fetch_avg_temp_bottle(UID):
-    c.execute("SELECT avg(temperature_f), avg(temperature_c) FROM temp_measures WHERE timestamp >= (SELECT date_in_fridge FROM whine_bottles WHERE UID = '"+UID+"')")
-    data = c.fetchone()
-    if data:
-        avg_temp = {
-            "Fles": UID,
-            "Average temp celcius": data[0],
-            "Average temp fahrenheit": data[1]
-        }
-        return print(avg_temp)
+    try:
+        c.execute("SELECT avg(temperature_f), avg(temperature_c) FROM temp_measures WHERE timestamp >= (SELECT date_in_fridge FROM whine_bottles WHERE UID = '"+UID+"')")
+        data = c.fetchone()
+        if data:
+            avg_temp = {
+                "Fles": UID,
+                "Average temp celcius": data[0],
+                "Average temp fahrenheit": data[1]
+            }
+            return print(avg_temp)
+
+    except sqlite3.Error as er:
+        print('SQLite error: %s' % (' '.join(er.args)))
+        print("Exception class is: ", er.__class__)
+        print('SQLite traceback: ')
+        exc_type, exc_value, exc_tb = sys.exc_info()
+        print(traceback.format_exception(exc_type, exc_value, exc_tb))
 
 def fetch_avg_temp():
-    c.execute("SELECT avg(temperature_f), avg(temperature_c) FROM temp_measures")
-    data = c.fetchone()
-    if data:
-        avg_temp = {
-            "Average temp celcius": data[0],
-            "Average temp fahrenheit": data[1]
-        }
-        return print(avg_temp)
+    try:
+        c.execute("SELECT avg(temperature_f), avg(temperature_c) FROM temp_measures")
+        data = c.fetchone()
+        if data:
+            avg_temp = {
+                "Average temp celcius": data[0],
+                "Average temp fahrenheit": data[1]
+            }
+            return print(avg_temp)
+
+    except sqlite3.Error as er:
+        print('SQLite error: %s' % (' '.join(er.args)))
+        print("Exception class is: ", er.__class__)
+        print('SQLite traceback: ')
+        exc_type, exc_value, exc_tb = sys.exc_info()
+        print(traceback.format_exception(exc_type, exc_value, exc_tb))
+
 ################# Einde Ophalen database ###################
 
 ################# Verwijderen uit database ###################
 
 def delete_selected(UID):
-    c.execute("DELETE FROM whine_bottles WHERE UID='"+UID+"'")
-    c.execute("DELETE FROM bottle_properties WHERE UID='"+UID+"'")
-    conn.commit()
-    return print('Fles {} is succesvol verwijderd'.format(UID))
+    try:
+        c.execute("DELETE FROM whine_bottles WHERE UID='"+UID+"'")
+        c.execute("DELETE FROM bottle_properties WHERE UID='"+UID+"'")
+        conn.commit()
+        return print('Fles {} is succesvol verwijderd'.format(UID))
+
+    except sqlite3.Error as er:
+        print('SQLite error: %s' % (' '.join(er.args)))
+        print("Exception class is: ", er.__class__)
+        print('SQLite traceback: ')
+        exc_type, exc_value, exc_tb = sys.exc_info()
+        print(traceback.format_exception(exc_type, exc_value, exc_tb))
 
 def clear_results():
-    c.execute('''DELETE FROM whine_bottles ''')
-    c.execute('''DELETE FROM bottle_properties ''')
-    conn.commit()
-    return print('Tabel \'whine_bottles\' & \'bottle_properties\' succesvol geleegd!')
+    try:
+        c.execute('''DELETE FROM whine_bottles ''')
+        c.execute('''DELETE FROM bottle_properties ''')
+        conn.commit()
+        return print('Tabel \'whine_bottles\' & \'bottle_properties\' succesvol geleegd!')
+
+    except sqlite3.Error as er:
+        print('SQLite error: %s' % (' '.join(er.args)))
+        print("Exception class is: ", er.__class__)
+        print('SQLite traceback: ')
+        exc_type, exc_value, exc_tb = sys.exc_info()
+        print(traceback.format_exception(exc_type, exc_value, exc_tb))
 
 def clear_temps():
-    c.execute('''DELETE FROM temp_measures ''')
-    conn.commit()
-    return print('Tabel \'temp_measures\' succesvol geleegd!')
+    try:
+        c.execute('''DELETE FROM temp_measures ''')
+        conn.commit()
+        return print('Tabel \'temp_measures\' succesvol geleegd!')
+
+    except sqlite3.Error as er:
+        print('SQLite error: %s' % (' '.join(er.args)))
+        print("Exception class is: ", er.__class__)
+        print('SQLite traceback: ')
+        exc_type, exc_value, exc_tb = sys.exc_info()
+        print(traceback.format_exception(exc_type, exc_value, exc_tb))
 
 ################# Einde Verwijderen uit database ##############

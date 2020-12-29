@@ -23,8 +23,7 @@ tgt_dir = os.getcwd()
 tgt_file = False
 
 def create_init_file(tgt_file,tgt_dir,bottle):
-    init = True
-    data=fetch_bottle(bottle, init)
+    data=fetch_bottle(bottle)
     os.chdir(tgt_dir)
     data['status'] = 'registered'
     if data:
