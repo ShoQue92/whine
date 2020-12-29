@@ -337,6 +337,20 @@ def delete_selected(UID):
         exc_type, exc_value, exc_tb = sys.exc_info()
         print(traceback.format_exception(exc_type, exc_value, exc_tb))
 
+def delete_bottle_property(property_id):
+    try:
+        c.execute("DELETE FROM bottle_properties WHERE property_id='"+property_id+"'")
+        conn.commit()
+        return print('Eigenschap {} is succesvol verwijderd'.format(property_id))
+
+    except sqlite3.Error as er:
+        print('SQLite error: %s' % (' '.join(er.args)))
+        print("Exception class is: ", er.__class__)
+        print('SQLite traceback: ')
+        exc_type, exc_value, exc_tb = sys.exc_info()
+        print(traceback.format_exception(exc_type, exc_value, exc_tb))
+
+
 def clear_results():
     try:
         c.execute('''DELETE FROM whine_bottles ''')
