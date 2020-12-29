@@ -96,7 +96,7 @@ def log_temp(temp_c, temp_f, now):
     if temp_c is not None and temp_f is not None:
         c.execute("INSERT into temp_measures (timestamp, temperature_c, temperature_f) VALUES (CURRENT_TIMESTAMP, ?, ?)", (temp_c, temp_f))
         conn.commit()
-        message = print("De gemeten temperatuur op {} (Celcius: {}, Fahrenheit: {} is succesvol verwerkt naar de database!)").format(now, temp_c, temp_f)
+        message = print("Testbericht:", now, temp_c, temp_f)
         return message
 
 ################# Einde toevoegen  ###################
