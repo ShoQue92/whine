@@ -25,17 +25,7 @@ base_dir = '/sys/bus/w1/devices/'
 device_folder = glob.glob(base_dir + '28*')[0]
 device_file = device_folder + '/w1_slave'
 
-sleep_raw = int(input('Selecteer optie voor temperatuurmeting: (1: 10 minuten, 2: 30 minuten, 3: 60 minuten)'))
-
-if sleep_raw == 1:
-    sleep = 600
-elif sleep_raw == 2:
-    sleep =  1800
-elif sleep_raw == 3:
-    sleep = 3600
-else:
-    print("Ongeldige optie opgegeven (", sleep_raw, ')! Default wordt toegepast')
-    sleep = 600
+sleep = int(input('Geef de interval in seconden:'))
 
 sleep_min = sleep / 60
 
