@@ -42,6 +42,9 @@ $resultaatrood = $queryrood->execute();
 $resultaatwit = $querywit->execute();
 $resultaatrose = $queryrose->execute();
 
+$queryfleseigenschappen = $db->prepare("SELECT * FROM bottle_properties order by property;");
+$resultaatqueryfleseigenschappen = $queryfleseigenschappen->execute();
+
 $vertaling = array('Druifsoort' => 'main_grape', 'Jaar' => 'year', 'Datum in koelkast' => 'date_in_fridge', 'Soort wijn' => 'type');
 
 
@@ -91,6 +94,21 @@ function getwijnsoort($wijnsoort, $resultaat){
 				<h3>Extra eigenschappen</h3>
 				</div>
 				<div class="ui-body ui-body-a">
+				<?php
+				while ($eigenschaprij = $resultaatqueryfleseigenschappen->fetchArray()) {
+					if($eigenschaprij['UID'] == $row['UID']){
+						// eigenschap van toepassing voor deze fles, tonen
+						?>
+						<table id="fleseigenschappen_<?php echo $row['UID']; ?>" style="width:100%">
+							<tr>
+								<td style="width:50%"><?php echo eigenschaprij['property']; ?></td>
+								<td style="text-align:right;width:50%"><?php echo eigenschaprij['value']; ?></td>
+							</tr>
+						</table>
+						<?php
+					}
+				}
+				?>
 				<a href="#fleseigenschappen_<?php echo $row['UID']; ?>" data-rel="popup" class="ui-btn ui-shadow" data-transition="pop">Nieuwe toevoegen..</a>
 				</div>
 				
