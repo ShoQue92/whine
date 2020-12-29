@@ -16,7 +16,7 @@ require 'functies.php';
 <a href="nieuwefles.php" class="ui-btn ui-shadow" data-transition="pop">Toevoegen Nieuwe Fles</a>
 </div>
 
-<div id="temp">Temperatuur laden..</div>
+<div id="temp_<?php echo $randomnummer; ?>" class="temp">Temperatuur laden..</div>
 <div style="width:100%">
 <a href="koelkast.php"><img src="images/koelkast.png" style="width:100%" /></a>
 </div>

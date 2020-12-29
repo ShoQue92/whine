@@ -35,7 +35,7 @@ window.setInterval(function(){
 	$.get(intf_current_temp, function (data) {
 		intf_current_temp_output=data;
 		
-		$("#temp").html(intf_current_temp_output + "&#176;C");
+		$(".temp").html(intf_current_temp_output + "&#176;C");
 		
 	});
 }, 2000);
@@ -135,4 +135,8 @@ class DotEnv
 (new DotEnv(__DIR__ . '/.env'))->load();
 
 $buildnumber = file_get_contents('jenkins_build_dts.txt');
+
+
+$randomnummer = rand(0, 50000);
+			
 ?>
