@@ -97,7 +97,7 @@ function getwijnsoort($wijnsoort, $resultaat){
 				<div class="ui-body ui-body-a">
 				<?php
 				while ($eigenschaprij = $resultaatqueryfleseigenschappen->fetchArray()) {
-					//if($eigenschaprij['UID'] == $row['UID']){
+					if($eigenschaprij['UID'] == $row['UID']){
 						// eigenschap van toepassing voor deze fles, tonen
 						?>
 						<table id="fleseigenschappen_<?php echo $row['UID']; ?>" style="width:100%">
@@ -105,13 +105,9 @@ function getwijnsoort($wijnsoort, $resultaat){
 								<td style="width:50%"><?php echo $eigenschaprij['property']; ?></td>
 								<td style="text-align:right;width:50%"><?php echo $eigenschaprij['value']; ?></td>
 							</tr>
-							<tr>
-								<td style="width:50%">uid</td>
-								<td style="text-align:right;width:50%"><?php echo $eigenschaprij['uid']; ?></td>
-							</tr>
 						</table>
 						<?php
-					//}
+					}
 				}
 				?>
 				<a href="#fleseigenschappen_<?php echo $row['UID']; ?>" data-rel="popup" class="ui-btn ui-shadow" data-transition="pop">Nieuwe toevoegen..</a>
