@@ -149,6 +149,17 @@ function getwijnsoort($wijnsoort, $resultaat){
 
 ?>
 
+<div id="actualofhistory" class="ui-bar ui-bar-a ui-corner-all">
+	<div class="containing-element">
+	<label for="flip-min">Flip switch:</label>
+	<select name="flip-min" id="flip-min" data-role="slider">
+		<option value="off">Switch Off</option>
+		<option value="on">Switch On</option>
+	</select>
+</div>
+
+</div>
+
 <div id="koelkastheader">
 <h3 class="ui-bar ui-bar-a ui-corner-all" style="text-align:center">In totaal <?php if($aantalflessen == 0){echo "geen flessen"; } else{ echo $aantalflessen . ' fles'; if($aantalflessen > 1){echo "sen";}} ?> in de koelkast.</h3>
 </div>
