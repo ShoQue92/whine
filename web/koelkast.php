@@ -89,6 +89,10 @@ function getwijnsoort($wijnsoort, $resultaat){
 				}
 			}
 			?>		
+							<tr>
+								<td style="width:50%"></td>
+								<td style="text-align:right;width:50%"></td>
+							</tr>
 						</table>
 			<div class="ui-corner-all custom-corners">
 				<div class="ui-bar ui-bar-a">
