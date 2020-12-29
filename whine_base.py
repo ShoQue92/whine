@@ -68,4 +68,3 @@ def process_bottle_property_return_file(prop_file, tgt_dir):
             property = line[1]
             value = line[2]
             add_whine_property(UID, property, value)
-        return print("Fles eigenschappen toegevoegd!")
