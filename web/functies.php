@@ -1,5 +1,4 @@
 <?php
-session_start();
 
 $randomnummer = rand(0, 50000);
 
@@ -48,6 +47,19 @@ window.setInterval(function(){
 <?php
 }
 ?>
+<script>
+var intf_current_buildnum = 'checkbestand.php?actie=buildnumber';
+var intf_current_buildnum_output;
+
+window.setInterval(function(){
+	$.get(intf_current_buildnum, function (data) {
+		intf_current_buildnum_output=data;
+		if($(".buildnum").text() < intf_current_buildnum_output){
+			$(".buildnum").text(intf_current_buildnum_output);
+		}
+	});
+}, 1000);
+</script>
 <div data-role="header">
 	<h1><?php echo $paginanaam; ?></h1>
 	<a href="#nav-panel" data-icon="bars" data-iconpos="notext">Menu</a>
