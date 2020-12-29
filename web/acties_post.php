@@ -32,7 +32,7 @@ if('POST' === $_SERVER['REQUEST_METHOD']){
 			$nieuwefleseigenschapcsvpad = "interface_files/intf_prop_bottle.csv";
 			
 			$headerregel=array("UID","property","value");
-			$inhoudregel=array($_POST["UID"],$eigenschap,$waarde);
+			$inhoudregel=array($_POST["uid"],$eigenschap,$waarde);
 			$completecsv=array($headerregel,$inhoudregel);
 			
 			$fp = fopen($nieuwefleseigenschapcsvpad, "w");
