@@ -25,7 +25,17 @@ base_dir = '/sys/bus/w1/devices/'
 device_folder = glob.glob(base_dir + '28*')[0]
 device_file = device_folder + '/w1_slave'
 
-sleep = int(input('Geef de interval in seconden:'))
+sleep_raw = int(input('Selecteer optie voor temperatuurmeting in seconden'))
+
+if sleep_raw == 1:
+    sleep = 600
+elif sleep_raw == 2:
+    sleep =  1800
+elif sleep_raw == 3:
+    sleep = 3600
+else:
+    print("Ongeldige optie opgegeven (", sleep_raw, ')! Default wordt toegepast')
+    sleep = 600
 
 sleep_min = sleep / 60
 
@@ -48,9 +58,8 @@ def read_temp(now):
 
         log_temp(temp_c, temp_f,now)
         message = print("De volgende meting gebeurd over",int(sleep_min), 'minuten.')
-    else:
-        message = ''
-    return message
+        return message
+    return print(equals_pos)
 	
 while True:
 	print(read_temp(now))
