@@ -105,6 +105,10 @@ function getwijnsoort($wijnsoort, $resultaat){
 								<td style="width:50%"><?php echo $eigenschaprij['property']; ?></td>
 								<td style="text-align:right;width:50%"><?php echo $eigenschaprij['value']; ?></td>
 							</tr>
+							<tr>
+								<td style="width:50%">uid</td>
+								<td style="text-align:right;width:50%"><?php echo $eigenschaprij['UID']; ?></td>
+							</tr>
 						</table>
 						<?php
 					//}
