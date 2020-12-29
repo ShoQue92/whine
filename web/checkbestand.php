@@ -20,7 +20,7 @@ require 'functies.php';
 		break;
     case "buildnumber":
 		$buildnumber = file_get_contents('jenkins_build_dts.txt');
-		if(isset($_SESSION['curr_buildnumber']){
+		if(isset($_SESSION['curr_buildnumber'])){
 			// sessie waarde bestaat, kijken of huidige waarde hoger is dan sessie waarde
 			if($_SESSION['curr_buildnumber'] == $buildnumber){
 				// huidige waarde is gelijk, dus buildnumber gewoon teruggeven
