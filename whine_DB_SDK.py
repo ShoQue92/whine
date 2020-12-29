@@ -98,6 +98,12 @@ def log_temp(temp_c, temp_f, now):
     message = print("Temperatuurmeting op:", now, 'Celsius:', temp_c, 'Fahrenheit:', temp_f)
     return message
 
+def add_rating(UID, name, rating):
+    c.execute("INSERT into whine_rating (UID, name, ratring, date_rating) VALUES (?, ?, ?, CURRENT_TIMESTAMP)", (UID, name, rating ))
+    conn.commit()
+    message = print("Beoordeling ({}) van {} voor fles {} succesvol opgeslagen".format(rating, name, UID))
+    return message
+
 ################# Einde toevoegen  ###################
  
 ################# Aanvullen  ###################
