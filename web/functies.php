@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 $randomnummer = rand(0, 50000);
 
 function paginaheader($paginanaam){

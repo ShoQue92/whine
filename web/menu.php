@@ -54,6 +54,6 @@ else{
 }
 ?>
 <div data-role="footer" data-position="fixed"> 
-	<h4>Build number (<?php echo $omgeving; ?>): <?php echo $buildnumber; ?></h4> 
+	<h4>Build number (<?php echo $omgeving; ?>): <span class="buildnum"><?php echo $buildnumber; ?></span></h4> 
 </div> 
 </div><!-- /page -->
