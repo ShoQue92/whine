@@ -55,8 +55,8 @@ window.setInterval(function(){
 	$.get(intf_current_buildnum, function (data) {
 		intf_current_buildnum_output=data;
 		if($(".buildnum").text() < intf_current_buildnum_output){
+			$(".buildnum").css("color", "orange");
 			$(".buildnum").text(intf_current_buildnum_output);
-			$(".buildnum").css({"color":"orange"});
 		}
 	});
 }, 1000);
