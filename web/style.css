@@ -22,6 +22,6 @@ body {
 	height:30px;
 }
 .buildnum{
-	display:inline-block;
+	display:inline;
 	overflow:hidden
 }
