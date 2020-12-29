@@ -24,7 +24,21 @@ os.system('modprobe w1-therm')
 base_dir = '/sys/bus/w1/devices/'
 device_folder = glob.glob(base_dir + '28*')[0]
 device_file = device_folder + '/w1_slave'
- 
+
+sleep_raw = int(input('Selecteer optie voor temperatuurmeting: (1: 10 minuten, 2: 30 minuten, 3: 60 minuten)'))
+
+if sleep_raw == 1:
+    sleep = 600
+elif sleep_raw == 2:
+    sleep =  1800
+elif sleep_raw == 3:
+    sleep = 3600
+else:
+    print("Ongeldige optie opgegeven (", sleep_raw, ')! Default wordt toegepast')
+    sleep = 600
+
+sleep_min = sleep / 60
+
 def read_temp_raw():
     f = open(device_file, 'r')
     lines = f.readlines()
@@ -43,8 +57,9 @@ def read_temp(now):
         temp_f = temp_c * 9.0 / 5.0 + 32.0
 
         log_temp(temp_c, temp_f,now)
-        return temp_c, temp_f
+        message = print("De volgende meting gebeurd over ",sleep_min, 'minuten')
+        return message
 	
 while True:
 	print(read_temp(now))
-	time.sleep(10)
+	time.sleep(sleep)
