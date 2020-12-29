@@ -57,7 +57,7 @@ def read_temp(now):
         temp_f = temp_c * 9.0 / 5.0 + 32.0
 
         log_temp(temp_c, temp_f,now)
-        message = print("De volgende meting gebeurd over ",sleep_min, 'minuten')
+        message = print("De volgende meting gebeurd over",int(sleep_min), 'minuten.')
         return message
 	
 while True:
