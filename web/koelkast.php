@@ -42,7 +42,7 @@ $resultaatrood = $queryrood->execute();
 $resultaatwit = $querywit->execute();
 $resultaatrose = $queryrose->execute();
 
-$queryfleseigenschappen = $db->prepare("SELECT * FROM bottle_properties order by property;");
+$queryfleseigenschappen = $db->prepare("SELECT * FROM bottle_properties order by property_id;");
 $resultaatqueryfleseigenschappen = $queryfleseigenschappen->execute();
 
 $vertaling = array('Druifsoort' => 'main_grape', 'Jaar' => 'year', 'Datum in koelkast' => 'date_in_fridge', 'Soort wijn' => 'type');
