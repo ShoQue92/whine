@@ -1,7 +1,7 @@
 import os
 import glob
 import time
- 
+import datetime
 from whine_DB_SDK import log_temp
 
 
@@ -14,6 +14,9 @@ read_temp is een functie die deze ruwe waardes op een nette manier ophaalt, om a
 in read_temp zit tevens een call naar functie log_temp uit Whine_DB_SDK om de gelezen waardes te verwerken naar de database.
  
 '''
+
+now_raw = datetime.datetime.now()
+now = now_raw.strftime("%Y-%m-%d %H:%M:%S")
 
 os.system('modprobe w1-gpio')
 os.system('modprobe w1-therm')
@@ -39,7 +42,7 @@ def read_temp():
         temp_c = float(temp_string) / 1000.0
         temp_f = temp_c * 9.0 / 5.0 + 32.0
 
-        log_temp(temp_c, temp_f)
+        log_temp(temp_c, temp_f,now)
         return temp_c, temp_f
 	
 while True:
