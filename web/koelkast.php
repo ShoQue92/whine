@@ -91,7 +91,7 @@ function getwijnsoort($wijnsoort, $resultaat){
 				<h3>Extra eigenschappen</h3>
 				</div>
 				<div class="ui-body ui-body-a">
-				<a href="#popupLogin" data-rel="popup" class="ui-btn ui-shadow" data-transition="pop">Nieuwe toevoegen..</a>
+				<a href="#fleseigenschappen_<?php echo $row['UID']; ?>" data-rel="popup" class="ui-btn ui-shadow" data-transition="pop">Nieuwe toevoegen..</a>
 				</div>
 				
 			</div>
@@ -103,7 +103,19 @@ function getwijnsoort($wijnsoort, $resultaat){
 			</div>
 			</div>
 		
-		
+			<div data-role="popup" id="fleseigenschappen_<?php echo $row['UID']; ?>" data-theme="a" class="ui-corner-all">
+				<form name="wijneigenschappentoevoegen_<?php echo $row['UID']; ?>" action="acties_post.php" method="post" autocomplete="off">
+					<div style="padding:10px 20px;">
+						<h3>Eigenschap toevoegen</h3>
+						<label for="eigenschap" class="ui-hidden-accessible">Eigenschap</label>
+						<input type="text" name="eigenschap" value="" placeholder="eigenschap" data-theme="a">
+						<label for="waarde" class="ui-hidden-accessible">Waarde</label>
+						<input type="text" name="waarde" value="" placeholder="waarde" data-theme="a">
+						<input type="hidden" name="uid" value="<?php echo $row['UID']; ?>">
+						<button type="submit" class="ui-btn ui-corner-all ui-shadow ui-btn-b ui-btn-icon-left ui-icon-check" name="nieuwefleseigenschap" value="nieuwefleseigenschap">Opslaan</button>
+					</div>
+				</form>
+			</div>
 		<?php
 		}
 		?>
@@ -131,18 +143,6 @@ getwijnsoort("wit",$resultaatwit);
 getwijnsoort("rose",$resultaatrose);
 
 ?>
-<div data-role="popup" id="popupLogin" data-theme="a" class="ui-corner-all">
-    <form>
-        <div style="padding:10px 20px;">
-            <h3>Eigenschap toevoegen</h3>
-            <label for="eigenschap" class="ui-hidden-accessible">Eigenschap</label>
-            <input type="text" name="eigenschap" id="un" value="" placeholder="eigenschap" data-theme="a">
-            <label for="waarde" class="ui-hidden-accessible">Waarde</label>
-            <input type="text" name="waarde" id="pw" value="" placeholder="waarde" data-theme="a">
-            <button type="submit" class="ui-btn ui-corner-all ui-shadow ui-btn-b ui-btn-icon-left ui-icon-check">Opslaan</button>
-        </div>
-    </form>
-</div>
 
 <?php require 'paginaeind.php'; ?>
 
