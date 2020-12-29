@@ -2,6 +2,7 @@ import sqlite3
 import csv
 import os
 import time
+import datetime
 import traceback
 import sys
 from whine_classes import WhineBottle
@@ -19,6 +20,7 @@ db_name =  os.environ.get("DB_NAME")
 
 conn = sqlite3.connect(db_path + db_name)
 c = conn.cursor()
+now = datetime.datetime.now()
 ################# Database gedeelte ###################
 
 def create_table(drop):
@@ -91,6 +93,13 @@ def add_whine_property(UID, property, value):
             conn.commit()
             message = print("Verwerking fles "+UID+"\'s eigenschap "+property+" met succes!")
             return message
+
+def log_temp(temp_c, temp_f):
+    if temp_c is not None and temp_f is not None:
+        c.execute("INSERT into temp_measures (timestamp, temperature_c, temperature_f) VALUES (CURRENT_TIMESTAMP, temp_c, temp_f)")
+        conn.commit()
+        message = print("De gemeten temperatuur op {} (Celcius: {}, Fahrenheit: {} is succesvol verwerkt naar de database!)").format(now.strftime("%Y-%m-%d %H:%M:%S"), temp_c, temp_f)
+        return message
 
 ################# Einde toevoegen  ###################
  

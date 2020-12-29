@@ -2,6 +2,19 @@ import os
 import glob
 import time
  
+from whine_DB_SDK import log_temp
+
+
+'''
+Dit script leest de temperatuur sensor uit die is geconfigureerd op de raspberry.
+Hiervoor zijn twee functies gemaakt, read_temp_raw, en read_temp.
+read_temp_raw is de waarde die teruggegeven wordt uit /sys/bus/w1/devices/28-00000c43e91a/w1_slave 
+read_temp is een functie die deze ruwe waardes op een nette manier ophaalt, om alleen de celsius en fahrenheit waardes over te houden.
+
+in read_temp zit tevens een call naar functie log_temp uit Whine_DB_SDK om de gelezen waardes te verwerken naar de database.
+ 
+'''
+
 os.system('modprobe w1-gpio')
 os.system('modprobe w1-therm')
  
@@ -25,8 +38,10 @@ def read_temp():
         temp_string = lines[1][equals_pos+2:]
         temp_c = float(temp_string) / 1000.0
         temp_f = temp_c * 9.0 / 5.0 + 32.0
+
+        log_temp(temp_c, temp_f)
         return temp_c, temp_f
 	
 while True:
-	print(read_temp())	
-	time.sleep(1)
+	print(read_temp())
+	time.sleep(3,600)
