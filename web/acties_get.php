@@ -14,7 +14,7 @@ if('GET' === $_SERVER['REQUEST_METHOD']){
 			
 			if(is_numeric($uid)){
 			
-				$command = escapeshellcmd("/usr/bin/python3 " . getenv('WORKSPACE_PATH') . "front_end_actions.py 'delete_bottle' '" . $uid . "'");
+				$command = escapeshellcmd("/usr/bin/python3 " . getenv('WORKSPACE_PATH') . "front_end_actions.py 'update_whine_deleted_ind' '" . $uid . "'");
 				$command_output = shell_exec($command);
 				
 				$redirecthome = true;
