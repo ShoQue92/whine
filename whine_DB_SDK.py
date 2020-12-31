@@ -117,7 +117,7 @@ def log_temp(temp_c, temp_f, now):
 
 def add_rating(UID, name, rating):
     try:
-        c.execute("INSERT into whine_rating (UID, name, ratring, date_rating) VALUES (?, ?, ?, CURRENT_TIMESTAMP)", (UID, name, rating ))
+        c.execute("INSERT into whine_rating (UID, name, rating, date_rating) VALUES (?, ?, ?, CURRENT_TIMESTAMP)", (UID, name, rating ))
         conn.commit()
         message = print("Beoordeling ({}) van {} voor fles {} succesvol opgeslagen".format(rating, name, UID))
         return message
