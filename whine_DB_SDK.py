@@ -318,7 +318,7 @@ def fetch_avg_temp_bottle(UID):
                 "Average temp celcius": data[0],
                 "Average temp fahrenheit": data[1]
             }
-            return print(avg_temp)
+            return print(json.dumps(avg_temp))
 
     except sqlite3.Error as er:
         print('SQLite error: %s' % (' '.join(er.args)))
