@@ -32,7 +32,7 @@
 				        <a href="acties_get.php?actie=clear_db" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b">Schonen</a>
 				    </div>
 				</div>
-				<a href="#popupDialog_recreate_<?php echo $randomnummer; ?>" data-rel="popup" data-position-to="window" data-transition="pop" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-icon-delete ui-btn-icon-left ui-btn-b">Database opnieuw aanmaken</a>
+				<a href="#popupDialog_recreate_<?php echo $randomnummer; ?>" data-rel="popup" data-position-to="window" data-transition="pop" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-icon-delete ui-btn-icon-left ui-btn-b">Database reset</a>
 				<div data-role="popup" id="popupDialog_recreate_<?php echo $randomnummer; ?>" data-overlay-theme="b" data-theme="b" data-dismissible="false" style="max-width:400px;">
 				    <div role="main" class="ui-content">
 				        <h3 class="ui-title">Weet je zeker dat je de DB wilt recreaten?</h3>
