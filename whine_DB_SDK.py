@@ -354,7 +354,7 @@ def fetch_avg_rating(UID):
                 "UID": UID,
                 "Gemiddelde waardering": data[0]
             }
-            return print(avg_rating)
+            return print(json.dumps(avg_rating))
 
     except sqlite3.Error as er:
         print('SQLite error: %s' % (' '.join(er.args)))
