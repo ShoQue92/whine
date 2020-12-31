@@ -345,6 +345,24 @@ def fetch_avg_temp():
         exc_type, exc_value, exc_tb = sys.exc_info()
         print(traceback.format_exception(exc_type, exc_value, exc_tb))
 
+def fetch_avg_rating(UID):
+    try:
+        c.execute("SELECT avg(rating) FROM whine_rating WHERE UID = '"+UID+"'")
+        data = c.fetchone()
+        if data:
+            avg_rating = {
+                "UID": UID,
+                "Gemiddelde waardering": data[0]
+            }
+            return print(avg_rating)
+
+    except sqlite3.Error as er:
+        print('SQLite error: %s' % (' '.join(er.args)))
+        print("Exception class is: ", er.__class__)
+        print('SQLite traceback: ')
+        exc_type, exc_value, exc_tb = sys.exc_info()
+        print(traceback.format_exception(exc_type, exc_value, exc_tb))
+
 ################# Einde Ophalen database ###################
 
 ################# Verwijderen uit database ###################
