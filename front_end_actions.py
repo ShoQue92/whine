@@ -11,6 +11,7 @@ from whine_DB_SDK import add_rating
 from whine_DB_SDK import delete_bottle_property
 from whine_DB_SDK import update_whine_deleted_ind
 from whine_DB_SDK import update_whine_opgedronken_ind
+from whine_DB_SDK import fetch_avg_rating
 from whine_base import process_return_file
 from whine_base import process_bottle_property_return_file
 from sys import argv
@@ -40,7 +41,8 @@ commands = {
        "clear_temps": clear_temps,
        "add_rating": add_rating,
        "deleted_ind_UID": update_whine_deleted_ind,
-       "opgedronken_ind_UID": update_whine_opgedronken_ind
+       "opgedronken_ind_UID": update_whine_opgedronken_ind,
+       "fetch_avg_rating": fetch_avg_rating
 }
 
 # bestandsnaam negeren
