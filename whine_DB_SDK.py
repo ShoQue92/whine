@@ -31,7 +31,7 @@ def create_table(drop):
         c.execute('DROP TABLE IF EXISTS grapes')
         c.execute('DROP TABLE IF EXISTS temp_measures')
     c.execute('CREATE TABLE IF NOT EXISTS whine_bottles (UID TEXT PRIMARY KEY, name TEXT, main_grape TEXT, year TEXT, type TEXT, date_in_fridge DATE, deleted_ind TEXT, opgedronken_ind TEXT)')
-    c.execute('CREATE TABLE IF NOT EXISTS whine_rating (id INTEGER PRIMARY KEY AUTOINCREMENT, UID TEXT , name TEXT, rating INTEGER,  date_rating DATE)')
+    c.execute('CREATE TABLE IF NOT EXISTS whine_rating (id INTEGER PRIMARY KEY AUTOINCREMENT, UID TEXT , name TEXT, rating INTEGER,  comment TEXT, date_rating DATE)')
     c.execute('CREATE TABLE IF NOT EXISTS bottle_properties (property_id INTEGER PRIMARY KEY AUTOINCREMENT, UID TEXT,  property TEXT, value TEXT)')
     c.execute('CREATE TABLE IF NOT EXISTS base_properties (id INTEGER PRIMARY KEY AUTOINCREMENT, property TEXT)')
     c.execute('CREATE TABLE IF NOT EXISTS grapes (id INTEGER PRIMARY KEY AUTOINCREMENT, grape TEXT)')
@@ -115,9 +115,9 @@ def log_temp(temp_c, temp_f, now):
         exc_type, exc_value, exc_tb = sys.exc_info()
         print(traceback.format_exception(exc_type, exc_value, exc_tb))
 
-def add_rating(UID, name, rating):
+def add_rating(UID, name, rating, comment):
     try:
-        c.execute("INSERT into whine_rating (UID, name, rating, date_rating) VALUES (?, ?, ?, CURRENT_TIMESTAMP)", (UID, name, rating ))
+        c.execute("INSERT into whine_rating (UID, name, rating, comment, date_rating) VALUES (?, ?, ?, ?, CURRENT_TIMESTAMP)", (UID, name, rating, comment ))
         conn.commit()
         message = print("Beoordeling ({}) van {} voor fles {} succesvol opgeslagen".format(rating, name, UID))
         return message
