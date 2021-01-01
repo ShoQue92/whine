@@ -6,12 +6,11 @@ require 'functies.php';
 <?php require 'headers.php'; ?>
 <script>
 $(window).load(function(){
-$("#koelkasttype").on("slidestop", function(){
-    alert("STOP!"); 
+$(".koelkasttype").on("slidestop", function(){
+    alert("change: " + $(this).val()); 
 })
 })
 </script>
-
 </head>
 <body>
 
@@ -159,7 +158,7 @@ function getwijnsoort($wijnsoort, $resultaat){
 
 <div id="actualofhistory" class="ui-bar ui-bar-a ui-corner-all">
 	<div class="containing-element">
-	<select id="koelkasttype" data-role="slider">
+	<select class="koelkasttype" data-role="slider">
 		<option value="nu">Nu in de koelkast</option>
 		<option value="opgedronken">Al opgedronken</option>
 	</select>
