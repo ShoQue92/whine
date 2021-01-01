@@ -151,7 +151,7 @@ function getwijnsoort($wijnsoort, $resultaat){
 
 <div id="actualofhistory" class="ui-bar ui-bar-a ui-corner-all">
 	<div class="containing-element">
-	<select name="flip-min" id="flip-min" data-role="slider">
+	<select name="flip-min" class="flip-min" data-role="slider">
 		<option value="off">Nu in de koelkast</option>
 		<option value="on">Al opgedronken</option>
 	</select>

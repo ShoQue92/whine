@@ -50,6 +50,17 @@ window.setInterval(function(){
 	});
 }, 1000);
 
+var previouskoelkasttype = 'nu';
+
+ $("select.flip-min").change(function () {
+      if ($("select.flip-min").val() == 'opgedronken' && previouskoelkasttype == 'nu'){
+		  previouskoelkasttype = 'opgedronken';
+		  alert("van nu naar opgedronken");
+	  }
+	  else if(("select.flip-min").val() == 'nu' && previouskoelkasttype == 'opgedronken'){
+		  previouskoelkasttype = 'nu';
+		  alert("van opgedronken naar nu");
+	  }
 </script>
 <?php
 }
