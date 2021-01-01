@@ -84,6 +84,7 @@ var huidigewaarde = 'nu';
 		  previouskoelkasttype = 'nu';
 		  
 	  }
+ })
 
 </script>
 <div data-role="header">
