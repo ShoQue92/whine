@@ -68,8 +68,9 @@ window.setInterval(function(){
 	});
 }, 1000);
 
-var previouskoelkasttype = 'nu';
-var huidigewaarde = 'nu';
+  $(".koelkasttype").change(function(){
+        alert("Test");
+    });
 
 </script>
 <div data-role="header">
