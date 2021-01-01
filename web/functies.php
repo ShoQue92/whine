@@ -72,7 +72,7 @@ var previouskoelkasttype = 'nu';
 var huidigewaarde = 'nu';
 
  $(".koelkasttype").change(function () {
-	  
+	  alert("verandering");
 	  huidigewaarde = $(".flip-min").val()
       if (huidigewaarde == 'opgedronken' && previouskoelkasttype == 'nu'){
 		  $("div.wijnkoeler-inhoud").html("test1");
