@@ -68,12 +68,9 @@ window.setInterval(function(){
 	});
 }, 1000);
 
-$( ".koelkasttype" ).slider({
-    create: function (event, ui) {
-        $(this).bind('change', function () {
-			console.log('your message');
-        });
-    }
+$( ".koelkasttype").on('slidestop', function( event ) {
+   var slider_value=$("#slider-1").slider().val();
+   alert('Value: '+slider_value);
 });
 
 </script>
