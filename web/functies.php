@@ -71,29 +71,28 @@ window.setInterval(function(){
 var previouskoelkasttype = 'nu';
 var huidigewaarde = 'nu';
 
-$('.koelkasttype').change(function(){
-  var data= $(this).val();
-  alert(data);            
-});
+// use just jQuery("#DROPDOWNID") instead
+var select = jQuery(".koelkasttype");
 
-$('.koelkasttype')
-    .val('nu')
-    .trigger('change');
+// placing the handler in separate function
+var changeHandler = function () {
+    var selectedIndex = select.prop('selectedIndex');
+    switch(selectedIndex) {
+        case 'nu':
+            alert(0);
+        break;
+        case 'opgedronken':
+            alert(1);
+        break;
+    }
+}
 
-/* $(".koelkasttype").change(function () {
-	  console.log('verandering');
-	  huidigewaarde = $(".flip-min").val()
-      if (huidigewaarde == 'opgedronken' && previouskoelkasttype == 'nu'){
-		  console.log('van nu naar opgedronken');
-		  previouskoelkasttype = 'opgedronken';
-		  
-	  }
-	  else if(huidigewaarde == 'nu' && previouskoelkasttype == 'opgedronken'){
-		  console.log('van opgedronken naar nu');
-		  previouskoelkasttype = 'nu';
-		  
-	  }
- })*/
+// cache your jQuery selectors. It's a good practice
+// and improves the readability
+select.on("change", changeHandler);
+
+// triggering
+changeHandler();
 
 </script>
 <div data-role="header">
