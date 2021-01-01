@@ -53,7 +53,7 @@ window.setInterval(function(){
 var previouskoelkasttype = 'nu';
 var huidigewaarde = 'nu';
 
- $("select.flip-min").change(function () {
+ $("select").change(function () {
 	  huidigewaarde = $("select.flip-min").val()
       if (huidigewaarde == 'opgedronken' && previouskoelkasttype == 'nu'){
 		  previouskoelkasttype = 'opgedronken';
