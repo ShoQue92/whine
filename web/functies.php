@@ -72,15 +72,15 @@ var previouskoelkasttype = 'nu';
 var huidigewaarde = 'nu';
 
  $(".koelkasttype").change(function () {
-	  alert("verandering");
+	  console.log('verandering');
 	  huidigewaarde = $(".flip-min").val()
       if (huidigewaarde == 'opgedronken' && previouskoelkasttype == 'nu'){
-		  $("div.wijnkoeler-inhoud").html("test1");
+		  console.log('van nu naar opgedronken');
 		  previouskoelkasttype = 'opgedronken';
 		  
 	  }
 	  else if(huidigewaarde == 'nu' && previouskoelkasttype == 'opgedronken'){
-		  $("div.wijnkoeler-inhoud").html("test2");
+		  console.log('van opgedronken naar nu');
 		  previouskoelkasttype = 'nu';
 		  
 	  }
