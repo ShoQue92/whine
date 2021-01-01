@@ -155,9 +155,10 @@ function getwijnsoort($wijnsoort, $resultaat){
 		<option value="off">Nu in de koelkast</option>
 		<option value="on">Al opgedronken</option>
 	</select>
+	</div>
 </div>
 
-</div>
+<div class="wijnkoeler-inhoud">
 
 <div id="koelkastheader">
 <h3 class="ui-bar ui-bar-a ui-corner-all" style="text-align:center">In totaal <?php if($aantalflessen == 0){echo "geen flessen"; } else{ echo $aantalflessen . ' fles'; if($aantalflessen > 1){echo "sen";}} ?> in de koelkast.</h3>
@@ -175,6 +176,8 @@ getwijnsoort("wit",$resultaatwit);
 getwijnsoort("rose",$resultaatrose);
 
 ?>
+
+</div>
 
 <?php require 'paginaeind.php'; ?>
 
