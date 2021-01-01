@@ -68,9 +68,13 @@ window.setInterval(function(){
 	});
 }, 1000);
 
-  $(".koelkasttype").change(function(){
-        alert("Test");
-    });
+$( ".koelkasttype" ).slider({
+    create: function (event, ui) {
+        $(this).bind('change', function () {
+			console.log('your message');
+        });
+    }
+});
 
 </script>
 <div data-role="header">
