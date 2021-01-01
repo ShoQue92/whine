@@ -68,10 +68,11 @@ window.setInterval(function(){
 	});
 }, 1000);
 
-$( ".koelkasttype").on('slidestop', function( event ) {
-   var slider_value=$("#slider-1").slider().val();
-   alert('Value: '+slider_value);
-});
+$(window).load(function(){
+$(".koelkasttype").on("slidestop", function(){
+    alert("STOP!"); 
+})
+})
 
 </script>
 <div data-role="header">
