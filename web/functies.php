@@ -50,22 +50,6 @@ window.setInterval(function(){
 	});
 }, 1000);
 
-var previouskoelkasttype = 'nu';
-var huidigewaarde = 'nu';
-
- $(".koelkasttype").change(function () {
-	  
-	  huidigewaarde = $(".flip-min").val()
-      if (huidigewaarde == 'opgedronken' && previouskoelkasttype == 'nu'){
-		  $("div.wijnkoeler-inhoud").html("test1");
-		  previouskoelkasttype = 'opgedronken';
-		  
-	  }
-	  else if(huidigewaarde == 'nu' && previouskoelkasttype == 'opgedronken'){
-		  $("div.wijnkoeler-inhoud").html("test2");
-		  previouskoelkasttype = 'nu';
-		  
-	  }
 </script>
 <?php
 }
@@ -83,6 +67,24 @@ window.setInterval(function(){
 		}
 	});
 }, 1000);
+
+var previouskoelkasttype = 'nu';
+var huidigewaarde = 'nu';
+
+ $(".koelkasttype").change(function () {
+	  
+	  huidigewaarde = $(".flip-min").val()
+      if (huidigewaarde == 'opgedronken' && previouskoelkasttype == 'nu'){
+		  $("div.wijnkoeler-inhoud").html("test1");
+		  previouskoelkasttype = 'opgedronken';
+		  
+	  }
+	  else if(huidigewaarde == 'nu' && previouskoelkasttype == 'opgedronken'){
+		  $("div.wijnkoeler-inhoud").html("test2");
+		  previouskoelkasttype = 'nu';
+		  
+	  }
+
 </script>
 <div data-role="header">
 	<h1><?php echo $paginanaam; ?></h1>
