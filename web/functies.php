@@ -54,6 +54,7 @@ var previouskoelkasttype = 'nu';
 var huidigewaarde = 'nu';
 
  $("select").change(function () {
+	  alert("trigger");
 	  huidigewaarde = $("select.flip-min").val()
       if (huidigewaarde == 'opgedronken' && previouskoelkasttype == 'nu'){
 		  previouskoelkasttype = 'opgedronken';
