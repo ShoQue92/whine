@@ -53,16 +53,18 @@ window.setInterval(function(){
 var previouskoelkasttype = 'nu';
 var huidigewaarde = 'nu';
 
- $(".flip-min").change(function () {
-	  alert("trigger");
+ $(".koelkasttype").change(function () {
+	  
 	  huidigewaarde = $(".flip-min").val()
       if (huidigewaarde == 'opgedronken' && previouskoelkasttype == 'nu'){
+		  $("div.wijnkoeler-inhoud").html("test1");
 		  previouskoelkasttype = 'opgedronken';
-		  alert("van nu naar opgedronken");
+		  
 	  }
 	  else if(huidigewaarde == 'nu' && previouskoelkasttype == 'opgedronken'){
+		  $("div.wijnkoeler-inhoud").html("test2");
 		  previouskoelkasttype = 'nu';
-		  alert("van opgedronken naar nu");
+		  
 	  }
 </script>
 <?php
