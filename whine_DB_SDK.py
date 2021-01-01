@@ -30,7 +30,7 @@ def create_table(drop):
         c.execute('DROP TABLE IF EXISTS base_properties')
         c.execute('DROP TABLE IF EXISTS grapes')
         c.execute('DROP TABLE IF EXISTS temp_measures')
-    c.execute('CREATE TABLE IF NOT EXISTS whine_bottles (UID TEXT PRIMARY KEY, name TEXT, main_grape TEXT, year TEXT, type TEXT, date_in_fridge DATE, deleted_ind TEXT, opgedronken_ind TEXT)')
+    c.execute('CREATE TABLE IF NOT EXISTS whine_bottles (UID TEXT PRIMARY KEY, name TEXT, main_grape TEXT, year TEXT, type TEXT, date_in_fridge DATE, deleted_ind TEXT, opgedronken_ind TEXT, date_updated DATE)')
     c.execute('CREATE TABLE IF NOT EXISTS whine_rating (id INTEGER PRIMARY KEY AUTOINCREMENT, UID TEXT , name TEXT, rating INTEGER,  comment TEXT, date_rating DATE)')
     c.execute('CREATE TABLE IF NOT EXISTS bottle_properties (property_id INTEGER PRIMARY KEY AUTOINCREMENT, UID TEXT,  property TEXT, value TEXT)')
     c.execute('CREATE TABLE IF NOT EXISTS base_properties (id INTEGER PRIMARY KEY AUTOINCREMENT, property TEXT)')
@@ -147,7 +147,7 @@ def update_whine(UID, name, main_grape, year, type):
 
 def update_whine_deleted_ind(UID):
     try:
-        c.execute("UPDATE whine_bottles SET deleted_ind = 'J' WHERE UID='"+UID+"'")
+        c.execute("UPDATE whine_bottles SET deleted_ind = 'J', date_updated = CURRENT_TIMESTAMP WHERE UID='"+UID+"'")
         conn.commit()
         message = print('Succesfully updated bottle; '+UID, 'SET deleted_ind = J')
         return message
@@ -160,7 +160,7 @@ def update_whine_deleted_ind(UID):
 
 def update_whine_opgedronken_ind(UID):
     try:
-        c.execute("UPDATE whine_bottles SET opgedronken_ind = 'J' WHERE UID='"+UID+"'")
+        c.execute("UPDATE whine_bottles SET opgedronken_ind = 'J', date_updated = CURRENT_TIMESTAMP WHERE UID='"+UID+"'")
         conn.commit()
         message = print('Succesfully updated bottle; '+UID, 'SET opgedronken_ind = J')
         return message
