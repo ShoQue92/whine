@@ -68,12 +68,6 @@ window.setInterval(function(){
 	});
 }, 1000);
 
-$(window).load(function(){
-$(".koelkasttype").on("slidestop", function(){
-    alert("STOP!"); 
-})
-})
-
 </script>
 <div data-role="header">
 	<h1><?php echo $paginanaam; ?></h1>
