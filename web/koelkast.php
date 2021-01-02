@@ -5,12 +5,10 @@ require 'functies.php';
 <head>
 <?php require 'headers.php'; ?>
 <script>
-$(document).ready(function(){
-	$(document).on( "pagecontainerchange",function(){
-		$(".koelkasttype").on("slidestop", function(){
-			alert("change: " + $(this).val()); 
-		})
-	})
+$(window).load(function(){
+$(".koelkasttype").on("slidestop", function(){
+    alert("change: " + $(this).val()); 
+})
 })
 </script>
 </head>
