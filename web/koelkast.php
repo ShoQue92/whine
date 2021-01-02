@@ -240,7 +240,7 @@ while ($row = $resultaatopgedronkenmaanden->fetchArray()) {
 			$classnaamrij = $jaarrij . "-" . $maandrij;
 			if($classnaam == $classnaamrij){
 				// maand van fles == maand van div
-				toon_wijninfo_koeler($row,$tablesquery,"historie",$resultaatqueryfleseigenschappen);
+				toon_wijninfo_koeler($row,$tablesquery,"historie",$resultaatqueryfleseigenschappen,$vertaling);
 			}
 		}
 		?>
