@@ -44,7 +44,7 @@ $resultaatrood = $queryrood->execute();
 $resultaatwit = $querywit->execute();
 $resultaatrose = $queryrose->execute();
 
-$queryopgedronken = $db->prepare("SELECT * FROM whine_bottles where deleted_ind = 'N' and opgedronken_ind = 'J' order by date_in_fridge desc;");
+$queryopgedronken = $db->prepare("SELECT *, strftime('%Y %m',date_in_fridge) as jaarmaand FROM whine_bottles where deleted_ind = 'N' and opgedronken_ind = 'J' order by date_in_fridge desc;");
 $resultaatopgedronken = $queryopgedronken->execute();
 
 $queryopgedronkenmaanden = $db->prepare("SELECT strftime('%Y %m',date_in_fridge) as jaarmaand FROM whine_bottles where deleted_ind = 'N' and opgedronken_ind = 'J' order by date_in_fridge desc;");
@@ -195,7 +195,7 @@ getwijnsoort("rose",$resultaatrose);
 
 	<?php
 
-	// collapsible per jaar/maand
+	// knop per jaar/maand
 	while ($row = $resultaatopgedronkenmaanden->fetchArray()) {
 		$jaar = (int) substr($row['jaarmaand'],0,4);
 		$maand = (int) substr($row['jaarmaand'],4);
@@ -211,22 +211,40 @@ getwijnsoort("rose",$resultaatrose);
 	?>
 
 </div>
-<div class="wijnkoeler-historie-maand-2021-1 wijnkoeler-historie-maand" style="display:none">
+<?php
+
+// divs maken per jaar/maand
+while ($row = $resultaatopgedronkenmaanden->fetchArray()) {
+		$jaar = (int) substr($row['jaarmaand'],0,4);
+		$maand = (int) substr($row['jaarmaand'],4);
+		setlocale(LC_TIME, 'nl_NL.utf8');
+		$maandstring = strftime("%B", mktime(0,0,0,$maand,1,$jaar));
+		$classnaam = $jaar . "-" . $maand;
+?>
+<div class="wijnkoeler-historie-maand-<?php echo $classnaam; ?> wijnkoeler-historie-maand" style="display:none">
 	<a href="#" class="ui-btn ui-icon-arrow-l ui-btn-icon-left koelkasthistorieknop" style="text-align:center" name="terug">Terug naar overzicht</a>
 	<div class="koelkast-historieheader">
-	<h3 class="ui-bar ui-bar-a ui-corner-all" style="text-align:center">Januari 2021</h3>
+	<h3 class="ui-bar ui-bar-a ui-corner-all" style="text-align:center"><?php echo $maandstring; ?></h3>
 	</div>
 		<?php
 		while ($row = $resultaatopgedronken->fetchArray()) {
-		?>
-			<div data-role="collapsible" data-content-theme="c" class="historie_flesoverzicht"><h3><?php echo $row['name']; ?> (<?php echo $row['year']; ?>)</h3>
-				<p>fleseigenschappen enzo</p>
-			</div>
-		<?php
+			$jaarrij = (int) substr($row['jaarmaand'],0,4);
+			$maandrij = (int) substr($row['jaarmaand'],4);
+			$classnaamrij = $jaarrij . "-" . $maandrij;
+			if($classnaam == $classnaamrij){
+				// maand van fles == maand van div
+				?>
+					<div data-role="collapsible" class="animateMe" data-content-theme="c"><h3><?php echo $row['name']; ?> (<?php echo $row['year']; ?>)</h3>
+						<p>fleseigenschappen enzo</p>
+					</div>
+				<?php
+			}
 		}
 		?>
 </div>
-
+<?php
+}
+?>
 
 
 <?php require 'paginaeind.php'; ?>
