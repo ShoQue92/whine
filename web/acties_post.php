@@ -58,6 +58,16 @@ if('POST' === $_SERVER['REQUEST_METHOD']){
 			$redirecthome = true;
 			$redirectto = 'beoordelen.php';
 	}
+	elseif(isset($_POST["flesbeoordelen"])){
+			$beoordeling = $_POST["beoordeling"];
+			$uid = $_POST["uid"];
+			$opmerking = strip_tags($_POST["opmerking"]);
+					
+			$redirecthome = true;
+				
+			$command = escapeshellcmd("/usr/bin/python3 " . getenv('WORKSPACE_PATH') . "front_end_actions.py 'add_rating' '" . $uid . "' '" . $beoordeling . "' '". $opmerking . "'");
+			$command_output = shell_exec($command);
+	}
 	else {
 			$foutmelding = "nee2";
 			$redirecthome = false;
