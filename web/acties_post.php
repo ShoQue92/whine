@@ -54,7 +54,7 @@ if('POST' === $_SERVER['REQUEST_METHOD']){
 	elseif(isset($_POST["naamdoorgeven"])){
 		// naamdoorgeven bij beoordelen
 			$naam = strip_tags($_POST['naam']);
-			$_SESSION['name'] = $naam;
+			$_SESSION['naam'] = $naam;
 			$redirecthome = true;
 			$redirectto = 'beoordelen.php';
 	}
@@ -84,7 +84,9 @@ else {
 	else{
 		echo "Succesvol aangepast..";
 		echo "<br>";
-		echo $command_output;
+		if(isset($command_output){
+			echo $command_output;
+		}
 		?>
 		<script type="text/javascript">
 			setTimeout(function(){
