@@ -240,11 +240,7 @@ while ($row = $resultaatopgedronkenmaanden->fetchArray()) {
 			$classnaamrij = $jaarrij . "-" . $maandrij;
 			if($classnaam == $classnaamrij){
 				// maand van fles == maand van div
-				?>
-					<div data-role="collapsible" class="animateMe" data-content-theme="c"><h3><?php echo $row['name']; ?> (<?php echo $row['year']; ?>)</h3>
-						<p>fleseigenschappen enzo</p>
-					</div>
-				<?php
+				toon_wijninfo_koeler($row,$tablesquery,"historie",$resultaatqueryfleseigenschappen);
 			}
 		}
 		?>
