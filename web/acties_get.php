@@ -25,6 +25,24 @@ if('GET' === $_SERVER['REQUEST_METHOD']){
 				$foutmelding = "uid geen int";
 			}
 			break;
+			
+		case "flesopgedronken":
+		
+			$uid = $_GET["uid"];
+			
+			if(is_numeric($uid)){
+			
+				$command = escapeshellcmd("/usr/bin/python3 " . getenv('WORKSPACE_PATH') . "front_end_actions.py 'opgedronken_ind_UID' '" . $uid . "'");
+				$command_output = shell_exec($command);
+				
+				$redirecthome = true;
+			
+			}
+			else{
+				$redirecthome = false;
+				$foutmelding = "uid geen int";
+			}
+			break;	
 		
 		case "fleseigenschapverwijderen":
 		
