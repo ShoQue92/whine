@@ -199,6 +199,7 @@ getwijnsoort("rose",$resultaatrose);
 	while ($row = $resultaatopgedronkenmaanden->fetchArray()) {
 		$jaar = (int) substr($row['jaarmaand'],0,4);
 		$maand = (int) substr($row['jaarmaand'],4);
+		setlocale(LC_TIME, 'nl_NL');
 		$maandstring = date("F", mktime(0,0,0,$maand,1,$jaar));
 				
 	?>
