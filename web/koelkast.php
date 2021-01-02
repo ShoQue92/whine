@@ -19,7 +19,7 @@ $(".koelkasttype").on("slidestop", function(){
 <script>
 
 //$(document).on("pagecreate", "#page", function(){
-$(window).load(function() {	
+jQuery( ".selector" ).on( "pagechange",function() {	
     $(".animateMe .ui-collapsible-heading-toggle").on("click", function (e) { 
         var current = $(this).closest(".ui-collapsible");             
         if (current.hasClass("ui-collapsible-collapsed")) {
