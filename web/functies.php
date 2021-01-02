@@ -91,7 +91,7 @@ $(".koelkasttype").on("slidestop", function(){
 })
 
 $(document).on("click",".koelkasthistorieknop",function(){
-	if($(this).attr('name')).html() == 'terug'){
+	if($(this).attr('name') == 'terug'){
 		// terug naar algemene opgedronken pagina
 		$('.wijnkoeler-historie').hide();
 		$('.wijnkoeler-historie').html($('.wijnkoeler-historie-overzicht').html());
