@@ -78,6 +78,19 @@ window.setInterval(function(){
 require 'paginastart.php';
 }
 
+function jquery_header_script($pagina,$locatie,$script){
+	// switch per pagina (voor specifiek per pagina
+	switch($pagina){
+		case "Koelkast":
+			?>
+			<script>
+			
+			</script>
+			<?php
+			break;
+	}
+}
+
 function read_intf_init_bottle_content($echo){
 
 	$nieuweflescsvpad = "interface_files/intf_init_bottle.csv";
