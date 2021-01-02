@@ -29,3 +29,7 @@ td.eigenschapverwijderen a:after{
 	background-color:#ff0000
 }
 .containing-element .ui-slider-switch { width: 100% }
+
+.koelerjaarmaandsel{
+	background: #dddddd !important;
+}

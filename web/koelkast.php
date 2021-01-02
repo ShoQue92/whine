@@ -200,7 +200,10 @@ getwijnsoort("rose",$resultaatrose);
 		$jaar = substr($row['jaarmaand'],0,4);
 		$maand = substr($row['jaarmaand'],4);
 	?>
-			<?php echo $jaar . " " . $maand; ?><br>
+	<div class="koelkast-koelerjaarmandseldiv">
+		<h3 class="ui-bar ui-bar-a ui-corner-all koelerjaarmaandsel" style="text-align:center"><?php echo $jaar . " " . $maand; ?></h3>
+	</div>
+			
 	<?php
 
 	}
