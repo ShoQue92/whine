@@ -5,7 +5,7 @@ require 'functies.php';
 <head>
 <?php require 'headers.php'; ?>
 <script>
-jQuery( ".selector" ).on( "pagechange",function(){
+$( ".selector" ).on( "pagecontainerchange",function(){
 $(".koelkasttype").on("slidestop", function(){
     alert("change: " + $(this).val()); 
 })
