@@ -219,9 +219,15 @@ getwijnsoort("rose",$resultaatrose);
 	<h3 class="ui-bar ui-bar-a ui-corner-all" style="text-align:center">Januari 2021</h3>
 	</div>
 	<div data-role="collapsibleset">
-		<div data-role="collapsible" class="animateMe" data-content-theme="c"><h3>test</h3>
-		
-		</div>
+		<?php
+		while ($row = $resultaatopgedronken->fetchArray()) {
+		?>
+			<div data-role="collapsible" class="animateMe" data-content-theme="c"><h3><?php echo $row['name']; ?> (<?php echo $row['year']; ?>)</h3>
+				fleseigenschappen enzo
+			</div>
+		<?php
+		}
+		?>
 	</div>
 </div>
 
