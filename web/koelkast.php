@@ -127,7 +127,7 @@ function getwijnsoort($wijnsoort, $resultaat){
 			</div>
 			<div class="ui-corner-all custom-corners">
 				<div class="ui-body ui-body-a">
-				<a href="#flesverwijderen_<?php echo $row['UID']; ?>" class="ui-btn ui-icon-delete ui-btn-icon-left" data-transition="pop">Uit de koelkast</a>
+				<a href="#flesverwijderen_<?php echo $row['UID']; ?>" data-rel="popup" class="ui-btn ui-icon-delete ui-btn-icon-left" data-transition="pop">Uit de koelkast</a>
 				</div>
 				
 			</div>
@@ -147,13 +147,11 @@ function getwijnsoort($wijnsoort, $resultaat){
 				</form>
 			</div>
 			<div data-role="popup" id="flesverwijderen_<?php echo $row['UID']; ?>" data-theme="a" class="ui-corner-all">
-				
 					<div style="padding:10px 20px;">
 						<h3>Fles uit de koelkast, Opgedronken of verwijderen?</h3>
 						<a href="acties_get.php?actie=flesopgedronken&uid=<?php echo $row['UID']; ?>" class="ui-btn ui-icon-delete ui-btn-icon-left" data-transition="pop">Opgedronken</a>
 						<a href="acties_get.php?actie=flesverwijderen&uid=<?php echo $row['UID']; ?>" class="ui-btn ui-icon-delete ui-btn-icon-left" data-transition="pop">Verwijderen</a>
 					</div>
-				
 			</div>
 		<?php
 		}
