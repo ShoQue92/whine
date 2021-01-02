@@ -90,7 +90,7 @@ $(".koelkasttype").on("slidestop", function(){
 
 })
 
-$('.koelkasthistorieknop').click(function(){
+$(document).on("click",".koelkasthistorieknop",(function(){
 	alert('knop geklikt');
 })
 
