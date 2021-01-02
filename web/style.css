@@ -33,3 +33,14 @@ td.eigenschapverwijderen a:after{
 .koelerjaarmaandsel{
 	background: #dddddd !important;
 }
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=range] {
+  -moz-appearance: textfield;
+}
