@@ -80,6 +80,7 @@ $(".koelkasttype").on("slidestop", function(){
 	huidigeweergave = $( ".koelkasttype" ).val();
 		if(vorigeweergave == 'nu' && huidigeweergave == 'opgedronken'){
 			$('.wijnkoeler-inhoud').hide();
+			$('.wijnkoeler-historie').html() = $('.wijnkoeler-historie-overzicht').html;
 			$('.wijnkoeler-historie').show();
 		}
 		else if(vorigeweergave == 'opgedronken' && huidigeweergave == 'nu'){
@@ -89,6 +90,11 @@ $(".koelkasttype").on("slidestop", function(){
 
 })
 })
+
+$('.koelkasthistorieknop').click(function(){
+	alert('knop geklikt');
+})
+
 </script>
 <div data-role="header">
 	<h1><?php echo $paginanaam; ?></h1>

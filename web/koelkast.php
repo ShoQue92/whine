@@ -187,7 +187,9 @@ getwijnsoort("rose",$resultaatrose);
 
 </div>
 
-<div class="wijnkoeler-historie" style="display: none">
+<div class="wijnkoeler-historie" style="display:none"></div>
+
+<div class="wijnkoeler-historie-overzicht" style="display: none">
 
 	<div id="koelkast-historieheader">
 	<h3 class="ui-bar ui-bar-a ui-corner-all" style="text-align:center">In totaal <?php if($aantalflessenhistorie == 0){echo "geen flessen"; } else{ echo $aantalflessenhistorie . ' fles'; if($aantalflessenhistorie > 1){echo "sen";}} ?> opgedronken.</h3>
@@ -199,17 +201,24 @@ getwijnsoort("rose",$resultaatrose);
 	while ($row = $resultaatopgedronkenmaanden->fetchArray()) {
 		$jaar = (int) substr($row['jaarmaand'],0,4);
 		$maand = (int) substr($row['jaarmaand'],4);
-		setlocale(LC_TIME, 'nl_NL');
+		setlocale(LC_TIME, 'nl_NL.utf8');
 		$maandstring = strftime("%B", mktime(0,0,0,$maand,1,$jaar));
 				
 	?>
-		<a href="#" class="ui-btn ui-icon-arrow-r ui-btn-icon-right" style="text-align:center"><?php echo $jaar . " " . $maandstring; ?></a>
+		<a href="#" class="ui-btn ui-icon-arrow-r ui-btn-icon-right koelkasthistorieknop" style="text-align:center" name="<?php echo $jaar . "-" . $maand; ?>"><?php echo $jaar . " " . $maandstring; ?></a>
 	<?php
 
 	}
 
 	?>
 
+</div>
+<div class="wijnkoeler-historie-maand-2021-01" style="display:none">
+	<div data-role="collapsibleset">
+		<div data-role="collapsible" class="animateMe" data-content-theme="c"><h3>test</h3>
+		
+		</div>
+	</div>
 </div>
 
 
