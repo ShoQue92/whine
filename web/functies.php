@@ -117,32 +117,6 @@ $(document).on("click",".koelkasthistorieknop",function(){
 require 'paginastart.php';
 }
 
-function jquery_header_script($pagina,$locatie,$script){
-	// returned de jquery functies voor header (aan te roepen met input)
-	switch($pagina){
-		case "Koelkast":
-			?>
-			<script>
-			
-			</script>
-			<?php
-			break;
-	}
-}
-
-function jquery_body_script($pagina,$locatie,$script){
-	// returned de jquery functies voor body (aan te roepen met input)
-	switch($pagina){
-		case "Koelkast":
-			?>
-			<script>
-			
-			</script>
-			<?php
-			break;
-	}
-}
-
 function toon_wijninfo_koeler($rij, $pagina){
 	global $tablesquery;
 	global $resultaatqueryfleseigenschappen;
