@@ -207,9 +207,6 @@ function toon_wijninfo_koeler($rij, $tablesquery, $pagina, $resultaatqueryflesei
 			}
 			?>
 			</div>
-			<?php
-			if($pagina == "nu"){
-			?>
 			<div data-role="popup" id="fleseigenschappen_<?php echo $rij['UID']; ?>" data-theme="a" class="ui-corner-all">
 				<form name="wijneigenschappentoevoegen_<?php echo $rij['UID']; ?>" action="acties_post.php" method="post" autocomplete="off">
 					<div style="padding:10px 20px;">
@@ -223,6 +220,9 @@ function toon_wijninfo_koeler($rij, $tablesquery, $pagina, $resultaatqueryflesei
 					</div>
 				</form>
 			</div>
+			<?php
+			if($pagina == "nu"){
+			?>
 			<div data-role="popup" id="flesverwijderen_<?php echo $rij['UID']; ?>" data-theme="a" class="ui-corner-all">
 					<div style="padding:10px 20px;">
 						<h3>Fles uit de koelkast, Opgedronken of verwijderen?</h3>
