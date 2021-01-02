@@ -76,7 +76,6 @@ var huidigeweergave = 'nu';
 jQuery( document ).on( "pagechange",function(){
 $(".koelkasttype").on("slidestop", function(){
     // switch tussen wijnkoeler-inhoud div en wijnkoeler-historie div
-	alert("huidig: " + $(this).val() + "vorige:" + vorigeweergave);
 	vorigeweergave = huidigeweergave;
 	huidigeweergave = $( ".koelkasttype" ).val();
 		if(vorigeweergave == 'nu' && huidigeweergave == 'opgedronken'){
