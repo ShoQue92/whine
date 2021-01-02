@@ -199,7 +199,7 @@ getwijnsoort("rose",$resultaatrose);
 	while ($row = $resultaatopgedronkenmaanden->fetchArray()) {
 		$jaar = (int) substr($row['jaarmaand'],0,4);
 		$maand = (int) substr($row['jaarmaand'],4);
-		$maandstring = date("F", mktime($jaar,$maand,"01"));
+		$maandstring = date("F", mktime(0,0,0,$maand,1,$jaar));
 				
 	?>
 		<a href="#" class="ui-btn ui-icon-arrow-r ui-btn-icon-right" style="text-align:center"><?php echo $jaar . " " . $maandstring; ?></a>
