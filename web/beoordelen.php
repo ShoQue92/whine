@@ -38,7 +38,7 @@ else{
 
 <div class="paginaheader">
 <h3 class="ui-bar ui-bar-a ui-corner-all" style="text-align:center">Naam gezet op '<?php echo $_SESSION['naam']; ?>'</h3>
-<a href="acties_get.php?actie=naamverwijderen" class="ui-btn ui-icon-delete ui-btn-icon-left">Naam aanpassen?</a>
+<a href="acties_get.php?actie=naamverwijderen" class="ui-btn ui-icon-delete ui-btn-icon-left ui-corner-all">Naam aanpassen?</a>
 </div>
 
 <?php

@@ -93,7 +93,7 @@ if('GET' === $_SERVER['REQUEST_METHOD']){
 		case "naamverwijderen":
 			unset($_SESSION['naam']);
 			$redirecthome = true;
-			$redirectto = "beoordelen.php"
+			$redirectto = "beoordelen.php";
 			break;	
 		
 		}
