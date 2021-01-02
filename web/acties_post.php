@@ -67,6 +67,8 @@ if('POST' === $_SERVER['REQUEST_METHOD']){
 				
 			$command = escapeshellcmd("/usr/bin/python3 " . getenv('WORKSPACE_PATH') . "front_end_actions.py 'add_rating' '" . $uid . "' '" . $beoordeling . "' '". $opmerking . "'");
 			$command_output = shell_exec($command);
+			
+			$redirectto = "beoordelen.php"
 	}
 	else {
 			$foutmelding = "nee2";
