@@ -17,6 +17,7 @@ require 'functies.php';
 </div>
 
 <div id="temp_<?php echo $randomnummer; ?>" class="temp">Temperatuur laden..</div>
+<div class="momenteelindekoelkast"><p>Momenteel in de koelkast</p></div>
 <div style="width:100%">
 <a href="koelkast.php"><img src="images/koelkast.png" style="width:100%" /></a>
 </div>
