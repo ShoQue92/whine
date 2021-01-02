@@ -13,6 +13,7 @@
 			}
 			?>			
 			<li><a href="koelkast.php">Koelkast</a></li>    
+			<li><a href="beoordelen.php">Beoordelen</a></li>   
 		</ul>
 </div><!-- /menu -->
 
