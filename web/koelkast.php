@@ -223,7 +223,7 @@ getwijnsoort("rose",$resultaatrose);
 		while ($row = $resultaatopgedronken->fetchArray()) {
 		?>
 			<div data-role="collapsible" class="animateMe" data-content-theme="c"><h3><?php echo $row['name']; ?> (<?php echo $row['year']; ?>)</h3>
-				fleseigenschappen enzo
+				<p>fleseigenschappen enzo</p>
 			</div>
 		<?php
 		}
