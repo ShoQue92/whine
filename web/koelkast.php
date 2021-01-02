@@ -149,7 +149,7 @@ function getwijnsoort($wijnsoort, $resultaat){
 			<div data-role="popup" id="flesverwijderen_<?php echo $row['UID']; ?>" data-theme="a" class="ui-corner-all">
 					<div style="padding:10px 20px;">
 						<h3>Fles uit de koelkast, Opgedronken of verwijderen?</h3>
-						<a href="acties_get.php?actie=flesopgedronken&uid=<?php echo $row['UID']; ?>" class="ui-btn ui-icon-delete ui-btn-icon-left" data-transition="pop">Opgedronken</a>
+						<a href="acties_get.php?actie=flesopgedronken&uid=<?php echo $row['UID']; ?>" class="ui-btn ui-icon-check ui-btn-icon-left" data-transition="pop">Opgedronken</a>
 						<a href="acties_get.php?actie=flesverwijderen&uid=<?php echo $row['UID']; ?>" class="ui-btn ui-icon-delete ui-btn-icon-left" data-transition="pop">Verwijderen</a>
 					</div>
 			</div>
