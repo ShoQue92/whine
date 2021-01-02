@@ -71,9 +71,21 @@ window.setInterval(function(){
 </script>
 
 <script>
+var vorigeweergave = 'nu';
+var huidigeweergave = 'nu';
 jQuery( document ).on( "pagechange",function(){
 $(".koelkasttype").on("slidestop", function(){
-    alert("change: " + $(this).val()); 
+    // switch tussen wijnkoeler-inhoud div en wijnkoeler-historie div
+	huidigeweergave = $( ".koelkasttype" ).val();
+		if(vorigeweergave == 'nu' && huidigeweergave == 'opgedronken'){
+			$('#wijnkoeler-inhoud').hide();
+			$('#wijnkoeler-historie').show();
+		}
+		else if(vorigeweergave == 'opgedronken' && huidigeweergave == 'nu'){
+			$('#wijnkoeler-historie').hide();
+			$('#wijnkoeler-inhoud').show();
+		}
+
 })
 })
 </script>

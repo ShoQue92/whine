@@ -180,7 +180,7 @@ getwijnsoort("rose",$resultaatrose);
 
 </div>
 
-<div class="wijnkoeler-historie">
+<div class="wijnkoeler-historie" style="display: none">
 
 <div id="koelkast-historieheader">
 <h3 class="ui-bar ui-bar-a ui-corner-all" style="text-align:center">In totaal # flessen.</h3>
