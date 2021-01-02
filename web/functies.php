@@ -87,7 +87,20 @@ require 'paginastart.php';
 }
 
 function jquery_header_script($pagina,$locatie,$script){
-	// switch per pagina (voor specifiek per pagina
+	// returned de jquery functies voor header (aan te roepen met input)
+	switch($pagina){
+		case "Koelkast":
+			?>
+			<script>
+			
+			</script>
+			<?php
+			break;
+	}
+}
+
+function jquery_body_script($pagina,$locatie,$script){
+	// returned de jquery functies voor body (aan te roepen met input)
 	switch($pagina){
 		case "Koelkast":
 			?>
