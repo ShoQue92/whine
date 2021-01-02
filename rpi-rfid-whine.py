@@ -52,16 +52,14 @@ def read_rfid():
                 if check_bottle_existance(fles.UID):
                         fetch_bottle(fles.UID)
                         print('EINDE data opgehaald.'.center(100,'='))
-                        read_rfid()
                 else:
                         add_whine(fles.UID, fles.name, fles.main_grape, fles.year, fles.type, fles.properties, datetime.datetime.now())
                         #Maak een interface bestand aan voor het front-end systeem.
                         print("Interface bestand {} wordt aangemaakt op locatie {}".format(tgt_file, tgt_dir))
                         create_init_file(tgt_file, tgt_dir, fles.UID)
                         print('EINDE fles toegevoegd.'.center(100,'='))
-                        #Roep de functie weer opnieuw aan om het lezen van een nieuwe tag weer mogelijk te maken.
-                        read_rfid()
         finally:
                 GPIO.cleanup()
 
-read_rfid()
+while True:
+    	read_rfid()
