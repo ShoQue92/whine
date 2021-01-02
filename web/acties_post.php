@@ -56,7 +56,7 @@ if('POST' === $_SERVER['REQUEST_METHOD']){
 			$naam = strip_tags($_POST['naam']);
 			$_SESSION['name'] = $naam;
 			$redirecthome = true;
-			$redirectto = 'beoordelen.php'
+			$redirectto = 'beoordelen.php';
 	}
 	else {
 			$foutmelding = "nee2";
