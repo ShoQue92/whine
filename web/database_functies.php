@@ -6,6 +6,9 @@ $db = new SQLite3('db/whine_inventory.db');
 $tablesquery = $db->query("PRAGMA table_info(whine_bottles);");
 //$query = $db->prepare("SELECT * FROM whine_bottles order by date_in_fridge;");
 $aantalflessen = $db->querySingle("SELECT count(1) FROM whine_bottles where type in('Rood','Wit','Rosé') and deleted_ind = 'N' and opgedronken_ind = 'N';");
+$aantalflessenrood = $db->querySingle("SELECT count(1) FROM whine_bottles where type in('Rood') and deleted_ind = 'N' and opgedronken_ind = 'N';");
+$aantalflessenrose = $db->querySingle("SELECT count(1) FROM whine_bottles where type in('Rosé') and deleted_ind = 'N' and opgedronken_ind = 'N';");
+$aantalflessenwit = $db->querySingle("SELECT count(1) FROM whine_bottles where type in('Wit') and deleted_ind = 'N' and opgedronken_ind = 'N';");
 $aantalflessenhistorie = $db->querySingle("SELECT count(1) FROM whine_bottles where type in('Rood','Wit','Rosé') and deleted_ind = 'N' and opgedronken_ind = 'J';");
 
 $queryrood = $db->prepare("SELECT * FROM whine_bottles where type = 'Rood' and deleted_ind = 'N' and opgedronken_ind = 'N' order by date_in_fridge;");
