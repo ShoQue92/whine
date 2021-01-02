@@ -101,6 +101,7 @@ $(document).on("click",".koelkasthistorieknop",function(){
 		// naar specifieke maand
 		$('.wijnkoeler-historie').hide();
 		$('.wijnkoeler-historie').html($('.wijnkoeler-historie-maand-' + $(this).attr('name')).html());
+		$('.historie_flesoverzicht').trigger('create');
 		$('.wijnkoeler-historie').show();
 	}
 })

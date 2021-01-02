@@ -221,7 +221,7 @@ getwijnsoort("rose",$resultaatrose);
 		<?php
 		while ($row = $resultaatopgedronken->fetchArray()) {
 		?>
-			<div data-role="collapsible" data-content-theme="c"><h3><?php echo $row['name']; ?> (<?php echo $row['year']; ?>)</h3>
+			<div data-role="collapsible" data-content-theme="c" class="historie_flesoverzicht"><h3><?php echo $row['name']; ?> (<?php echo $row['year']; ?>)</h3>
 				<p>fleseigenschappen enzo</p>
 			</div>
 		<?php
