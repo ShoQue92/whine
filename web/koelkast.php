@@ -218,17 +218,15 @@ getwijnsoort("rose",$resultaatrose);
 	<div class="koelkast-historieheader">
 	<h3 class="ui-bar ui-bar-a ui-corner-all" style="text-align:center">Januari 2021</h3>
 	</div>
-	<div data-role="collapsibleset">
 		<?php
 		while ($row = $resultaatopgedronken->fetchArray()) {
 		?>
-			<div data-role="collapsible" class="animateMe" data-content-theme="c"><h3><?php echo $row['name']; ?> (<?php echo $row['year']; ?>)</h3>
+			<div data-role="collapsible" data-content-theme="c"><h3><?php echo $row['name']; ?> (<?php echo $row['year']; ?>)</h3>
 				<p>fleseigenschappen enzo</p>
 			</div>
 		<?php
 		}
 		?>
-	</div>
 </div>
 
 
