@@ -253,6 +253,30 @@ def fetch_bottle(UID):
         exc_type, exc_value, exc_tb = sys.exc_info()
         print(traceback.format_exception(exc_type, exc_value, exc_tb))
 
+def fetch_bottle_init_file(UID):
+    try:
+        c.execute("SELECT UID, name, main_grape, year, type, date_in_fridge FROM whine_bottles WHERE UID='"+UID+"'")
+        data = c.fetchone()
+        time.sleep(1)
+        if data:
+            bottle = {
+                'UID': data[0],
+                "name": data[1],
+                "main_grape": data[2],
+                "year": data[3],
+                "type": data[4],
+                "date_in_fridge": data[5]
+            }
+            return bottle
+        else:
+            print("Fles niet gevonden!")
+    except sqlite3.Error as er:
+        print('SQLite error: %s' % (' '.join(er.args)))
+        print("Exception class is: ", er.__class__)
+        print('SQLite traceback: ')
+        exc_type, exc_value, exc_tb = sys.exc_info()
+        print(traceback.format_exception(exc_type, exc_value, exc_tb))
+
 def fetch_bottle_properties(UID):
     try:
         print("De eigenschappen van fles {} worden opgehaald".format(UID))

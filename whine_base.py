@@ -6,6 +6,7 @@ from whine_DB_SDK import recreate_table
 from whine_DB_SDK import add_whine
 from whine_DB_SDK import add_whine_property
 from whine_DB_SDK import fetch_bottle
+from whine_DB_SDK import fetch_bottle_init_file
 from whine_DB_SDK import fetch_bottle_properties
 from whine_DB_SDK import delete_selected
 from whine_DB_SDK import clear_results
@@ -23,7 +24,7 @@ tgt_dir = os.getcwd()
 tgt_file = False
 
 def create_init_file(tgt_file,tgt_dir,bottle):
-    data=fetch_bottle(bottle)
+    data=fetch_bottle_init_file(bottle)
     os.chdir(tgt_dir)
     data['status'] = 'registered'
     if data:
