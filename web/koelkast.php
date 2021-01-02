@@ -192,7 +192,7 @@ getwijnsoort("rose",$resultaatrose);
 	<h3 class="ui-bar ui-bar-a ui-corner-all" style="text-align:center">In totaal # flessen.</h3>
 	</div>
 
-
+	
 	<?php
 
 	// collapsible per jaar/maand
@@ -200,10 +200,7 @@ getwijnsoort("rose",$resultaatrose);
 		$jaar = substr($row['jaarmaand'],0,4);
 		$maand = substr($row['jaarmaand'],4);
 	?>
-	<div class="koelkast-koelerjaarmandseldiv">
-		<h3 class="ui-bar ui-bar-a ui-corner-all koelerjaarmaandsel" style="text-align:center"><?php echo $jaar . " " . $maand; ?></h3>
-	</div>
-			
+		<a href="#" class="ui-btn ui-icon-arrow-r ui-btn-icon-right" style="text-align:center"><?php echo $jaar . " " . $maand; ?></a>
 	<?php
 
 	}
