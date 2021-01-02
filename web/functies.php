@@ -69,6 +69,14 @@ window.setInterval(function(){
 }, 1000);
 
 </script>
+
+<script>
+jQuery( document ).on( "pagechange",function(){
+$(".koelkasttype").on("slidestop", function(){
+    alert("change: " + $(this).val()); 
+})
+})
+</script>
 <div data-role="header">
 	<h1><?php echo $paginanaam; ?></h1>
 	<a href="#nav-panel" data-icon="bars" data-iconpos="notext">Menu</a>

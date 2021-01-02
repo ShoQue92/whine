@@ -4,13 +4,7 @@ require 'functies.php';
 <html>
 <head>
 <?php require 'headers.php'; ?>
-<script>
-$(window).load(function(){
-$(".koelkasttype").on("slidestop", function(){
-    alert("change: " + $(this).val()); 
-})
-})
-</script>
+
 </head>
 <body>
 
