@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 require 'functies.php'; 
 
@@ -50,6 +51,13 @@ if('POST' === $_SERVER['REQUEST_METHOD']){
 			
 
 	}
+	elseif(isset($_POST["naamdoorgeven"])){
+		// naamdoorgeven bij beoordelen
+			$naam = strip_tags($_POST['naam']);
+			$_SESSION['name'] = $naam;
+			$redirecthome = true;
+			$redirectto = 'beoordelen.php'
+	}
 	else {
 			$foutmelding = "nee2";
 			$redirecthome = false;
@@ -80,7 +88,14 @@ else {
 		?>
 		<script type="text/javascript">
 			setTimeout(function(){
-				window.location.href = 'index.php';
+				<?php
+				if(isset($redirectto){
+					echo "window.location.href = '" . $redirectto . "';";
+				}
+				else{
+					echo "window.location.href = 'index.php';";
+				}
+				?>
 			}, 1000);
 		</script>
 		<?php
