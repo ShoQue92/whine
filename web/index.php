@@ -5,11 +5,6 @@ require 'functies.php';
 <html>
 <head>
 <?php require 'headers.php'; ?>
-
-<script>
-
-</script>
-
 </head>
 <body> 
 
@@ -23,8 +18,6 @@ require 'functies.php';
 </div>
 
 <div id="temp_<?php echo $randomnummer; ?>" class="temp">Temperatuur laden..</div>
-<div class="momenteelindekoelkast" style="width:100%;text-align:center;height:40px;line-height:40px;"><p>Momenteel in de koelkast</p></div>
-<div class="momenteelindekoelkast" style="width:100%;text-align:center;height:40px;line-height:40px;"><p>adsfasdfasdf</p></div>
 <div style="width:100%">
 <a href="koelkast.php"><img src="images/koelkast.png" style="width:100%" /></a>
 </div>
