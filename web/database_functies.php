@@ -17,7 +17,7 @@ $resultaatwit = $querywit->execute();
 $resultaatrose = $queryrose->execute();
 
 $queryalleflessenbehalveverwijderd = $db->prepare("SELECT * FROM whine_bottles where deleted_ind = 'N' order by date_in_fridge;");
-$resultaatalleflessenbehalveverwijderd = $queryrood->execute();
+$resultaatalleflessenbehalveverwijderd = $queryalleflessenbehalveverwijderd->execute();
 
 $queryopgedronken = $db->prepare("SELECT *, strftime('%Y %m',date_in_fridge) as jaarmaand FROM whine_bottles where deleted_ind = 'N' and opgedronken_ind = 'J' order by date_in_fridge desc;");
 $resultaatopgedronken = $queryopgedronken->execute();

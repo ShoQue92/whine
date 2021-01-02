@@ -188,7 +188,12 @@ function toon_wijninfo_koeler($rij, $pagina){
 			}
 			if($pagina == "beoordelen"){
 			?>
-			
+			<form name="flesbeoordelen_<?php echo $rij['UID']; ?>" action="acties_post.php" method="post" autocomplete="off">
+			    <label for="slider-10">Beoordeling:</label>
+			    <input type="range" name="slider-10" class="slider-<?php echo $rij['UID']; ?>" min="0" max="10" step="1" value="1">
+				<input type="hidden" name="uid" value="<?php echo $rij['UID']; ?>">
+				<button type="submit" class="ui-btn ui-corner-all ui-shadow ui-btn-b ui-btn-icon-left ui-icon-check" name="flesbeoordelen" value="flesbeoordelen">Opslaan</button>
+			</form>
 			<?php
 			}
 			?>
