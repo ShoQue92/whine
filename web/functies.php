@@ -143,7 +143,10 @@ function jquery_body_script($pagina,$locatie,$script){
 	}
 }
 
-function toon_wijninfo_koeler($rij, $tablesquery, $pagina, $resultaatqueryfleseigenschappen, $vertaling){
+function toon_wijninfo_koeler($rij, $pagina){
+	global $tablesquery;
+	global $resultaatqueryfleseigenschappen;
+	global $vertaling;
 		?>
 
 			<div data-role="collapsible" class="animateMe" data-content-theme="c"><h3><?php echo $rij['name']; ?> (<?php echo $rij['year']; ?>)</h3>
