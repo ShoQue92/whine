@@ -34,6 +34,7 @@ $db = new SQLite3('db/whine_inventory.db');
 $tablesquery = $db->query("PRAGMA table_info(whine_bottles);");
 $query = $db->prepare("SELECT * FROM whine_bottles order by date_in_fridge;");
 $aantalflessen = $db->querySingle("SELECT count(1) FROM whine_bottles where type in('Rood','Wit','Rosé') and deleted_ind = 'N' and opgedronken_ind = 'N';");
+$aantalflessenhistorie = $db->querySingle("SELECT count(1) FROM whine_bottles where type in('Rood','Wit','Rosé') and deleted_ind = 'N' and opgedronken_ind = 'J';");
 
 $queryrood = $db->prepare("SELECT * FROM whine_bottles where type = 'Rood' and deleted_ind = 'N' and opgedronken_ind = 'N' order by date_in_fridge;");
 $querywit = $db->prepare("SELECT * FROM whine_bottles where type = 'Wit' and deleted_ind = 'N' and opgedronken_ind = 'N' order by date_in_fridge;");
@@ -189,18 +190,19 @@ getwijnsoort("rose",$resultaatrose);
 <div class="wijnkoeler-historie" style="display: none">
 
 	<div id="koelkast-historieheader">
-	<h3 class="ui-bar ui-bar-a ui-corner-all" style="text-align:center">In totaal # flessen.</h3>
+	<h3 class="ui-bar ui-bar-a ui-corner-all" style="text-align:center">In totaal <?php if($aantalflessenhistorie == 0){echo "geen flessen"; } else{ echo $aantalflessenhistorie . ' fles'; if($aantalflessenhistorie > 1){echo "sen";}} ?> opgedronken.</h3>
 	</div>
 
-	
 	<?php
 
 	// collapsible per jaar/maand
 	while ($row = $resultaatopgedronkenmaanden->fetchArray()) {
 		$jaar = substr($row['jaarmaand'],0,4);
 		$maand = substr($row['jaarmaand'],4);
+		$maandstring = date("F", $jaar . "-" . $maand . "-01");
+				
 	?>
-		<a href="#" class="ui-btn ui-icon-arrow-r ui-btn-icon-right" style="text-align:center"><?php echo $jaar . " " . $maand; ?></a>
+		<a href="#" class="ui-btn ui-icon-arrow-r ui-btn-icon-right" style="text-align:center"><?php echo $jaar . " " . $maandstring; ?></a>
 	<?php
 
 	}
