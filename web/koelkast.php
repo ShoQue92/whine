@@ -35,9 +35,9 @@ $tablesquery = $db->query("PRAGMA table_info(whine_bottles);");
 $query = $db->prepare("SELECT * FROM whine_bottles order by date_in_fridge;");
 $aantalflessen = $db->querySingle("SELECT count(1) FROM whine_bottles where type in('Rood','Wit','Rosé') and deleted_ind = 'N' and opgedronken_ind = 'N';");
 
-$queryrood = $db->prepare("SELECT * FROM whine_bottles where type = 'Rood' where deleted_ind = 'N' and opgedronken_ind = 'N' order by date_in_fridge;");
-$querywit = $db->prepare("SELECT * FROM whine_bottles where type = 'Wit' where deleted_ind = 'N' and opgedronken_ind = 'N' order by date_in_fridge;");
-$queryrose = $db->prepare("SELECT * FROM whine_bottles where type = 'Rosé' where deleted_ind = 'N' and opgedronken_ind = 'N' order by date_in_fridge;");
+$queryrood = $db->prepare("SELECT * FROM whine_bottles where type = 'Rood' and deleted_ind = 'N' and opgedronken_ind = 'N' order by date_in_fridge;");
+$querywit = $db->prepare("SELECT * FROM whine_bottles where type = 'Wit' and deleted_ind = 'N' and opgedronken_ind = 'N' order by date_in_fridge;");
+$queryrose = $db->prepare("SELECT * FROM whine_bottles where type = 'Rosé' and deleted_ind = 'N' and opgedronken_ind = 'N' order by date_in_fridge;");
 
 $resultaatrood = $queryrood->execute();
 $resultaatwit = $querywit->execute();
