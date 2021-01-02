@@ -89,7 +89,7 @@ else {
 		<script type="text/javascript">
 			setTimeout(function(){
 				<?php
-				if(isset($redirectto){
+				if(isset($redirectto)){
 					echo "window.location.href = '" . $redirectto . "';";
 				}
 				else{
