@@ -186,6 +186,11 @@ function toon_wijninfo_koeler($rij, $pagina){
 			</div>
 			<?php
 			}
+			if($pagina == "beoordelen"){
+			?>
+			
+			<?php
+			}
 			?>
 			</div>
 			<?php
