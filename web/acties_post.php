@@ -84,7 +84,7 @@ else {
 	else{
 		echo "Succesvol aangepast..";
 		echo "<br>";
-		if(isset($command_output){
+		if(isset($command_output)){
 			echo $command_output;
 		}
 		?>
