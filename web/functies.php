@@ -89,11 +89,15 @@ $(".koelkasttype").on("slidestop", function(){
 		}
 
 })
-})
 
 $('.koelkasthistorieknop').click(function(){
 	alert('knop geklikt');
 })
+
+})
+
+
+
 
 </script>
 <div data-role="header">
