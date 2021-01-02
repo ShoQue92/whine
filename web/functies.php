@@ -91,7 +91,18 @@ $(".koelkasttype").on("slidestop", function(){
 })
 
 $(document).on("click",".koelkasthistorieknop",function(){
-	alert('knop geklikt: ' + $(this).attr('name'));
+	if($(this).attr('name')).html() == 'terug'){
+		// terug naar algemene opgedronken pagina
+		$('.wijnkoeler-historie').hide();
+		$('.wijnkoeler-historie').html($('.wijnkoeler-historie-overzicht').html());
+		$('.wijnkoeler-historie').show();
+	}
+	else{
+		// naar specifieke maand
+		$('.wijnkoeler-historie').hide();
+		$('.wijnkoeler-historie').html($('.wijnkoeler-historie-maand-' + $(this).attr('name')).html());
+		$('.wijnkoeler-historie').show();
+	}
 })
 
 })
