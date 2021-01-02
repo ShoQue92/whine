@@ -41,6 +41,6 @@ input::-webkit-inner-spin-button {
 }
 
 /* Firefox */
-input[type=range] {
+input[type=number] {
   -moz-appearance: textfield;
 }
