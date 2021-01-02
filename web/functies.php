@@ -63,7 +63,7 @@ window.setInterval(function(){
 		intf_current_buildnum_output=data;
 		if($(".buildnum").text() < intf_current_buildnum_output){
 			$(".buildnum").css("color", "orange");
-			$(".buildnum").text(intf_current_buildnum_output);
+			$(".buildnum").html("<a href='.'>" + intf_current_buildnum_output + "</a>");
 		}
 	});
 }, 1000);
