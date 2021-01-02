@@ -43,6 +43,12 @@ $resultaatrood = $queryrood->execute();
 $resultaatwit = $querywit->execute();
 $resultaatrose = $queryrose->execute();
 
+$queryopgedronken = $db->prepare("SELECT * FROM whine_bottles where deleted_ind = 'N' and opgedronken_ind = 'J' order by date_in_fridge desc;");
+$resultaatopgedronken = $queryopgedronken->execute();
+
+$queryopgedronkenmaanden = $db->prepare("SELECT strftime('%Y %m',date_in_fridge) as jaarmaand FROM whine_bottles where deleted_ind = 'N' and opgedronken_ind = 'J' order by date_in_fridge desc;");
+$resultaatopgedronkenmaanden = $queryopgedronkenmaanden->execute();
+
 $queryfleseigenschappen = $db->prepare("SELECT * FROM bottle_properties order by property_id;");
 $resultaatqueryfleseigenschappen = $queryfleseigenschappen->execute();
 
@@ -182,15 +188,24 @@ getwijnsoort("rose",$resultaatrose);
 
 <div class="wijnkoeler-historie" style="display: none">
 
-<div id="koelkast-historieheader">
-<h3 class="ui-bar ui-bar-a ui-corner-all" style="text-align:center">In totaal # flessen.</h3>
-</div>
+	<div id="koelkast-historieheader">
+	<h3 class="ui-bar ui-bar-a ui-corner-all" style="text-align:center">In totaal # flessen.</h3>
+	</div>
 
-<?php
 
-// per jaar/maand tonen
-echo "test";
-?>
+	<?php
+
+	// collapsible per jaar/maand
+	while ($row = $resultaatopgedronkenmaanden->fetchArray()) {
+		$jaar = substr($row['jaarmaand'],0,4);
+		$maand = substr($row['jaarmaand'],4);
+	?>
+			<?php echo $jaar . " " . $maand; ?><br>
+	<?php
+
+	}
+
+	?>
 
 </div>
 
