@@ -35,12 +35,12 @@ if(!isset($_SESSION['naam']) || strlen($_SESSION['naam']) < 1){
 else{
 // gebruiker bekend, dus flessen laten zien
 ?>
-<a href="acties_get.php?actie=naamverwijderen">
+
 <div class="paginaheader">
 <h3 class="ui-bar ui-bar-a ui-corner-all" style="text-align:center">Naam gezet op '<?php echo $_SESSION['naam']; ?>'</h3>
-<p>Klik hier om naam aan te passen</p>
+<a href="acties_get.php?actie=naamverwijderen" class="ui-btn ui-icon-delete ui-btn-icon-left">Naam aanpassen?</a>
 </div>
-</a>
+
 <?php
 }
 ?>
