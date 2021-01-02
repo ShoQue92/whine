@@ -144,6 +144,9 @@ function toon_wijninfo_koeler($rij, $pagina){
 			}
 			?>		
 						</table>
+			<?php
+			if($pagina == "nu" || $pagina == "historie"){
+			?>
 			<div class="ui-corner-all custom-corners" style="margin-top:10px">
 				<div class="ui-bar ui-bar-a">
 				<h3>Extra eigenschappen</h3>
@@ -172,6 +175,7 @@ function toon_wijninfo_koeler($rij, $pagina){
 				
 			</div>
 			<?php
+			}
 			if($pagina == "nu"){
 			?>
 			<div class="ui-corner-all custom-corners">
@@ -184,6 +188,9 @@ function toon_wijninfo_koeler($rij, $pagina){
 			}
 			?>
 			</div>
+			<?php
+			if($pagina == "nu" || $pagina == "historie"){
+			?>
 			<div data-role="popup" id="fleseigenschappen_<?php echo $rij['UID']; ?>" data-theme="a" class="ui-corner-all">
 				<form name="wijneigenschappentoevoegen_<?php echo $rij['UID']; ?>" action="acties_post.php" method="post" autocomplete="off">
 					<div style="padding:10px 20px;">
@@ -198,6 +205,7 @@ function toon_wijninfo_koeler($rij, $pagina){
 				</form>
 			</div>
 			<?php
+			}
 			if($pagina == "nu"){
 			?>
 			<div data-role="popup" id="flesverwijderen_<?php echo $rij['UID']; ?>" data-theme="a" class="ui-corner-all">

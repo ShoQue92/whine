@@ -42,6 +42,14 @@ else{
 </div>
 
 <?php
+while ($row = $resultaatopgedronken->fetchArray()) {
+	toon_wijninfo_koeler($row,"beoordelen");
+?>
+
+<?php
+
+}//while
+
 }
 ?>
 
