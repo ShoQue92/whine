@@ -187,8 +187,6 @@ getwijnsoort("rose",$resultaatrose);
 
 </div>
 
-<div class="wijnkoeler-historie" style="display:none"></div>
-
 <div class="wijnkoeler-historie-overzicht" style="display: none">
 
 	<div class="koelkast-historieheader">
@@ -213,7 +211,7 @@ getwijnsoort("rose",$resultaatrose);
 	?>
 
 </div>
-<div class="wijnkoeler-historie-maand-2021-1" style="display:none">
+<div class="wijnkoeler-historie-maand-2021-1 wijnkoeler-historie-maand" style="display:none">
 	<a href="#" class="ui-btn ui-icon-arrow-l ui-btn-icon-left koelkasthistorieknop" style="text-align:center" name="terug">Terug naar overzicht</a>
 	<div class="koelkast-historieheader">
 	<h3 class="ui-bar ui-bar-a ui-corner-all" style="text-align:center">Januari 2021</h3>

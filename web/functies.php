@@ -80,7 +80,6 @@ $(".koelkasttype").on("slidestop", function(){
 	huidigeweergave = $( ".koelkasttype" ).val();
 		if(vorigeweergave == 'nu' && huidigeweergave == 'opgedronken'){
 			$('.wijnkoeler-inhoud').hide();
-			$('.wijnkoeler-historie').html($('.wijnkoeler-historie-overzicht').html());
 			$('.wijnkoeler-historie').show();
 		}
 		else if(vorigeweergave == 'opgedronken' && huidigeweergave == 'nu'){
@@ -93,16 +92,13 @@ $(".koelkasttype").on("slidestop", function(){
 $(document).on("click",".koelkasthistorieknop",function(){
 	if($(this).attr('name') == 'terug'){
 		// terug naar algemene opgedronken pagina
-		$('.wijnkoeler-historie').hide();
-		$('.wijnkoeler-historie').html($('.wijnkoeler-historie-overzicht').html());
+		$('.wijnkoeler-historie-maand').hide();
 		$('.wijnkoeler-historie').show();
 	}
 	else{
 		// naar specifieke maand
 		$('.wijnkoeler-historie').hide();
-		$('.wijnkoeler-historie').html($('.wijnkoeler-historie-maand-' + $(this).attr('name')).html());
-		$('.historie_flesoverzicht').trigger('create');
-		$('.wijnkoeler-historie').show();
+		$('.wijnkoeler-historie-maand-' + $(this).attr('name')).show();
 	}
 })
 
