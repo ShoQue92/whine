@@ -76,14 +76,16 @@ var huidigeweergave = 'nu';
 jQuery( document ).on( "pagechange",function(){
 $(".koelkasttype").on("slidestop", function(){
     // switch tussen wijnkoeler-inhoud div en wijnkoeler-historie div
+	alert("huidig: " + $(this).val() + "vorige:" + vorigeweergave);
+	vorigeweergave = huidigeweergave;
 	huidigeweergave = $( ".koelkasttype" ).val();
 		if(vorigeweergave == 'nu' && huidigeweergave == 'opgedronken'){
-			$('#wijnkoeler-inhoud').hide();
-			$('#wijnkoeler-historie').show();
+			$('.wijnkoeler-inhoud').hide();
+			$('.wijnkoeler-historie').show();
 		}
 		else if(vorigeweergave == 'opgedronken' && huidigeweergave == 'nu'){
-			$('#wijnkoeler-historie').hide();
-			$('#wijnkoeler-inhoud').show();
+			$('.wijnkoeler-historie').hide();
+			$('.wijnkoeler-inhoud').show();
 		}
 
 })
