@@ -191,7 +191,7 @@ getwijnsoort("rose",$resultaatrose);
 
 <div class="wijnkoeler-historie-overzicht" style="display: none">
 
-	<div id="koelkast-historieheader">
+	<div class="koelkast-historieheader">
 	<h3 class="ui-bar ui-bar-a ui-corner-all" style="text-align:center">In totaal <?php if($aantalflessenhistorie == 0){echo "geen flessen"; } else{ echo $aantalflessenhistorie . ' fles'; if($aantalflessenhistorie > 1){echo "sen";}} ?> opgedronken.</h3>
 	</div>
 
