@@ -47,7 +47,7 @@ $resultaatrose = $queryrose->execute();
 $queryopgedronken = $db->prepare("SELECT *, strftime('%Y %m',date_in_fridge) as jaarmaand FROM whine_bottles where deleted_ind = 'N' and opgedronken_ind = 'J' order by date_in_fridge desc;");
 $resultaatopgedronken = $queryopgedronken->execute();
 
-$queryopgedronkenmaanden = $db->prepare("SELECT strftime('%Y %m',date_in_fridge) as jaarmaand FROM whine_bottles where deleted_ind = 'N' and opgedronken_ind = 'J' order by date_in_fridge desc;");
+$queryopgedronkenmaanden = $db->prepare("SELECT distinct strftime('%Y %m',date_in_fridge) as jaarmaand FROM whine_bottles where deleted_ind = 'N' and opgedronken_ind = 'J' order by date_in_fridge desc;");
 $resultaatopgedronkenmaanden = $queryopgedronkenmaanden->execute();
 
 $queryfleseigenschappen = $db->prepare("SELECT * FROM bottle_properties order by property_id;");
