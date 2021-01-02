@@ -197,8 +197,8 @@ getwijnsoort("rose",$resultaatrose);
 
 	// collapsible per jaar/maand
 	while ($row = $resultaatopgedronkenmaanden->fetchArray()) {
-		$jaar = substr($row['jaarmaand'],0,4);
-		$maand = substr($row['jaarmaand'],4);
+		$jaar = (int) substr($row['jaarmaand'],0,4);
+		$maand = (int) substr($row['jaarmaand'],4);
 		$maandstring = date("F", $jaar . "-" . $maand . "-01");
 				
 	?>
