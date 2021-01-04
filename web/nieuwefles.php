@@ -15,9 +15,7 @@ require 'functies.php';
 
 $bestandinhoud = read_intf_init_bottle_content(false);
 
-$db = new SQLite3('db/whine_inventory.db');
-$querygrapesoorten = $db->prepare("SELECT grape FROM grapes order by grape asc;");
-$resultaatgrapesoorten = $querygrapesoorten->execute();
+require 'database_functies.php';
 
 ?>
 <h3 class="ui-bar ui-bar-a ui-corner-all" style="text-align:center">Toevoegen nieuwe wijnfles</h3>

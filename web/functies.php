@@ -62,8 +62,7 @@ window.setInterval(function(){
 	$.get(intf_current_buildnum, function (data) {
 		intf_current_buildnum_output=data;
 		if($(".buildnum").text() < intf_current_buildnum_output){
-			$(".buildnum").css("color", "orange");
-			$(".buildnum").text(intf_current_buildnum_output);
+			$(".buildnum").html("<a href='.' style='color:orange;text-decoration:none'>" + intf_current_buildnum_output + "</a>");
 		}
 	});
 }, 1000);
@@ -117,33 +116,10 @@ $(document).on("click",".koelkasthistorieknop",function(){
 require 'paginastart.php';
 }
 
-function jquery_header_script($pagina,$locatie,$script){
-	// returned de jquery functies voor header (aan te roepen met input)
-	switch($pagina){
-		case "Koelkast":
-			?>
-			<script>
-			
-			</script>
-			<?php
-			break;
-	}
-}
-
-function jquery_body_script($pagina,$locatie,$script){
-	// returned de jquery functies voor body (aan te roepen met input)
-	switch($pagina){
-		case "Koelkast":
-			?>
-			<script>
-			
-			</script>
-			<?php
-			break;
-	}
-}
-
-function toon_wijninfo_koeler($rij, $tablesquery, $pagina, $resultaatqueryfleseigenschappen, $vertaling){
+function toon_wijninfo_koeler($rij, $pagina){
+	global $tablesquery;
+	global $resultaatqueryfleseigenschappen;
+	global $vertaling;
 		?>
 
 			<div data-role="collapsible" class="animateMe" data-content-theme="c"><h3><?php echo $rij['name']; ?> (<?php echo $rij['year']; ?>)</h3>
@@ -167,6 +143,9 @@ function toon_wijninfo_koeler($rij, $tablesquery, $pagina, $resultaatqueryflesei
 			}
 			?>		
 						</table>
+			<?php
+			if($pagina == "nu" || $pagina == "historie"){
+			?>
 			<div class="ui-corner-all custom-corners" style="margin-top:10px">
 				<div class="ui-bar ui-bar-a">
 				<h3>Extra eigenschappen</h3>
@@ -195,6 +174,7 @@ function toon_wijninfo_koeler($rij, $tablesquery, $pagina, $resultaatqueryflesei
 				
 			</div>
 			<?php
+			}
 			if($pagina == "nu"){
 			?>
 			<div class="ui-corner-all custom-corners">
@@ -205,8 +185,23 @@ function toon_wijninfo_koeler($rij, $tablesquery, $pagina, $resultaatqueryflesei
 			</div>
 			<?php
 			}
+			if($pagina == "beoordelen"){
+			?>
+			<form name="flesbeoordelen_<?php echo $rij['UID']; ?>" action="acties_post.php" method="post" autocomplete="off">
+			    <p>Geef je beoordeling van deze fles:</p>
+			    <input type="range" name="beoordeling" class="slider-<?php echo $rij['UID']; ?>" min="1" max="5" step="1" value="1">
+				<input type="hidden" name="uid" value="<?php echo $rij['UID']; ?>">
+				<p>Eventuele opmerkingen:</p>
+				<textarea name="opmerkingen" class="textarea"></textarea>
+				<button type="submit" class="ui-btn ui-corner-all ui-shadow ui-btn-b ui-btn-icon-left ui-icon-check" name="flesbeoordelen" value="flesbeoordelen">Opslaan</button>
+			</form>
+			<?php
+			}
 			?>
 			</div>
+			<?php
+			if($pagina == "nu" || $pagina == "historie"){
+			?>
 			<div data-role="popup" id="fleseigenschappen_<?php echo $rij['UID']; ?>" data-theme="a" class="ui-corner-all">
 				<form name="wijneigenschappentoevoegen_<?php echo $rij['UID']; ?>" action="acties_post.php" method="post" autocomplete="off">
 					<div style="padding:10px 20px;">
@@ -221,6 +216,7 @@ function toon_wijninfo_koeler($rij, $tablesquery, $pagina, $resultaatqueryflesei
 				</form>
 			</div>
 			<?php
+			}
 			if($pagina == "nu"){
 			?>
 			<div data-role="popup" id="flesverwijderen_<?php echo $rij['UID']; ?>" data-theme="a" class="ui-corner-all">

@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 require 'functies.php'; 
 
 $nieuweflescsvpad = "interface_files/intf_init_bottle.csv";
@@ -87,6 +89,13 @@ if('GET' === $_SERVER['REQUEST_METHOD']){
 			fputcsv($fp, $headerregel, ";", '"');
 			fclose($fp);
 			break;	
+		
+		case "naamverwijderen":
+			unset($_SESSION['naam']);
+			$redirecthome = true;
+			$redirectto = "beoordelen.php";
+			break;	
+		
 		}
 	}
 
@@ -111,12 +120,20 @@ if('GET' === $_SERVER['REQUEST_METHOD']){
 		
 		echo "<br>";
 		
-		echo $command_output;
-		
+		if(isset($command_output)){
+			echo $command_output;
+		}
 		?>
 		<script type="text/javascript">
 			setTimeout(function(){
-				window.location.href = 'index.php';
+				<?php
+				if(isset($redirectto)){
+					echo "window.location.href = '" . $redirectto . "';";
+				}
+				else{
+					echo "window.location.href = 'index.php';";
+				}
+				?>
 			}, 1000);
 		</script>
 		<?php

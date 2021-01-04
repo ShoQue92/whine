@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 require 'functies.php'; 
 
@@ -50,6 +51,25 @@ if('POST' === $_SERVER['REQUEST_METHOD']){
 			
 
 	}
+	elseif(isset($_POST["naamdoorgeven"])){
+		// naamdoorgeven bij beoordelen
+			$naam = strip_tags($_POST['naam']);
+			$_SESSION['naam'] = $naam;
+			$redirecthome = true;
+			$redirectto = 'beoordelen.php';
+	}
+	elseif(isset($_POST["flesbeoordelen"])){
+			$beoordeling = $_POST["beoordeling"];
+			$uid = $_POST["uid"];
+			$opmerking = strip_tags($_POST["opmerking"]);
+					
+			$redirecthome = true;
+				
+			$command = escapeshellcmd("/usr/bin/python3 " . getenv('WORKSPACE_PATH') . "front_end_actions.py 'add_rating' '" . $uid . "' '" . $beoordeling . "' '". $opmerking . "'");
+			$command_output = shell_exec($command);
+			
+			$redirectto = "beoordelen.php";
+	}
 	else {
 			$foutmelding = "nee2";
 			$redirecthome = false;
@@ -76,11 +96,20 @@ else {
 	else{
 		echo "Succesvol aangepast..";
 		echo "<br>";
-		echo $command_output;
+		if(isset($command_output)){
+			echo $command_output;
+		}
 		?>
 		<script type="text/javascript">
 			setTimeout(function(){
-				window.location.href = 'index.php';
+				<?php
+				if(isset($redirectto)){
+					echo "window.location.href = '" . $redirectto . "';";
+				}
+				else{
+					echo "window.location.href = 'index.php';";
+				}
+				?>
 			}, 1000);
 		</script>
 		<?php
