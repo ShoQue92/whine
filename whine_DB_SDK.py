@@ -371,12 +371,13 @@ def fetch_avg_temp():
 
 def fetch_avg_rating_all():
     try:
-        c.execute("SELECT UID, avg(rating) FROM whine_rating")
+        c.execute("SELECT UID, avg(rating), count(*) FROM whine_rating")
         data = c.fetchone()
         if data:
             avg_rating = {
                 "UID": data[0],
-                "Gemiddelde waardering": data[1]
+                "Gemiddelde waardering": data[1],
+                "Aantal stemmen": data[2]
             }
             return print(json.dumps(avg_rating))
 
@@ -389,12 +390,13 @@ def fetch_avg_rating_all():
 
 def fetch_avg_rating(UID):
     try:
-        c.execute("SELECT avg(rating) FROM whine_rating WHERE UID = '"+UID+"'")
+        c.execute("SELECT avg(rating), count(*) FROM whine_rating WHERE UID = '"+UID+"'")
         data = c.fetchone()
         if data:
             avg_rating = {
                 "UID": UID,
-                "Gemiddelde waardering": data[0]
+                "Gemiddelde waardering": data[0],
+                "Aantal stemmen": data[1]
             }
             return print(json.dumps(avg_rating))
 
