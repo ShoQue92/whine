@@ -24,6 +24,13 @@ require 'functies.php';
 		break;
 	case "fetch_avg_rating":
 		// uid opgeven
+		$command = escapeshellcmd("/usr/bin/python3 " . getenv('WORKSPACE_PATH') . "front_end_actions.py 'fetch_avg_rating_all'");
+		$command_output = shell_exec($command);
+		
+		$avg_rating_all = json_decode($command_output,true);
+		
+		echo $avg_rating_all;
+		
 		break;
 	case "fetch_avg_rating_all":
 		// zonder uid opgeven
