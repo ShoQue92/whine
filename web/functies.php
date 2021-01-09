@@ -127,7 +127,7 @@ function toon_wijninfo_koeler($rij, $pagina){
 	
 		?>
 
-			<div data-role="collapsible" class="animateMe" data-content-theme="c"><h3><?php echo $rij['name']; ?> (<?php echo $rij['year']; ?>)</h3>
+			<div data-role="collapsible" class="<?php echo $rij['UID']; ?>" data-content-theme="c"><h3><?php echo $rij['name']; ?> (<?php echo $rij['year']; ?>)</h3>
 			<?php
 			while ($table = $tablesquery->fetchArray(SQLITE3_ASSOC)) {
 				if($table['name'] == "name"){
@@ -188,6 +188,7 @@ function toon_wijninfo_koeler($rij, $pagina){
 					}
 					
 					?>
+					<a href="beoordelen.php?uid=<?php echo $rij['UID']; ?>" class="ui-btn ui-icon-check ui-btn-icon-left" data-transition="pop">Beoordelen</a>
 				</div>
 			</div>				
 			<!-- einde beoordeling -->			

@@ -3,11 +3,33 @@ session_start();
 
 require 'database_functies.php';
 require 'functies.php'; 
+
+if('GET' === $_SERVER['REQUEST_METHOD']){
+	if(isset($_GET["uid"])){
+		$uid = $_GET["uid"];
+		$_SESSION['uid'] = $uid;
+	}
+}
+
 ?>
 
 <html>
 <head>
 <?php require 'headers.php'; ?>
+
+<?php
+if(isset($_SESSION['uid']){
+?>
+	<script>
+	$( "." + <?php echo $_SESSION['uid']; ?>).collapsible({
+	  collapsed: false
+	});
+	</script>
+<?php
+	unset($_SESSION['uid']);
+}
+?>
+
 </head>
 <body> 
 
