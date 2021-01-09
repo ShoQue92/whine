@@ -115,7 +115,7 @@ def log_temp(temp_c, temp_f, now):
         exc_type, exc_value, exc_tb = sys.exc_info()
         print(traceback.format_exception(exc_type, exc_value, exc_tb))
 
-def add_rating(UID, name, rating, comment):
+def add_rating(UID, name, rating, comment=''):
     try:
         c.execute("INSERT into whine_rating (UID, name, rating, comment, date_rating) VALUES (?, ?, ?, ?, CURRENT_TIMESTAMP)", (UID, name, rating, comment ))
         conn.commit()
