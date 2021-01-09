@@ -16,6 +16,14 @@ if('GET' === $_SERVER['REQUEST_METHOD']){
 <html>
 <head>
 <?php require 'headers.php'; ?>
+</head>
+<body> 
+
+<?php 
+
+paginaheader("Beoordelen"); 
+
+?>
 
 <?php
 if(isset($_SESSION['uid'])){
@@ -30,13 +38,6 @@ if(isset($_SESSION['uid'])){
 <?php
 	unset($_SESSION['uid']);
 }
-?>
-
-</head>
-<body> 
-
-<?php paginaheader("Beoordelen"); 
-
 ?>
 
 <div class="paginaheader">
