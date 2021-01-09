@@ -156,6 +156,7 @@ function toon_wijninfo_koeler($rij, $pagina){
 				</div>
 				<div class="ui-body ui-body-a">
 					<?php
+					$flesgevonden = false;
 					// loop per fles om te kijken of er al beoordelingen zijn
 					foreach ($beoordelingen_json as $flesbeoordeling){
 						if($flesbeoordeling['UID'] == $rij['UID']){
@@ -174,9 +175,12 @@ function toon_wijninfo_koeler($rij, $pagina){
 						}
 						else{
 							// nog geen beoordeling voor deze fles
+							if(!$flesgevonden){
 							?>
 							Nog geen beoordeling voor deze fles
 							<?php
+								$flesgevonden = true;
+							}
 						}
 					}
 					?>
