@@ -186,9 +186,12 @@ function toon_wijninfo_koeler($rij, $pagina){
 						Geen beoordelingen
 					<?php
 					}
-					
+					if($pagina == "nu" || $pagina == "historie"){
 					?>
-					<a href="beoordelen.php?uid=<?php echo $rij['UID']; ?>" class="ui-btn ui-icon-star ui-btn-icon-left" data-transition="pop">Beoordelen</a>
+						<a href="beoordelen.php?uid=<?php echo $rij['UID']; ?>" class="ui-btn ui-icon-star ui-btn-icon-left" data-transition="pop">Beoordelen</a>
+					<?php
+					}
+					?>
 				</div>
 			</div>				
 			<!-- einde beoordeling -->			

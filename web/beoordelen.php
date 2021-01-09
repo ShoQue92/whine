@@ -21,8 +21,10 @@ if('GET' === $_SERVER['REQUEST_METHOD']){
 if(isset($_SESSION['uid'])){
 ?>
 	<script>
-	$( "." + <?php echo $_SESSION['uid']; ?>).collapsible({
-	  collapsed: false
+	$(document).on("pagecreate", "#page", function(){
+		$( "." + <?php echo $_SESSION['uid']; ?>).collapsible({
+		  collapsed: false
+		});
 	});
 	</script>
 <?php
