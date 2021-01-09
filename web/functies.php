@@ -157,32 +157,36 @@ function toon_wijninfo_koeler($rij, $pagina){
 				<div class="ui-body ui-body-a">
 					<?php
 					$flesgevonden = false;
+					
 					// loop per fles om te kijken of er al beoordelingen zijn
 					foreach ($beoordelingen_json as $flesbeoordeling){
 						if($flesbeoordeling['UID'] == $rij['UID']){
-					?>
-							<table class="beoordeling" style="width:100%">
-								<tr>
-									<td style="width:50%">Gem score:</td>
-									<td style="text-align:right;width:50%"><?php echo $flesbeoordeling['Gemiddelde waardering']; ?></td>
-								</tr>
-								<tr>
-									<td style="width:50%">Aantal stemmen:</td>
-									<td style="text-align:right;width:50%"><?php echo $flesbeoordeling['Aantal stemmen']; ?></td>
-								</tr>
-							</table>
-					<?php
-						}
-						else{
-							// nog geen beoordeling voor deze fles
-							if(!$flesgevonden){
-							?>
-							Nog geen beoordeling voor deze fles
-							<?php
-								$flesgevonden = true;
-							}
-						}
+							$gemscore = $flesbeoordeling['Gemiddelde waardering'];
+							$aantalstemmen = $flesbeoordeling['Aantal stemmen'];
+							$flesgevonden = true;
+						}	
 					}
+					// tonen inhoud
+					if($flesgevonden){
+					?>
+					<table class="beoordeling" style="width:100%">
+						<tr>
+							<td style="width:50%">Gem score:</td>
+							<td style="text-align:right;width:50%"><?php echo $gemscore; ?></td>
+						</tr>
+						<tr>
+							<td style="width:50%">Aantal stemmen:</td>
+							<td style="text-align:right;width:50%"><?php echo $aantalstemmen; ?></td>
+						</tr>
+					</table>
+					<?php
+					}
+					else{
+					?>
+						Geen beoordelingen
+					<?php
+					}
+					
 					?>
 				</div>
 			</div>				
