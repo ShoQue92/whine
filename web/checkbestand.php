@@ -33,7 +33,7 @@ require 'functies.php';
 		
 		$avg_rating_all = json_decode($command_output,true);
 		
-		echo $avg_rating_all;
+		var_dump($avg_rating_all);
 		
 		break;
 }
