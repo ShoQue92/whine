@@ -3,8 +3,15 @@
   src: url('fonts/digitalfont.ttf')  format('truetype');
 }
 
+html {
+	height: auto;
+	min-height: 100%;
+}
+
 body {
-	background-color: #333333
+	background-color: #333333;
+	height: auto;
+	min-height: 100%;
 }
 
 #koelkast{
