@@ -148,6 +148,41 @@ function toon_wijninfo_koeler($rij, $pagina){
 			}
 			?>		
 						</table>
+			
+			<!-- beoordeling -->
+			<div class="ui-corner-all custom-corners" style="margin-top:10px">
+				<div class="ui-bar ui-bar-a">
+				<h3>Beoordeling</h3>
+				</div>
+				<div class="ui-body ui-body-a">
+					<?php
+					// loop per fles om te kijken of er al beoordelingen zijn
+					foreach ($beoordelingen_json as $flesbeoordeling){
+						if($flesbeoordeling['UID'] == $rij['UID']){
+					?>
+							<table class="beoordeling" style="width:100%">
+								<tr>
+									<td style="width:50%">Gem score:</td>
+									<td style="text-align:right;width:50%"><?php echo $flesbeoordeling['Gemiddelde waardering']; ?></td>
+								</tr>
+								<tr>
+									<td style="width:50%">Aantal stemmen:</td>
+									<td style="text-align:right;width:50%"><?php echo $flesbeoordeling['Aantal stemmen']; ?></td>
+								</tr>
+							</table>
+					<?php
+						}
+						else{
+							// nog geen beoordeling voor deze fles
+							?>
+							Nog geen beoordeling voor deze fles
+							<?php
+						}
+					}
+					?>
+				</div>
+			</div>				
+			<!-- einde beoordeling -->			
 			<?php
 			if($pagina == "nu" || $pagina == "historie"){
 			?>
@@ -178,16 +213,6 @@ function toon_wijninfo_koeler($rij, $pagina){
 				</div>
 				
 			</div>
-			<!-- beoordeling -->
-			<div class="ui-corner-all custom-corners" style="margin-top:10px">
-				<div class="ui-bar ui-bar-a">
-				<h3>Beoordeling</h3>
-				</div>
-				<div class="ui-body ui-body-a">
-					asdfsdfsadf
-				</div>
-			</div>				
-			<!-- einde beoordeling -->
 			<?php
 			}
 			if($pagina == "nu"){
