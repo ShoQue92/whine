@@ -35,6 +35,9 @@ if(isset($_SESSION['uid'])){
 		});
 		$.mobile.silentScroll($("." + <?php echo $_SESSION['uid']; ?>).offset().top);
 	});
+	$(document).on("pageshow", "#page", function(){
+		$.mobile.silentScroll($("." + <?php echo $_SESSION['uid']; ?>).offset().top);
+	});
 	</script>
 <?php
 	unset($_SESSION['uid']);
