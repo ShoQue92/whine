@@ -374,12 +374,13 @@ def fetch_avg_rating_all():
         c.execute("SELECT UID, avg(rating), count(*) FROM whine_rating GROUP BY UID")
         data = c.fetchall()
         if data:
-            avg_rating = {
-                "UID": data[0],
-                "Gemiddelde waardering": data[1],
-                "Aantal stemmen": data[2]
-            }
-            return print(json.dumps(avg_rating))
+            for rec in data:
+                avg_rating = {
+                    "UID": rec[0],
+                    "Gemiddelde waardering": rec[1],
+                    "Aantal stemmen": rec[2]
+                }
+                return print(json.dumps(avg_rating))
 
     except sqlite3.Error as er:
         print('SQLite error: %s' % (' '.join(er.args)))
