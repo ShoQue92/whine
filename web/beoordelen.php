@@ -30,8 +30,11 @@ if(isset($_SESSION['uid'])){
 ?>
 	<script>
 	$(document).on("pagecreate", "#page", function(){
-		$( "." + <?php echo $_SESSION['uid']; ?>).collapsible({
+		$("." + <?php echo $_SESSION['uid']; ?>).collapsible({
 		  collapsed: false
+		});
+		$('html, body').animate({
+			scrollTop: $("." + <?php echo $_SESSION['uid']; ?>).offset().top
 		});
 	});
 	</script>
