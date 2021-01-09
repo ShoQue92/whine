@@ -18,7 +18,7 @@ if('GET' === $_SERVER['REQUEST_METHOD']){
 <?php require 'headers.php'; ?>
 
 <?php
-if(isset($_SESSION['uid']){
+if(isset($_SESSION['uid'])){
 ?>
 	<script>
 	$( "." + <?php echo $_SESSION['uid']; ?>).collapsible({
