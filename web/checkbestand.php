@@ -30,10 +30,8 @@ require 'functies.php';
 	case "fetch_avg_rating_all":
 		$command = escapeshellcmd("/usr/bin/python3 " . getenv('WORKSPACE_PATH') . "front_end_actions.py 'fetch_avg_rating_all'");
 		$command_output = shell_exec($command);
-		
-		$avg_rating_all = json_decode($command_output,true);
-		
-		var_dump($avg_rating_all);
+				
+		echo $command_output;
 		
 		break;
 }

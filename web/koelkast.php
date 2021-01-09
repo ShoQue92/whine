@@ -2,6 +2,8 @@
 require 'database_functies.php';
 require 'functies.php'; 
 
+
+
 ?>
 <html>
 <head>
