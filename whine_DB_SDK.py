@@ -371,7 +371,7 @@ def fetch_avg_temp():
 
 def fetch_avg_rating_all():
     try:
-        c.execute("SELECT UID, avg(rating), count(*) FROM whine_rating")
+        c.execute("SELECT UID, avg(rating), count(*) FROM whine_rating GROUP BY UID")
         data = c.fetchone()
         if data:
             avg_rating = {
