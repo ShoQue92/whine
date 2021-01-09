@@ -188,7 +188,7 @@ function toon_wijninfo_koeler($rij, $pagina){
 					}
 					
 					?>
-					<a href="beoordelen.php?uid=<?php echo $rij['UID']; ?>" class="ui-btn ui-icon-check ui-btn-icon-left" data-transition="pop">Beoordelen</a>
+					<a href="beoordelen.php?uid=<?php echo $rij['UID']; ?>" class="ui-btn ui-icon-star ui-btn-icon-left" data-transition="pop">Beoordelen</a>
 				</div>
 			</div>				
 			<!-- einde beoordeling -->			
