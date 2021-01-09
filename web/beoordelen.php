@@ -33,7 +33,6 @@ if(isset($_SESSION['uid'])){
 		$("." + <?php echo $_SESSION['uid']; ?>).collapsible({
 		  collapsed: false
 		});
-		$.mobile.silentScroll($("." + <?php echo $_SESSION['uid']; ?>).offset().top);
 	});
 	$(document).on("pageshow", "#page", function(){
 		$.mobile.silentScroll($("." + <?php echo $_SESSION['uid']; ?>).offset().top);
