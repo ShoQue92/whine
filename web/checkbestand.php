@@ -21,5 +21,12 @@ require 'functies.php';
     case "buildnumber":
 		$buildnumber = file_get_contents('jenkins_build_dts.txt');
 		echo $buildnumber;
+		break;
+	case "fetch_avg_rating":
+		// uid opgeven
+		break;
+	case "fetch_avg_rating_all":
+		// zonder uid opgeven
+		break;
 }
 ?>
