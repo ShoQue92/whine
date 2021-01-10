@@ -38,8 +38,8 @@ if(isset($_SESSION['uid']) && isset($_SESSION['naam'])){
 	});
 	</script>
 <?php
-	unset($_SESSION['uid']);
 }
+unset($_SESSION['uid']);
 ?>
 
 <div class="paginaheader">
