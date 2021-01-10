@@ -30,7 +30,7 @@ if(isset($_SESSION['uid']) && isset($_SESSION['naam'])){
 ?>
 	<script>
 	$(document).on("pagecreate", function(){
-		setTimeout(function(){ $(".<?php echo $_SESSION['uid']; ?>").click()}, 100);
+		$(".<?php echo $_SESSION['uid']; ?>")[0].click();
 	}); 
 	$(document).on("collapsibleexpand", ".<?php echo $_SESSION['uid']; ?>", function () {
 		var position = $(this).offset().top;
