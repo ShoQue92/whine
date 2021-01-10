@@ -29,7 +29,7 @@ paginaheader("Beoordelen");
 if(isset($_SESSION['uid']) && isset($_SESSION['naam'])){
 ?>
 	<script>
-	$(document).on("pagecontainerload", function(){
+	$(document).on("pagecreate", function(){
 		$("." + <?php echo $_SESSION['uid']; ?>).collapsible({
 		  collapsed: false
 		});
