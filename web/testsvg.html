@@ -1,0 +1,34 @@
+<html>
+<head>
+<meta charset="utf-8" />
+<title>Testsvg</title>
+<meta name="viewport" content="width=device-width, initial-scale=1"> 
+<link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+<link rel="stylesheet" href="style.css">
+
+<script>
+$(document).ready( function(){
+	$("#afb1").animate({
+		filter: "invert(75%) sepia(24%) saturate(4215%) hue-rotate(359deg) brightness(104%) contrast(106%)"
+	}, 5000);
+});
+</script>
+
+</head>
+<body>
+<div data-role="page" id="page">
+	<div class="ui-grid-d">
+		<div class="ui-block-a"><img src="images/beoordelingster.svg" id="afb1" style="width:100%;height:auto"></div>
+		<div class="ui-block-b"><img src="images/beoordelingster.svg" id="afb2" style="width:100%;height:auto"></div>
+		<div class="ui-block-c"><img src="images/beoordelingster.svg" id="afb3" style="width:100%;height:auto"></div>
+		<div class="ui-block-d"><img src="images/beoordelingster.svg" id="afb4 "style="width:100%;height:auto"></div>
+		<div class="ui-block-e"><img src="images/beoordelingster.svg" id="afb5 "style="width:100%;height:auto"></div>
+	</div>
+</div>
+<div id="dialog" title="Basic dialog">
+  <p>This is the default dialog which is useful for displaying information. The dialog window can be moved, resized and closed with the &apos;x&apos; icon.</p>
+</div>
+</body>
+</html>
