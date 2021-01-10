@@ -22,17 +22,5 @@ require 'functies.php';
 		$buildnumber = file_get_contents('jenkins_build_dts.txt');
 		echo $buildnumber;
 		break;
-	case "fetch_avg_rating":
-		// uid opgeven
-		
-		
-		break;
-	case "fetch_avg_rating_all":
-		$command = escapeshellcmd("/usr/bin/python3 " . getenv('WORKSPACE_PATH') . "front_end_actions.py 'fetch_avg_rating_all'");
-		$command_output = shell_exec($command);
-				
-		echo $command_output;
-		
-		break;
 }
 ?>
