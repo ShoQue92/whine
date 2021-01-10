@@ -6,7 +6,6 @@ require 'functies.php';
 <html>
 <head>
 <?php require 'headers.php'; ?>
-
 </head>
 <body>
 

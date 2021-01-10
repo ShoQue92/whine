@@ -3,6 +3,14 @@ session_start();
 
 require 'database_functies.php';
 require 'functies.php'; 
+
+if('GET' === $_SERVER['REQUEST_METHOD']){
+	if(isset($_GET["uid"])){
+		$uid = $_GET["uid"];
+		$_SESSION['uid'] = $uid;
+	}
+}
+
 ?>
 
 <html>
@@ -11,8 +19,27 @@ require 'functies.php';
 </head>
 <body> 
 
-<?php paginaheader("Beoordelen"); 
+<?php 
 
+paginaheader("Beoordelen"); 
+
+?>
+
+<?php
+if(isset($_SESSION['uid']) && isset($_SESSION['naam'])){
+?>
+	<script>
+	$(document).on("pagecreate", function(){
+		setTimeout(function(){ $(".<?php echo $_SESSION['uid']; ?>").collapsible("expand")}, 500);
+	}); 
+	$(document).on("collapsibleexpand", ".<?php echo $_SESSION['uid']; ?>", function () {
+		var position = $(this).offset().top;
+		$('html, body').animate({scrollTop: position}, "slow");
+	});
+	</script>
+<?php
+	unset($_SESSION['uid']);
+}
 ?>
 
 <div class="paginaheader">

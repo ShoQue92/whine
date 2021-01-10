@@ -120,9 +120,14 @@ function toon_wijninfo_koeler($rij, $pagina){
 	global $tablesquery;
 	global $resultaatqueryfleseigenschappen;
 	global $vertaling;
+	
+	$command_beoordeling = escapeshellcmd("/usr/bin/python3 " . getenv('WORKSPACE_PATH') . "front_end_actions.py 'fetch_avg_rating_all'");
+	$command_output_beoordeling = shell_exec($command_beoordeling);
+	$beoordelingen_json = json_decode($command_output_beoordeling,true);
+	
 		?>
 
-			<div data-role="collapsible" class="animateMe" data-content-theme="c"><h3><?php echo $rij['name']; ?> (<?php echo $rij['year']; ?>)</h3>
+			<div data-role="collapsible" class="<?php echo $rij['UID']; ?> animateMe" data-content-theme="c"><h3><?php echo $rij['name']; ?> (<?php echo $rij['year']; ?>)</h3>
 			<?php
 			while ($table = $tablesquery->fetchArray(SQLITE3_ASSOC)) {
 				if($table['name'] == "name"){
@@ -143,6 +148,53 @@ function toon_wijninfo_koeler($rij, $pagina){
 			}
 			?>		
 						</table>
+			
+			<!-- beoordeling -->
+			<div class="ui-corner-all custom-corners" style="margin-top:10px">
+				<div class="ui-bar ui-bar-a">
+				<h3>Beoordeling</h3>
+				</div>
+				<div class="ui-body ui-body-a">
+					<?php
+					$flesgevonden = false;
+					
+					// loop per fles om te kijken of er al beoordelingen zijn
+					foreach ($beoordelingen_json as $flesbeoordeling){
+						if($flesbeoordeling['UID'] == $rij['UID']){
+							$gemscore = $flesbeoordeling['Gemiddelde waardering'];
+							$aantalstemmen = $flesbeoordeling['Aantal stemmen'];
+							$flesgevonden = true;
+						}	
+					}
+					// tonen inhoud
+					if($flesgevonden){
+					?>
+					<table class="beoordeling" style="width:100%">
+						<tr>
+							<td style="width:50%">Gem score:</td>
+							<td style="text-align:right;width:50%"><?php echo $gemscore; ?></td>
+						</tr>
+						<tr>
+							<td style="width:50%">Aantal stemmen:</td>
+							<td style="text-align:right;width:50%"><?php echo $aantalstemmen; ?></td>
+						</tr>
+					</table>
+					<?php
+					}
+					else{
+					?>
+						Geen beoordelingen
+					<?php
+					}
+					if($pagina == "nu" || $pagina == "historie"){
+					?>
+						<a href="beoordelen.php?uid=<?php echo $rij['UID']; ?>" class="ui-btn ui-icon-star ui-btn-icon-left" data-transition="pop">Beoordelen</a>
+					<?php
+					}
+					?>
+				</div>
+			</div>				
+			<!-- einde beoordeling -->			
 			<?php
 			if($pagina == "nu" || $pagina == "historie"){
 			?>
