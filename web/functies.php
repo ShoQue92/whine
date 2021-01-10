@@ -229,11 +229,10 @@ function toon_wijninfo_koeler($rij, $pagina){
 			}
 			if($pagina == "nu"){
 			?>
-			<div class="ui-corner-all custom-corners">
-				<div class="ui-body ui-body-a">
-				<a href="#flesverwijderen_<?php echo $rij['UID']; ?>" data-rel="popup" class="ui-btn ui-icon-delete ui-btn-icon-left" data-transition="pop" data-theme="e">Uit de koelkast</a>
+			<div class="ui-grid-solo">
+				<div class="ui-block-a">
+					<a href="#flesverwijderen_<?php echo $rij['UID']; ?>" data-rel="popup" class="ui-btn ui-icon-delete ui-btn-icon-left" data-transition="pop">Uit de koelkast</a>
 				</div>
-				
 			</div>
 			<?php
 			}
