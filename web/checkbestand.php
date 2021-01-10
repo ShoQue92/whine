@@ -15,7 +15,7 @@ require 'functies.php';
 		
 		$temp_json = json_decode($command_output,true);
 		
-		echo $temp_json['celsius'];
+		echo round($temp_json['celsius'],1);
 		
 		break;
     case "buildnumber":
