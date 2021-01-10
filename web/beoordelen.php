@@ -29,16 +29,18 @@ paginaheader("Beoordelen");
 if(isset($_SESSION['uid']) && isset($_SESSION['naam'])){
 ?>
 	<script>
-	/*
+	
 	$(document).on("pagecreate", "#page", function(){
-		$("." + <?php echo $_SESSION['uid']; ?>).collapsible({
+		/*$("." + <?php echo $_SESSION['uid']; ?>).collapsible({
 		  collapsed: false
-		});
-	}); */
-	$(document).on("collapsibleexpand", ".<?php echo $_SESSION['uid']; ?>", function () {
+		});*/
+		var position = $(".<?php echo $_SESSION['uid']; ?>").offset().top;
+		$.mobile.silentScroll(position);
+	}); 
+	/*$(document).on("collapsibleexpand", ".<?php echo $_SESSION['uid']; ?>", function () {
 		var position = $(this).offset().top;
 		$.mobile.silentScroll(position);
-	});
+	});*/
 	</script>
 <?php
 	unset($_SESSION['uid']);
