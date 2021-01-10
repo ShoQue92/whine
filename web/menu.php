@@ -63,7 +63,7 @@ else{
 	$omgeving = "Prod";
 }
 ?>
-<div data-role="footer" data-position="fixed"> 
+<div data-role="footer" data-position="fixed" data-tap-toggle="false"> 
 	<h4>Build number (<?php echo $omgeving; ?>): <span class="buildnum"><?php echo $buildnumber; ?></span></h4> 
 </div> 
 </div><!-- /page -->
