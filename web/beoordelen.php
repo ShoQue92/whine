@@ -30,7 +30,7 @@ if(isset($_SESSION['uid']) && isset($_SESSION['naam'])){
 ?>
 	<script>
 	
-	$(document).on("pagecreate", "#page", function(){
+	$(document).on("pagecontainerload", function(){
 		/*$("." + <?php echo $_SESSION['uid']; ?>).collapsible({
 		  collapsed: false
 		});*/
