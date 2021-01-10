@@ -10,9 +10,31 @@
 
 <script>
 $(document).ready( function(){
-	$("#afb1").animate({
+	setTimeout(function(){
+	$("#afb1").css({
 		filter: "invert(75%) sepia(24%) saturate(4215%) hue-rotate(359deg) brightness(104%) contrast(106%)"
-	}, 5000);
+	});
+	}, 100);
+	setTimeout(function(){
+	$("#afb2").css({
+		filter: "invert(75%) sepia(24%) saturate(4215%) hue-rotate(359deg) brightness(104%) contrast(106%)"
+	});
+	}, 200);
+	setTimeout(function(){
+	$("#afb3").css({
+		filter: "invert(75%) sepia(24%) saturate(4215%) hue-rotate(359deg) brightness(104%) contrast(106%)"
+	});
+	}, 300);
+	setTimeout(function(){
+	$("#afb4").css({
+		filter: "invert(75%) sepia(24%) saturate(4215%) hue-rotate(359deg) brightness(104%) contrast(106%)"
+	});
+	}, 400);
+	setTimeout(function(){
+	$("#afb5").css({
+		filter: "invert(75%) sepia(24%) saturate(4215%) hue-rotate(359deg) brightness(104%) contrast(106%)"
+	});
+	}, 500);
 });
 </script>
 
@@ -23,12 +45,9 @@ $(document).ready( function(){
 		<div class="ui-block-a"><img src="images/beoordelingster.svg" id="afb1" style="width:100%;height:auto"></div>
 		<div class="ui-block-b"><img src="images/beoordelingster.svg" id="afb2" style="width:100%;height:auto"></div>
 		<div class="ui-block-c"><img src="images/beoordelingster.svg" id="afb3" style="width:100%;height:auto"></div>
-		<div class="ui-block-d"><img src="images/beoordelingster.svg" id="afb4 "style="width:100%;height:auto"></div>
-		<div class="ui-block-e"><img src="images/beoordelingster.svg" id="afb5 "style="width:100%;height:auto"></div>
+		<div class="ui-block-d"><img src="images/beoordelingster.svg" id="afb4" style="width:100%;height:auto"></div>
+		<div class="ui-block-e"><img src="images/beoordelingster.svg" id="afb5" style="width:100%;height:auto"></div>
 	</div>
-</div>
-<div id="dialog" title="Basic dialog">
-  <p>This is the default dialog which is useful for displaying information. The dialog window can be moved, resized and closed with the &apos;x&apos; icon.</p>
 </div>
 </body>
 </html>
