@@ -221,7 +221,7 @@ function toon_wijninfo_koeler($rij, $pagina){
 				}
 				?>
 						</table>
-				<a href="#fleseigenschappen_<?php echo $rij['UID']; ?>" data-rel="popup" class="ui-btn ui-shadow" data-transition="pop">Nieuwe toevoegen..</a>
+				<a href="#fleseigenschappen_<?php echo $rij['UID']; ?>" data-rel="popup" class="ui-btn ui-icon-plus ui-btn-icon-left" data-transition="pop">Nieuwe toevoegen</a>
 				</div>
 				
 			</div>
@@ -231,7 +231,7 @@ function toon_wijninfo_koeler($rij, $pagina){
 			?>
 			<div class="ui-corner-all custom-corners">
 				<div class="ui-body ui-body-a">
-				<a href="#flesverwijderen_<?php echo $rij['UID']; ?>" data-rel="popup" class="ui-btn ui-icon-delete ui-btn-icon-left" data-transition="pop">Uit de koelkast</a>
+				<a href="#flesverwijderen_<?php echo $rij['UID']; ?>" data-rel="popup" class="ui-btn ui-icon-delete ui-btn-icon-left" data-transition="pop" data-theme="e">Uit de koelkast</a>
 				</div>
 				
 			</div>
