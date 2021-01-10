@@ -415,13 +415,16 @@ def fetch_rating():
         c.execute("SELECT UID, name, rating, comment, date_rating FROM whine_rating")
         data = c.fetchall()
         if data:
-            ratings = {
-                "UID": data[0],
-                "Naam": data[1],
-                "Rating": data[2],
-                "Comment": data[3],
-                "Datum": data[4]
-            }
+            ratings = []
+            for rec in data:
+                rating = {
+                    "UID": rec[0],
+                    "Naam": rec[1],
+                    "Rating": rec[2],
+                    "Comment": rec[3],
+                    "Datum": rec[4]
+                }
+                ratings.append(rating)
             return print(json.dumps(ratings))
 
     except sqlite3.Error as er:
