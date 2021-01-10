@@ -5,7 +5,7 @@ $randomnummer = rand(0, 50000);
 function paginaheader($paginanaam){
 	
 ?>
-<div data-role="page" id="page" data-hide-during-focus="">
+<div data-role="page" id="page">
 <?php
 // alleen tonen op homepage
 if($paginanaam == "Wijnkoeler"){
