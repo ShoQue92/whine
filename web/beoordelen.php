@@ -34,7 +34,7 @@ if(isset($_SESSION['uid']) && isset($_SESSION['naam'])){
 		$.mobile.silentScroll(position);
 	});
 	$(document).on("pagecreate", "#page", function(){
-		$(".+ <?php echo $_SESSION['uid']; ?>").trigger("click");		
+		$(".<?php echo $_SESSION['uid']; ?>").trigger("click");		
 	});
 	
 	</script>
