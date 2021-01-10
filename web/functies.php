@@ -121,13 +121,26 @@ function toon_wijninfo_koeler($rij, $pagina){
 	global $resultaatqueryfleseigenschappen;
 	global $vertaling;
 	
+	// per pagina prefix instellen (bo = beoordelen, kk = koelkast)
+	switch ($pagina){
+		case "nu":
+			$paginaclassprefix = "kk";
+			break;
+		case "historie":
+			$paginaclassprefix = "kk";
+			break;
+		case "beoordelen":
+			$paginaclassprefix = "bo";
+			break;	
+	}
+	
 	$command_beoordeling = escapeshellcmd("/usr/bin/python3 " . getenv('WORKSPACE_PATH') . "front_end_actions.py 'fetch_avg_rating_all'");
 	$command_output_beoordeling = shell_exec($command_beoordeling);
 	$beoordelingen_json = json_decode($command_output_beoordeling,true);
 	
 		?>
 
-			<div data-role="collapsible" class="<?php echo $rij['UID']; ?> animateMe" data-content-theme="c"><h3><?php echo $rij['name']; ?> (<?php echo $rij['year']; ?>)</h3>
+			<div data-role="collapsible" class="<?php echo $paginaclassprefix . $rij['UID']; ?> animateMe" data-content-theme="c"><h3><?php echo $rij['name']; ?> (<?php echo $rij['year']; ?>)</h3>
 			<?php
 			while ($table = $tablesquery->fetchArray(SQLITE3_ASSOC)) {
 				if($table['name'] == "name"){

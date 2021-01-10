@@ -30,9 +30,9 @@ if(isset($_SESSION['uid']) && isset($_SESSION['naam'])){
 ?>
 	<script>
 	$(document).on("pagecreate", function(){
-		setTimeout(function(){ $(".<?php echo $_SESSION['uid']; ?>").collapsible("expand")}, 500);
+		setTimeout(function(){ $(".bo<?php echo $_SESSION['uid']; ?>").collapsible("expand")}, 500);
 	}); 
-	$(document).on("collapsibleexpand", ".<?php echo $_SESSION['uid']; ?>", function () {
+	$(document).on("collapsibleexpand", ".bo<?php echo $_SESSION['uid']; ?>", function () {
 		var position = $(this).offset().top;
 		$('html, body').animate({scrollTop: position}, "slow");
 	});
