@@ -36,7 +36,7 @@ if(isset($_SESSION['uid']) && isset($_SESSION['naam'])){
 	}); 
 	$(document).on("collapsibleexpand", ".<?php echo $_SESSION['uid']; ?>", function () {
 		var position = $(this).offset().top;
-		$.mobile.silentScroll(position);
+		$('html, body').animate({scrollTop: position}, "slow");
 	});
 	</script>
 <?php
