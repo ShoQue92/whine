@@ -34,9 +34,9 @@ if(isset($_SESSION['uid']) && isset($_SESSION['naam'])){
 		  collapsed: false
 		});
 	});
-	$(document).on("pageshow", "#page", function(){
-		alert($("." + <?php echo $_SESSION['uid']; ?>).offset().top);
-		$.mobile.silentScroll($("." + <?php echo $_SESSION['uid']; ?>).offset().top);
+	$(document).on("collapsibleexpand", "[data-role=collapsible]", function () {
+		var position = $(this).offset().top;
+		$.mobile.silentScroll(position);
 	});
 	</script>
 <?php
