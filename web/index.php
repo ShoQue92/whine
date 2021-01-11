@@ -99,7 +99,7 @@ $weekarray = ['Zondag','Maandag','Dinsdag','Woensdag','Donderdag','Vrijdag','Zat
 	<div class="datumdiva ui-block-a"><?php echo $weekarray[date('w')]; ?></div>
 </div>
 <div class="ui-grid-solo">
-	<div class="datumdivb ui-block-a"><?php echo strval(date('d')) . " " . ucfirst(strftime("%B", date('Y-m-d'))) . " " . strval(date('Y')); ?></div>
+	<div class="datumdivb ui-block-a"><?php echo strval(date('d')) . " " . ucfirst(strftime("%B")) . " " . strval(date('Y')); ?></div>
 </div>
 <div class="ui-grid-solo">
 	<div class="ui-block-a">
