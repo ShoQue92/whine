@@ -155,7 +155,7 @@ function toon_wijninfo_koeler($rij, $pagina){
 					?>
 							<tr>
 								<td style="width:50%"><?php echo array_search($table['name'], $vertaling); ?></td>
-								<td style="text-align:right;width:50%"><?php if($table['name'] == "date_in_fridge"){echo substr($rij[$table['name']],0,16); } else {echo $rij[$table['name']]; } ?></td>
+								<td style="text-align:right;width:50%"><?php if($table['name'] == "date_in_fridge"){echo substr($rij[$table['name']],0,10); } else {echo $rij[$table['name']]; } ?></td>
 							</tr>
 					<?php
 				}
