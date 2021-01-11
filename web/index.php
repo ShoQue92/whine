@@ -30,11 +30,13 @@ require 'functies.php';
 		<a href="koelkast.php"><img src="images/koelkast.png" style="width:100%" /></a>
 	</div>
 </div>
-<div class="ui-grid-solo">
-	<div class="infoscrollera ui-block-a">Momenteel in de koelkast</div>
-</div>
-<div class="ui-grid-solo">
-	<div class="infoscrollerb ui-block-a">3 flessen in totaal</div>
+<div class="ui-corner-all custom-corners">
+	<div class="ui-grid-solo">
+		<div class="infoscrollera ui-block-a">Momenteel in de koelkast</div>
+	</div>
+	<div class="ui-grid-solo">
+		<div class="infoscrollerb ui-block-a">3 flessen in totaal</div>
+	</div>
 </div>
 
 <?php require 'paginaeind.php'; ?>
