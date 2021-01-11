@@ -106,7 +106,7 @@ getwijnsoort("rose",$resultaatrose);
 		$maandstring = ucfirst(strftime("%B", mktime(0,0,0,$maand,1,$jaar)));
 				
 	?>
-		<a href="#" class="ui-btn ui-icon-arrow-r ui-btn-icon-right koelkasthistorieknop" style="text-align:center" name="<?php echo $jaar . "-" . $maand; ?>"><?php echo $jaar . " " . $maandstring; ?></a>
+		<a href="#" class="ui-btn ui-icon-arrow-r ui-btn-icon-right koelkasthistorieknop" style="text-align:center" name="<?php echo $jaar . "-" . $maand; ?>"><?php echo $maandstring . " " . $jaar; ?></a>
 	<?php
 
 	}
@@ -127,7 +127,7 @@ while ($row = $resultaatopgedronkenmaanden->fetchArray()) {
 <div class="wijnkoeler-historie-maand-<?php echo $classnaam; ?> wijnkoeler-historie-maand" style="display:none">
 	<a href="#" class="ui-btn ui-icon-arrow-l ui-btn-icon-left koelkasthistorieknop" style="text-align:center" name="terug">Terug naar overzicht</a>
 	<div class="koelkast-historieheader">
-	<h3 class="ui-bar ui-bar-a ui-corner-all" style="text-align:center"><?php echo $jaar . " " . $maandstring; ?></h3>
+	<h3 class="ui-bar ui-bar-a ui-corner-all" style="text-align:center"><?php echo $maandstring . " " . $jaar; ?></h3>
 	</div>
 		<?php
 		while ($row = $resultaatopgedronken->fetchArray()) {
