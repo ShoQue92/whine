@@ -103,7 +103,7 @@ getwijnsoort("rose",$resultaatrose);
 		$jaar = (int) substr($row['jaarmaand'],0,4);
 		$maand = (int) substr($row['jaarmaand'],4);
 		setlocale(LC_TIME, 'nl_NL.utf8');
-		$maandstring = strftime("%B", mktime(0,0,0,$maand,1,$jaar));
+		$maandstring = ucfirst(strftime("%B", mktime(0,0,0,$maand,1,$jaar)));
 				
 	?>
 		<a href="#" class="ui-btn ui-icon-arrow-r ui-btn-icon-right koelkasthistorieknop" style="text-align:center" name="<?php echo $jaar . "-" . $maand; ?>"><?php echo $jaar . " " . $maandstring; ?></a>
