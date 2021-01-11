@@ -42,7 +42,7 @@ $(document).on("pagecreate", "#page", function(){
 			
 		});
 			
-		$(".infoscrollerb").FadeIn("Slow");		
+		$(".infoscrollerb").fadeIn("Slow");		
 				
 			
 	}, 3000);
