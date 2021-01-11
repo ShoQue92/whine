@@ -20,7 +20,10 @@ require 'functies.php';
 	<div id="temp_<?php echo $randomnummer; ?>" class="temp ui-block-a">Temperatuur laden..</div>
 </div>
 <div class="ui-grid-solo">
-	<div class="datumdiv ui-block-a">Weekdag<br>Datum</div>
+	<div class="datumdiva ui-block-a">Weekdag</div>
+</div>
+<div class="ui-grid-solo">
+	<div class="datumdivb ui-block-a">Datum</div>
 </div>
 <div class="ui-grid-solo">
 	<div class="ui-block-a">
