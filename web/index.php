@@ -40,9 +40,9 @@ $(document).on("pagecreate", "#page", function(){
 				break;	
 			};
 			
-		);
+		});
 			
-		$(".infoscrollerb").slideDown("Slow");		
+		$(".infoscrollerb").FadeIn("Slow");		
 				
 			
 	}, 3000);
