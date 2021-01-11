@@ -20,9 +20,9 @@ $(document).on("pagecreate", "#page", function(){
 			huidigepagina = huidigepagina + 1;
 		}
 		
-		$(".infoscrollerb").fadeOut("Slow");
-		
-		switch(huidigepagina){
+		$(".infoscrollerb").fadeOut("Slow", function(){
+			
+			switch(huidigepagina){
 			case 1:
 				$(".infoscrollerb").html("Aantal flessen");
 				break;
@@ -38,8 +38,10 @@ $(document).on("pagecreate", "#page", function(){
 			case 5:
 				$(".infoscrollerb").html("Best beoordeelde fles");
 				break;	
-		};		
-				
+			};
+			
+		);
+			
 		$(".infoscrollerb").slideDown("Slow");		
 				
 			
