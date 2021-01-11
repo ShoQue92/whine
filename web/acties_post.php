@@ -65,7 +65,7 @@ if('POST' === $_SERVER['REQUEST_METHOD']){
 					
 			$redirecthome = true;
 				
-			$command = escapeshellcmd("/usr/bin/python3 " . getenv('WORKSPACE_PATH') . "front_end_actions.py 'add_rating' '" . $uid . "' '" . $_SESSION['naam'] . "' '" . $beoordeling . "' '". $opmerking . "'");
+			$command = escapeshellcmd("/usr/bin/python3 " . getenv('WORKSPACE_PATH') . "front_end_actions.py 'add_rating' '" . $uid . "' '" . $_SESSION['naam'] . "' '" . $beoordeling . "' '" . $opmerking . "'");
 			$command_output = shell_exec($command);
 			
 			$redirectto = "beoordelen.php";

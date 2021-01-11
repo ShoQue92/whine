@@ -257,7 +257,7 @@ function toon_wijninfo_koeler($rij, $pagina){
 			    <input type="range" name="beoordeling" class="slider-<?php echo $rij['UID']; ?>" min="1" max="5" step="1" value="1">
 				<input type="hidden" name="uid" value="<?php echo $rij['UID']; ?>">
 				<p>Eventuele opmerkingen:</p>
-				<textarea name="opmerkingen" class="textarea"></textarea>
+				<textarea name="opmerking" class="textarea"></textarea>
 				<button type="submit" class="ui-btn ui-corner-all ui-shadow ui-btn-b ui-btn-icon-left ui-icon-check" name="flesbeoordelen" value="flesbeoordelen">Opslaan</button>
 			</form>
 			<?php
