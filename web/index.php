@@ -99,7 +99,7 @@ $weekarray = ['Maandag','Dinsdag','Woensdag','Donderdag','Vrijdag','Zaterdag','Z
 	<div class="datumdiva ui-block-a"><?php echo $weekarray[date('w')]; ?></div>
 </div>
 <div class="ui-grid-solo">
-	<div class="datumdivb ui-block-a"><?php echo date('d B Y'); ?></div>
+	<div class="datumdivb ui-block-a"><?php echo date('d F Y'); ?></div>
 </div>
 <div class="ui-grid-solo">
 	<div class="ui-block-a">
