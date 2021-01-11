@@ -373,13 +373,17 @@ def fetch_avg_rating_all():
     try:
         c.execute("SELECT UID, avg(rating), count(*) FROM whine_rating GROUP BY UID")
         data = c.fetchall()
+        c.execute("SELECT UID, name, comment FROM whine_rating GROUP BY UID")
+        data_rating = c.fetchall()
         if data:
             avg_rating = []
             for rec in data:
+                comments = [x for x in data_rating if x[0] == rec[0]]
                 avg_rating_rec = {
                     "UID": rec[0],
                     "Gemiddelde waardering": rec[1],
-                    "Aantal stemmen": rec[2]
+                    "Aantal stemmen": rec[2],
+                    "Beoordeling gegevens": comments
                 }
                 avg_rating.append(avg_rating_rec)
             return print(json.dumps(avg_rating))
