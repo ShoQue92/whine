@@ -11,7 +11,7 @@ $aantalflessenrose = $db->querySingle("SELECT count(1) FROM whine_bottles where 
 $aantalflessenwit = $db->querySingle("SELECT count(1) FROM whine_bottles where type in('Wit') and deleted_ind = 'N' and opgedronken_ind = 'N';");
 $aantalflessenhistorie = $db->querySingle("SELECT count(1) FROM whine_bottles where type in('Rood','Wit','Rosé') and deleted_ind = 'N' and opgedronken_ind = 'J';");
 
-$queryrood = $db->prepare("SELECT * FROM whine_bottles where type = 'Rood' and deleted_ind = 'N' and opgedronken_ind = 'N' order by date_in_fridge;");
+$queryrood = $db->prepare("SELECT UID, name, main_grape, year, type, date_in_fridge FROM whine_bottles where type = 'Rood' and deleted_ind = 'N' and opgedronken_ind = 'N' order by date_in_fridge;");
 $querywit = $db->prepare("SELECT * FROM whine_bottles where type = 'Wit' and deleted_ind = 'N' and opgedronken_ind = 'N' order by date_in_fridge;");
 $queryrose = $db->prepare("SELECT * FROM whine_bottles where type = 'Rosé' and deleted_ind = 'N' and opgedronken_ind = 'N' order by date_in_fridge;");
 
