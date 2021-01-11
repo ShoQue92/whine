@@ -30,7 +30,7 @@ require 'functies.php';
 		<a href="koelkast.php"><img src="images/koelkast.png" style="width:100%" /></a>
 	</div>
 </div>
-<div class="ui-corner-all custom-corners">
+<div class="ui-bar ui-bar-a ui-corner-all">
 	<div class="ui-grid-solo">
 		<div class="infoscrollera ui-block-a">Momenteel in de koelkast</div>
 	</div>
