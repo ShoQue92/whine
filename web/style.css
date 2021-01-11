@@ -37,7 +37,8 @@ body {
 	height:25px;
 	text-align:center;
 	font-size:20px;
-	font-family: Georgia
+	font-family: Georgia;
+	margin-bottom:10px;
 }
 .infoscrollerb{
 	height:25px;

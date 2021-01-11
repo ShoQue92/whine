@@ -5,6 +5,49 @@ require 'functies.php';
 <html>
 <head>
 <?php require 'headers.php'; ?>
+
+<script>
+$(document).on("pagecreate", "#page", function(){
+	window.setInterval(function(){
+		// veranderen div inhoud
+		var huidigepagina = 0;
+		var aantalpaginas = 5;
+		
+		if(huidigepagina == aantalpaginas){
+			huidigepagina = 1;
+		}
+		else{
+			huidigepagina = huidigepagina + 1;
+		}
+		
+		$(".infoscrollerb").fadeOut("Slow");
+		
+		switch(huidigepagina){
+			case 1:
+				$(".infoscrollerb").html("Aantal flessen");
+				break;
+			case 2:
+				$(".infoscrollerb").html("Aantal flessen rood");
+				break;	
+			case 3:
+				$(".infoscrollerb").html("Aantal flessen wit");
+				break;		
+			case 4:
+				$(".infoscrollerb").html("Aantal flessen rose");
+				break;		
+			case 5:
+				$(".infoscrollerb").html("Best beoordeelde fles");
+				break;	
+		};		
+				
+		$(".infoscrollerb").slideDown("Slow");		
+				
+			
+	}, 3000);
+});
+
+</script>
+
 </head>
 <body> 
 

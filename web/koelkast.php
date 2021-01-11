@@ -30,8 +30,6 @@ $(document).on("pagecreate", "#page", function(){
 
 <?php
 
-
-
 function getwijnsoort($wijnsoort, $resultaat){
 	global $tablesquery;
 	global $vertaling;
