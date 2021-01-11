@@ -33,8 +33,14 @@ body {
 	font-size:20px;
 	font-family: Georgia
 }
-.infoscroller{
-	height:50px;
+.infoscrollera{
+	height:25px;
+	text-align:center;
+	font-size:20px;
+	font-family: Georgia
+}
+.infoscrollera{
+	height:25px;
 	text-align:center;
 	font-size:20px;
 	font-family: Georgia

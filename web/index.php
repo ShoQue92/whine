@@ -31,7 +31,10 @@ require 'functies.php';
 	</div>
 </div>
 <div class="ui-grid-solo">
-	<div class="infoscroller ui-block-a">Info over koelkast</div>
+	<div class="infoscrollera ui-block-a">Momenteel in de koelkast</div>
+</div>
+<div class="ui-grid-solo">
+	<div class="infoscrollerb ui-block-a">3 flessen in totaal</div>
 </div>
 
 <?php require 'paginaeind.php'; ?>
