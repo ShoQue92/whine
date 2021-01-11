@@ -27,6 +27,12 @@ body {
 	font-size:25px;
 	font-family: Georgia
 }
+.infoscroller{
+	height:50px;
+	text-align:center;
+	font-size:20px;
+	font-family: Georgia
+}
 .buildnum{
 	display:inline;
 	overflow:hidden
