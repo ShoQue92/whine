@@ -4,13 +4,30 @@ require 'functies.php';
 ?>
 <html>
 <head>
-<?php require 'headers.php'; ?>
+<?php require 'headers.php'; 
+
+// hoogste beoordeling ophalen
+
+$hoogstebeoordeling = 0;
+$hoogstebeoordelinguid = "";
+
+foreach ($beoordelingen_json as $flesbeoordeling){
+	// elke fles afgaan, hoogste beoordeling pakken
+	if($flesbeoordeling['Gemiddelde waardering'] > $hoogstebeoordeling){
+		$hoogstebeoordeling = $flesbeoordeling['Gemiddelde waardering'];
+		$hoogstebeoordelinguid = $flesbeoordeling['UID'];
+	}
+}
+
+?>
 
 <script>
 $(document).on("pagecreate", "#page", function(){
 	
 	var huidigepagina = 0;
 	var aantalpaginas = 5;
+	var initieletext = $(".infoscrollera").html();
+	
 	window.setInterval(function(){
 		// veranderen div inhoud
 		if(huidigepagina == aantalpaginas){
@@ -24,19 +41,24 @@ $(document).on("pagecreate", "#page", function(){
 			
 			switch(huidigepagina){
 			case 1:
-				$(".infoscrollerb").html("Aantal flessen");
+				$(".infoscrollera").html(initieletext);
+				$(".infoscrollerb").html("Momenteel <?php echo $aantalflessen; ?> flessen in de koelkast");
 				break;
 			case 2:
-				$(".infoscrollerb").html("Aantal flessen rood");
+				$(".infoscrollera").html("Momenteel in de koelkast");
+				$(".infoscrollerb").html("<?php echo $aantalflessenrood; ?> fles(sen) rood");
 				break;	
 			case 3:
-				$(".infoscrollerb").html("Aantal flessen wit");
+				$(".infoscrollera").html("Momenteel in de koelkast");
+				$(".infoscrollerb").html("<?php echo $aantalflessenwit; ?> fles(sen) wit");
 				break;		
 			case 4:
-				$(".infoscrollerb").html("Aantal flessen rose");
+				$(".infoscrollera").html("Momenteel in de koelkast");
+				$(".infoscrollerb").html("<?php echo $aantalflessenrose; ?> fles(sen) rosé");
 				break;		
 			case 5:
-				$(".infoscrollerb").html("Best beoordeelde fles");
+				$(".infoscrollera").html("Best beoordeelde fles");
+				$(".infoscrollerb").html("Fles met UID: <?php echo $hoogstebeoordelinguid; ?>");
 				break;	
 			};
 			
@@ -76,11 +98,11 @@ $(document).on("pagecreate", "#page", function(){
 	</div>
 </div>
 <div class="ui-grid-solo">
-	<div class="infoscrollera ui-block-a">Momenteel in de koelkast</div>
+	<div class="infoscrollera ui-block-a">Koelkast feitjes</div>
 </div>
 <div class="ui-bar ui-bar-a ui-corner-all infoscrollerparent">
 	<div class="ui-grid-solo">
-		<div class="infoscrollerb ui-block-a">3 flessen in totaal</div>
+		<div class="infoscrollerb ui-block-a"></div>
 	</div>
 </div>
 
