@@ -43,7 +43,8 @@ body {
 	height:25px;
 	text-align:center;
 	font-size:15px;
-	font-family: Georgia
+	font-family: Georgia;
+	line-height:25px;
 }
 .buildnum{
 	display:inline;

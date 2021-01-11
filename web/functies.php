@@ -83,6 +83,7 @@ $(".koelkasttype").on("slidestop", function(){
 		}
 		else if(vorigeweergave == 'opgedronken' && huidigeweergave == 'nu'){
 			$('.wijnkoeler-historie-overzicht').hide();
+			$('.wijnkoeler-historie-maand').hide();
 			$('.wijnkoeler-inhoud').show();
 		}
 
