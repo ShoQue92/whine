@@ -96,7 +96,7 @@ setlocale(LC_TIME, 'nl_NL.utf8');
 $weekarray = ['Maandag','Dinsdag','Woensdag','Donderdag','Vrijdag','Zaterdag','Zondag'];
 ?>
 <div class="ui-grid-solo">
-	<div class="datumdiva ui-block-a"><?php echo $days[$date('w')]); ?></div>
+	<div class="datumdiva ui-block-a"><?php echo $days[$date('w')]; ?></div>
 </div>
 <div class="ui-grid-solo">
 	<div class="datumdivb ui-block-a"><?php echo $date('d B Y'); ?></div>
