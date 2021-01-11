@@ -93,13 +93,13 @@ $(document).on("pagecreate", "#page", function(){
 </div>
 <?php
 setlocale(LC_TIME, 'nl_NL.utf8');
-$weekarray = ['Maandag','Dinsdag','Woensdag','Donderdag','Vrijdag','Zaterdag','Zondag'];
+$weekarray = ['Zondag','Maandag','Dinsdag','Woensdag','Donderdag','Vrijdag','Zaterdag'];
 ?>
 <div class="ui-grid-solo">
 	<div class="datumdiva ui-block-a"><?php echo $weekarray[date('w')]; ?></div>
 </div>
 <div class="ui-grid-solo">
-	<div class="datumdivb ui-block-a"><?php echo date('d') . ucfirst(strftime("%B", date('d-m-Y'))) . date('Y'); ?></div>
+	<div class="datumdivb ui-block-a"><?php echo strval(date('d')) . " " . ucfirst(strftime("%B", date('d-m-Y'))) . " " . strval(date('Y')); ?></div>
 </div>
 <div class="ui-grid-solo">
 	<div class="ui-block-a">
