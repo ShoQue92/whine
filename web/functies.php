@@ -184,7 +184,7 @@ function toon_wijninfo_koeler($rij, $pagina){
 					?>
 					<table class="beoordeling" style="width:100%">
 						<tr>
-							<td style="width:50%">Gem score:</td>
+							<td style="width:50%">Gem score (1-5):</td>
 							<td style="text-align:right;width:50%"><?php echo $gemscore; ?></td>
 						</tr>
 						<tr>
