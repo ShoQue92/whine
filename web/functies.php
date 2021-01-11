@@ -151,7 +151,7 @@ function toon_wijninfo_koeler($rij, $pagina){
 						<table id="koelkast" style="width:100%">
 										<?php
 				}
-				if($table['name'] != 'UID' and $table['name'] != 'name'){
+				if($table['name'] == 'main_grape' and $table['name'] == 'year' and $table['name'] == 'date_in_fridge'){
 					?>
 							<tr>
 								<td style="width:50%"><?php echo array_search($table['name'], $vertaling); ?></td>
