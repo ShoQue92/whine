@@ -11,6 +11,10 @@ require 'functies.php';
 $hoogstebeoordeling = 0;
 $hoogstebeoordelinguid = "";
 
+$command_beoordeling = escapeshellcmd("/usr/bin/python3 " . getenv('WORKSPACE_PATH') . "front_end_actions.py 'fetch_avg_rating_all'");
+$command_output_beoordeling = shell_exec($command_beoordeling);
+$beoordelingen_json = json_decode($command_output_beoordeling,true);
+
 foreach ($beoordelingen_json as $flesbeoordeling){
 	// elke fles afgaan, hoogste beoordeling pakken
 	if($flesbeoordeling['Gemiddelde waardering'] > $hoogstebeoordeling){
@@ -24,9 +28,10 @@ foreach ($beoordelingen_json as $flesbeoordeling){
 <script>
 $(document).on("pagecreate", "#page", function(){
 	
-	var huidigepagina = 0;
+	var huidigepagina = 1;
 	var aantalpaginas = 5;
-	var initieletext = $(".infoscrollera").html();
+	var initieletexta = $(".infoscrollera").html();
+	var initieletextb = $(".infoscrollerb").html();
 	
 	window.setInterval(function(){
 		// veranderen div inhoud
@@ -41,8 +46,8 @@ $(document).on("pagecreate", "#page", function(){
 			
 			switch(huidigepagina){
 			case 1:
-				$(".infoscrollera").html(initieletext);
-				$(".infoscrollerb").html("Momenteel <?php echo $aantalflessen; ?> flessen in de koelkast");
+				$(".infoscrollera").html(initieletexta);
+				$(".infoscrollerb").html(initieletextb);
 				break;
 			case 2:
 				$(".infoscrollera").html("Momenteel in de koelkast");
@@ -102,7 +107,7 @@ $(document).on("pagecreate", "#page", function(){
 </div>
 <div class="ui-bar ui-bar-a ui-corner-all infoscrollerparent">
 	<div class="ui-grid-solo">
-		<div class="infoscrollerb ui-block-a"></div>
+		<div class="infoscrollerb ui-block-a">Momenteel <?php echo $aantalflessen; ?> flessen in de koelkast</div>
 	</div>
 </div>
 
