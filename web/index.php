@@ -72,7 +72,7 @@ $(document).on("pagecreate", "#page", function(){
 		$(".infoscrollerb").fadeIn("Slow");		
 				
 			
-	}, 3000);
+	}, 4000);
 });
 
 </script>
