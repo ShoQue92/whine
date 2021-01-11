@@ -8,11 +8,11 @@ require 'functies.php';
 
 <script>
 $(document).on("pagecreate", "#page", function(){
+	
+	var huidigepagina = 0;
+	var aantalpaginas = 5;
 	window.setInterval(function(){
 		// veranderen div inhoud
-		var huidigepagina = 0;
-		var aantalpaginas = 5;
-		
 		if(huidigepagina == aantalpaginas){
 			huidigepagina = 1;
 		}
@@ -76,7 +76,7 @@ $(document).on("pagecreate", "#page", function(){
 <div class="ui-grid-solo">
 	<div class="infoscrollera ui-block-a">Momenteel in de koelkast</div>
 </div>
-<div class="ui-bar ui-bar-a ui-corner-all">
+<div class="ui-bar ui-bar-a ui-corner-all infoscrollerparent">
 	<div class="ui-grid-solo">
 		<div class="infoscrollerb ui-block-a">3 flessen in totaal</div>
 	</div>
