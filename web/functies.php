@@ -174,7 +174,7 @@ function toon_wijninfo_koeler($rij, $pagina){
 					// loop per fles om te kijken of er al beoordelingen zijn
 					foreach ($beoordelingen_json as $flesbeoordeling){
 						if($flesbeoordeling['UID'] == $rij['UID']){
-							$gemscore = $flesbeoordeling['Gemiddelde waardering'];
+							$gemscore = round($flesbeoordeling['Gemiddelde waardering'],2);
 							$aantalstemmen = $flesbeoordeling['Aantal stemmen'];
 							$flesgevonden = true;
 						}	
