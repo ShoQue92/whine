@@ -379,10 +379,6 @@ def fetch_avg_rating_all():
             avg_rating = []
             for rec in data:
                 comments = [x for x in data_rating if x[0] == rec[0]]
-                #comments = []
-                #for x in data_rating:
-                #    if x[0] == rec[0]:
-                #        comments.append(x)
                 avg_rating_rec = {
                     "UID": rec[0],
                     "Gemiddelde waardering": rec[1],
