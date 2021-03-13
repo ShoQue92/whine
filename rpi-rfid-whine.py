@@ -57,7 +57,7 @@ def read_rfid():
                         #Maak een interface bestand aan voor het front-end systeem.
                         print("Interface bestand {} wordt aangemaakt op locatie {}".format(tgt_file, tgt_dir))
                         create_init_file(tgt_file, tgt_dir, fles.UID)
-                        print('EINDE fles toegevoegd.'.center(100,'='))
+                        print('...EINDE fles toegevoegd...'.center(100,'='))
         finally:
                 GPIO.cleanup()
 
