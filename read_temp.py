@@ -3,7 +3,7 @@ import glob
 import time
 import datetime
 from whine_DB_SDK import log_temp
-from sys import argv
+
 
 '''
 Dit script leest de temperatuur sensor uit die is geconfigureerd op de raspberry.
@@ -25,21 +25,20 @@ base_dir = '/sys/bus/w1/devices/'
 device_folder = glob.glob(base_dir + '28*')[0]
 device_file = device_folder + '/w1_slave'
 
-if argv[1] != "detach":
-    sleep_raw = int(input('Selecteer optie voor temperatuurmeting: ([1]: 10 minuten, [2]: 30 minuten, [3]: 60 minuten)'))
-    print("Gekozen optie:", sleep_raw)
+sleep_raw = int(input('Selecteer optie voor temperatuurmeting: ([1]: 10 minuten, [2]: 30 minuten, [3]: 60 minuten)'))
+print("Gekozen optie:", sleep_raw)
 
-    if sleep_raw == 1:
-        sleep = 600
-    elif sleep_raw == 2:
-        sleep =  1800
-    elif sleep_raw == 3:
-        sleep = 3600
-    else:
-        print("Ongeldige optie opgegeven ([", sleep_raw, '])! Default (10 minuten) wordt toegepast')
-        sleep = 600
+if sleep_raw == 1:
+    sleep = 600
+elif sleep_raw == 2:
+    sleep =  1800
+elif sleep_raw == 3:
+    sleep = 3600
+else:
+    print("Ongeldige optie opgegeven ([", sleep_raw, '])! Default (10 minuten) wordt toegepast')
+    sleep = 600
 
-    sleep_min = sleep / 60
+sleep_min = sleep / 60
 
 def read_temp_raw():
     f = open(device_file, 'r')
@@ -64,8 +63,5 @@ def read_temp(now):
     return print('Ongeldige meting:', equals_pos)
 	
 while True:
-    if argv[1] != "detach":
-	    read_temp(now)
-	    time.sleep(sleep)
-    else:
-        read_temp(now)
+	read_temp(now)
+	time.sleep(sleep)
