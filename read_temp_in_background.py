@@ -43,7 +43,6 @@ def read_temp(now):
         temp_f = temp_c * 9.0 / 5.0 + 32.0
 
         log_temp(temp_c, temp_f,now)
-    return print('Ongeldige meting:', equals_pos)
 	
 while True:
 	read_temp(now)
