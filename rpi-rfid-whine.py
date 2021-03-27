@@ -40,14 +40,11 @@ interface_path_env =  os.environ.get("INTF_ENV")
 
 def beep():
         buzzer=23 #GPIO pin 23 wordt gebruikt voor de beep speaker
-        try:
-                GPIO.setmode(GPIO.BCM)
-                GPIO.setup(buzzer,GPIO.OUT)
-                GPIO.output(buzzer,GPIO.HIGH)
-                time.sleep(0.5)
-                GPIO.output(buzzer,GPIO.LOW)
-        finally:
-                GPIO.cleanup()
+        GPIO.setup(buzzer,GPIO.OUT)
+        GPIO.output(buzzer,GPIO.HIGH)
+        time.sleep(0.5)
+        GPIO.output(buzzer,GPIO.LOW)
+
 
 def read_rfid():
         tgt_file = "intf_init_bottle.csv"
