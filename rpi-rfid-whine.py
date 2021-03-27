@@ -38,26 +38,16 @@ dotenv_path = join(dirname(__file__), '.env')
 load_dotenv(dotenv_path)
 interface_path_env =  os.environ.get("INTF_ENV")
 
-def beep():
-        buzzer=23 #GPIO pin 23 wordt gebruikt voor de beep speaker
-        GPIO.setup(buzzer,GPIO.OUT)
-        GPIO.output(buzzer,GPIO.HIGH)
-        time.sleep(0.5)
-        GPIO.output(buzzer,GPIO.LOW)
-
-
 def read_rfid():
         tgt_file = "intf_init_bottle.csv"
         tgt_dir = interface_path_env
-        
+
         reader = SimpleMFRC522()
         print('...RFID lezer actief, plaats een tag voor de lezer...'.center(100,'='))
         time.sleep(1)
 
         try:
                 id, text = reader.read()
-                if id:
-                        beep() #Als het lezen van de RFID is gelukt, roep de beep() functie aan.
                 fles = WhineBottle(str(id), '', '', '', '', '')
                 #Als de gescande tag reeds bestaat, laat de data zien, anders een nieuwe toevoegen.
                 if check_bottle_existance(fles.UID):
