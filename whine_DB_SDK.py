@@ -84,7 +84,7 @@ def add_whine(UID, name, main_grape, year, type, properties, date_in_fridge):
 
 def add_whine_property(UID, property, value):
     if property is not None and value is not None:
-        c.execute("SELECT property from bottle_properties where property = '"+property+"'")
+        c.execute("SELECT property from bottle_properties where property = '"+property+"' and uid = '"+UID+"' ")
         data = c.fetchone()
         if data:
             # regel is al gevonden, dus niet opnieuw inserten
