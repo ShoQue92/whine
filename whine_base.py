@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 #Imports from whine_classes
 from whine_classes import WhineBottle
 #Imports from whine_db_SDK

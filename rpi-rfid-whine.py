@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 #Imports for SPI communications with RPi
 import RPi.GPIO as GPIO
 from mfrc522 import SimpleMFRC522
