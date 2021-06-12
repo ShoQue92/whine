@@ -26,7 +26,7 @@ from os.path import join, dirname
 from dotenv import load_dotenv
 
 """
-Functie voor het lezen van RFID tags.
+Functie voor het lezen van RFID tags..
 Wanneer een tag gescand wordt, wordt gekeken of deze reeds bestaat.
 Als dit het geval is, wordt de UID van de fles getoond.
 Wanneer het een nieuwe fles betreft, wordt deze aangemaakt en wordt een interface bestand gemaakt (CSV) die gebruikt kan worden door het front-end systeem om uit te lezen en te updaten met aangevulde data.
