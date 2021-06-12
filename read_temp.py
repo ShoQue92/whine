@@ -26,7 +26,7 @@ device_folder = glob.glob(base_dir + '28*')[0]
 device_file = device_folder + '/w1_slave'
 
 sleep_raw = int(input('Selecteer optie voor temperatuurmeting: ([1]: 10 minuten, [2]: 30 minuten, [3]: 60 minuten)'))
-print("Gekozen optie:", sleep_raw)
+print("Gekozen optie:", sleep_raw), "meting wordt uigevoerd..."
 
 if sleep_raw == 1:
     sleep = 600
