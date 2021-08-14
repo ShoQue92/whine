@@ -371,13 +371,15 @@ def fetch_avg_temp():
 
 def fetch_avg_rating_all():
     try:
-        c.execute("SELECT UID, avg(rating), count(*) FROM whine_rating GROUP BY UID")
+        c.execute("SELECT UID, avg(rating), count(*) FROM whine_rating GROUP BY UID ORDER BY UID")
         data = c.fetchall()
-        c.execute("SELECT UID, name, comment FROM whine_rating")
+        c.execute("SELECT UID, name, comment FROM whine_rating ORDER BY UID")
         data_rating = c.fetchall()
         if data:
             avg_rating = []
             for rec in data:
+                """List comprehension om alle comments over een UID in een list te stoppen"""
+                """if x[0] == rec[0] betekend dus waar de UID gelijk is in de twee variabele data & data_rating."""
                 comments = [x for x in data_rating if x[0] == rec[0]]
                 avg_rating_rec = {
                     "UID": rec[0],
